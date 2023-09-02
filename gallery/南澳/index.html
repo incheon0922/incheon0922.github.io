@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="南澳手记, Sidere">
+    <meta name="keywords" content="南澳, Sidere">
     <meta name="description" content="个人博客、记录">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>南澳手记 | Sidere</title>
+    <title>南澳 | Sidere</title>
     <link rel="icon" type="image/png" href="/favicon-roam.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -99,7 +99,7 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/galleries" class="waves-effect waves-light">
+    <a href="/gallery" class="waves-effect waves-light">
       
       <i class="fas fa-image" style="zoom: 0.6;"></i>
       
@@ -202,7 +202,7 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/galleries" class="waves-effect waves-light">
+		<a href="/gallery" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-image"></i>
 			
@@ -308,45 +308,256 @@
 
 </header>
 
-    <link rel="stylesheet" href="/css/gallery.css">
-<link type="text/css" href="/libs/fancybox/jquery.fancybox.css" rel="stylesheet">
-<link type="text/css" href="/libs/justifiedGallery/justifiedGallery.min.css" rel="stylesheet">
+    
 
+<!-- <div class="bg-cover pd-header about-cover">
+    <div class="container">
+    <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                荒野与河
+                
+            </div>
 
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">南澳手记</h1>
-                </div>
+            <div class="description center-align">
+                
+                <span id="subtitle"></span>
+                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+                <script>
+                    var typed = new Typed("#subtitle", {
+                        strings: ['我穿越的风景和穿越我的风景构成了我','我穿越的风景和穿越我的风景构成了我'],
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: true,
+                        backSpeed: 50,
+                        showCursor: true
+                    });
+                </script>
+                
             </div>
         </div>
     </div>
 </div>
 
 
-
-<div class="container">
-    <div class="photo-wrapper">
-        
-            <div class="waterfall" id="encrypt-blog">
-                <a href="https://incheon0922.github.io/2023/08/06/%E7%A6%8F%E5%BB%BA%E8%A1%8C/微信图片_20230806110734.jpg"     class="photo-item" rel="example_group"     data-fancybox="images">      <img src="https://incheon0922.github.io/2023/08/06/%E7%A6%8F%E5%BB%BA%E8%A1%8C/微信图片_20230806110734.jpg"       alt=%E7%A6%8F%E5%BB%BA%E8%A1%8C/微信图片_20230806110734.jpg>
-    </a><a href="https://incheon0922.github.io/2023/08/06/%E7%A6%8F%E5%BB%BA%E8%A1%8C/微信图片_202308061107542.jpg"     class="photo-item" rel="example_group"     data-fancybox="images">      <img src="https://incheon0922.github.io/2023/08/06/%E7%A6%8F%E5%BB%BA%E8%A1%8C/微信图片_202308061107542.jpg"       alt=%E7%A6%8F%E5%BB%BA%E8%A1%8C/微信图片_202308061107542.jpg>
-    </a>
-            </div>
-        
-    </div>
-</div>
-
-<script src="/libs/fancybox/fancybox.js"></script>
-<script src="/libs/justifiedGallery/justifiedGallery.min.js"></script>
 <script>
+    // 每天切换 banner 图.  Switch banner image every day.
+    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+</script>
 
-  $("a[rel=example_group]").fancybox();
-  $("#encrypt-blog").justifiedGallery({margins: 5, rowHeight: 150});
 
+    </div>
+</div> -->
+
+<link rel="stylesheet" href="/libs/MyGallery/css/baguetteBox.css">
+<!-- 该主题自带的lightGallery.js在图片多的时候会很卡，所以弃用，使用了一个我在网上找的baguetteBox，很轻量级，就是功能少了点 -->
+<script src="/libs/MyGallery/js/baguetteBox.js"></script>
+<style>
+    .my-gallery .photo img {
+        transition: all 0.6s ease-in-out;
+    }
+    .my-gallery .photo:hover img {
+        opacity: 0.6;
+        transform: scale(1.05);
+    }
+    .my-gallery {
+        margin: 20px auto;
+    }
+    .miaoshus .title {
+        font-family: MV Boli;
+    }
+    .miaoshus {
+        padding: 20px;
+        border: 1px dashed #e6e6e6;
+        color: #969696;
+        position: relative;
+        display: inline-block;
+        width: 75%;
+        background: #fbfbfb50;
+        border-radius: 10px;
+        font-size: 16px;
+        margin: 24px auto 12px;
+
+    }
+    body.dark .miaoshus {
+        background: 0 0;
+        border: 1px dashed #888;
+    }
+    body {
+        overflow: visible!important;
+    }
+    .box {
+            position: relative;
+        }
+    .box img {
+        width: 350px;
+        vertical-align: top;
+        padding: 8px;
+        border-radius: 10px;
+        transition: all 0.5s;
+        position: relative;
+    }
+    .box img:hover {
+        transform: scale(1.05);
+    }
+    .page-footer {
+        display: none
+    }
+    body {
+        overflow-y: visible!important;
+    }
+    header {
+        background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 7px 10px 0 rgba(0, 0, 0, 0.12);
+    }
+    .biaotiss {
+            font-family: MV Boli;
+        }
+    @media only screen and (max-width: 1058px) {
+        .box {
+            margin-left: 145px;
+        }
+    }
+    @media only screen and (max-width: 770px) {
+        .box {
+            margin-left: 15px;
+        }
+    }
+    @media only screen and (max-width: 500px) {
+        #previous-button, #next-button {
+            display: none;
+        }
+    }
+    @media only screen and (max-width: 380px) {
+        .box {
+            margin-left: -5px;
+        }
+    }
+    @media only screen and (max-width: 323px) {
+        .box img {
+            width: 296px;
+            left: 0;
+        }
+    }
+
+</style>
+<!--
+<div class="tag-title center-align">
+    <div class="miaoshus">
+        <div class="title center-align">
+            “ 
+                南澳
+             ”
+        </div>
+        光影流年
+    </div>
+</div> -->
+
+<!-- 相册 -->
+<section class="gallery">
+    <div id="myGallery" class="my-gallery">
+        <div class="row">
+            <div class="box">
+            
+                
+                
+                    
+                        <a href="https://incheon0922.github.io/2023/08/05/%E9%A3%9E%E8%A1%8C%E6%97%A5/微信图片_20230805234318.jpg" data-caption="南澳">
+                            <img class="mat" src="/medias/loading.svg" data-src="https://incheon0922.github.io/2023/08/05/%E9%A3%9E%E8%A1%8C%E6%97%A5/微信图片_20230805234318.jpg" alt="img"+0 >
+                        </a>
+                
+                    
+                        <a href="https://incheon0922.github.io/2023/08/05/%E9%A3%9E%E8%A1%8C%E6%97%A5/微信图片_20230805234318.jpg" data-caption="南澳2">
+                            <img class="mat" src="/medias/loading.svg" data-src="https://incheon0922.github.io/2023/08/05/%E9%A3%9E%E8%A1%8C%E6%97%A5/微信图片_20230805234318.jpg" alt="img"+1 >
+                        </a>
+                
+                    
+                        <a href="https://incheon0922.github.io/2023/08/05/%E9%A3%9E%E8%A1%8C%E6%97%A5/微信图片_20230805234318.jpg" data-caption="南澳">
+                            <img class="mat" src="/medias/loading.svg" data-src="https://incheon0922.github.io/2023/08/05/%E9%A3%9E%E8%A1%8C%E6%97%A5/微信图片_20230805234318.jpg" alt="img"+2 >
+                        </a>
+                
+            
+        </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(function () {
+        // 获取图片的宽度(200px)
+        let imgWidth = $('.mat').outerWidth(); // 200
+        waterfallHandler();
+        // 瀑布流处理
+        function waterfallHandler() {
+            // 获取图片的列数
+            let column = parseInt($(window).width() / imgWidth);
+            // 高度数组
+            let heightArr = [];
+            for(let i=0; i<column; i++) {
+                heightArr[i] = 0;
+            }
+            // 遍历所有图片进行定位处理
+            $.each($('.mat'), function (index, item) {
+                // 当前元素的高度
+                let itemHeight = $(item).outerHeight();
+                // 高度数组最小的高度
+                let minHeight = Math.min(...heightArr);
+                // 高度数组最小的高度的索引
+                let minIndex = heightArr.indexOf(minHeight);
+
+                $(item).css({
+                    position: 'absolute',
+                    top: minHeight + 'px',
+                    left: minIndex * imgWidth + 'px'
+                });
+                heightArr[minIndex] += itemHeight;
+            });
+        }
+        // 窗口大小改变
+        $(window).resize(function () {
+            waterfallHandler();
+        });
+    });
+</script>
+<script>
+    console.log('baguetteBox',baguetteBox)
+    baguetteBox.run('.gallery', {
+        // 配置参数
+        buttons:Boolean,//是否显示导航按钮。
+        noScrollbars:true,//是否在显示时隐藏滚动条。
+        titleTag:true,//是否使用图片上的title属性作为图片标题
+        async:false,//是否异步加载文件。
+    });
+
+    start()
+        $(window).on('scroll', function(){
+        start();
+    })
+
+    function start(){
+          //.not('[data-isLoaded]')选中已加载的图片不需要重新加载
+        //   console.log('哈哈哈哈')
+        $('.gallery img').not('[data-isLoaded]').each(function(){
+            var $node = $(this)
+            if( isShow($node) ){
+                loadImg($node);
+            }
+        });
+    }
+
+    //判断一个元素是不是出现在窗口(视野)
+    function isShow($node){
+        return $node.offset().top <= $(window).height() + $(window).scrollTop();
+    }
+    //加载图片
+    function loadImg($img){
+    //.attr(值)
+    //.attr(属性名称,值)
+        $img.attr('src', $img.attr('data-src')); //把data-src的值 赋值给src
+        $img.attr('data-isLoaded', 1);//已加载的图片做标记
+    }
 </script>
 
     <footer class="page-footer bg-color">
