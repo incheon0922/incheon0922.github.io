@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="gallery, Sidere">
+    <meta name="keywords" content="长隆动物园, Sidere">
     <meta name="description" content="个人博客、记录">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>gallery | Sidere</title>
+    <title>长隆动物园 | Sidere</title>
     <link rel="icon" type="image/png" href="https://incheon0922.github.io/favicon-roam.png">
 
     <link rel="stylesheet" type="text/css" href="https://incheon0922.github.io/libs/awesome/css/all.css">
@@ -310,7 +310,9 @@
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
+    
+
+<!-- <div class="bg-cover pd-header about-cover">
     <div class="container">
     <div class="row">
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
@@ -350,69 +352,24 @@
 
 
     </div>
-</div>
-<!-- 增加相册显示的特效样式 -->
+</div> -->
+
+<link rel="stylesheet" href="/libs/MyGallery/css/baguetteBox.css">
+<!-- 该主题自带的lightGallery.js在图片多的时候会很卡，所以弃用，使用了一个我在网上找的baguetteBox，很轻量级，就是功能少了点 -->
+<script src="/libs/MyGallery/js/baguetteBox.js"></script>
 <style>
-    .photo {
-        padding: 0 40px!important;
-        display: inline-block;
-        position: relative;
-        transition: all .6s;
-    }
-    .biaotiss {
-        padding: 8px 10px;
-        color: #4c4c4e;
-        text-align: center;
-        font-weight: 400;
-        font-size: 18px;
-    }
-    .img-item {
-        padding: .2rem;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 1px 2px 2px 0 #aaa;
-        transition: all .4s cubic-bezier(.63,.15,.03,1.12);
-        margin-bottom: 20px;
-    }
-    .photo:nth-child(odd) {
-        transform: rotateZ(-5deg);
-    }
-    .photo:nth-child(even) {
-        transform: rotateZ(5deg);
-    }
-    .text_des{
-        position: absolute;
-        width: 92%;
-        height: 100%;
-        top: 0;
-        color: #000;
-        overflow: hidden;
-    }
-    .text_des h3{
-        margin: 5px 0 8px 0px;
-        right: 40px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.7rem;
-        position: absolute;
-        top: 10%;
-        font-style: italic;
-        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-        /*transform: translateX(200px);  */
-    }
-    .text_des p{
-        left: 15px;
-        position: absolute;
-        top: 50%;
-    /*    transform: translateX(-200px);
-        transition-delay: 0.2s;    */
-    }
     .my-gallery .photo img {
-        border-radius: 10px;
-        height: 240px;
+        transition: all 0.6s ease-in-out;
     }
-    .card .card-content {
-        padding: 24px 24px 24px 24px;
+    .my-gallery .photo:hover img {
+        opacity: 0.6;
+        transform: scale(1.05);
+    }
+    .my-gallery {
+        margin: 20px auto;
+    }
+    .miaoshus .title {
+        font-family: MV Boli;
     }
     .miaoshus {
         padding: 20px;
@@ -420,126 +377,217 @@
         color: #969696;
         position: relative;
         display: inline-block;
-        width: 95%;
+        width: 75%;
         background: #fbfbfb50;
         border-radius: 10px;
         font-size: 16px;
-        margin: 12px auto;
+        margin: 24px auto 12px;
+
     }
     body.dark .miaoshus {
         background: 0 0;
         border: 1px dashed #888;
     }
-    .img-item {
-            transition: all 0.4s ease-out;
-        }
-        .img-item a img{
+    body {
+        overflow: visible!important;
+    }
+    .box {
             position: relative;
-            opacity: 1;
-            transition: all 0.4s ease-out;
         }
-        .img-item a:hover img{
-            opacity: 0.8;
-        }
-        /* .biaotiss {
+    .box img {
+        width: 256px;
+        /* height: 240px; */
+        vertical-align: top;
+        padding: 8px;
+        border-radius: 10px;
+        transition: all 0.5s;
+        position: relative;
+    }
+    .box img:hover {
+        transform: scale(1.05);
+    }
+    .page-footer {
+        display: none
+    }
+    body {
+        overflow-y: visible!important;
+    }
+    header {
+        background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 7px 10px 0 rgba(0, 0, 0, 0.12);
+    }
+    /* .biaotiss {
             font-family: MV Boli;
         } */
-        .miaoshus .title {
-        font-family: MV Boli;
-    }
-    /*大屏幕下(桌面类)的样式*/
-    @media only screen and (min-width: 993px) {
-        .text_des h3{
-            transform: translateX(200px);
-        }
-        .text_des p{
-            transform: translateX(-200px);
-            transition-delay: 0.2s;
-        }
-        .animate-text {
-            opacity: 0;
-            transition: all 0.6s ease-in-out;
+    @media only screen and (max-width: 1058px) {
+        .box {
+            margin-left: 145px;
         }
     }
-    /*小屏幕下(桌面类)的样式*/
+    @media only screen and (max-width: 770px) {
+        .box {
+            margin-left: 15px;
+        }
+    }
     @media only screen and (max-width: 500px) {
-        .my-gallery .photo img {
-            height: 186px;
+        #previous-button, #next-button {
+            display: none;
+        }
+    }
+    @media only screen and (max-width: 380px) {
+        .box {
+            margin-left: -5px;
+        }
+    }
+    @media only screen and (max-width: 323px) {
+        .box img {
+            width: 296px;
+            left: 0;
         }
     }
 
 </style>
-<main class="content">
-    <div class="container chip-container">
-        <div class="card">
-            <div class="card-content">
-                <div class="tag-title center-align">
-                    <!-- <div class="miaoshus">
-                        <div class="title center-align">“ 光影流年 ”</div>
-                        “ 这里有光影流年，还有两朵穿衣裳的云，相拥在明天的河岸哈哈哈哈。”
-                    </div> -->
-                </div>
-                <div class="my-gallery">
-                    <div class="row">
+<!--
+<div class="tag-title center-align">
+    <div class="miaoshus">
+        <div class="title center-align">
+            “ 
+                长隆动物园
+             ”
+        </div>
+        光影流年
+    </div>
+</div> -->
+
+<!-- 相册 -->
+<section class="gallery">
+    <div id="myGallery" class="my-gallery">
+        <div class="row">
+            <div class="box">
+            
+                
+                
                     
-                        
-                        
-                            
-                            
-                            <div class="photo col s12 m6 l4">
-                                <div class="img-item">
-                                    <a href="./南澳">
-                                        <img src="/medias/loading.svg" data-src="https://bu.dusays.com/2023/09/03/64f3eb36a0df9.png" class="responsive-img" alt="img"+0 />
-                                        <div class="biaotiss">南澳<br>2022-09</div>
-                                    </a>
-                                </div>
-                            </div>
-                            
-                        
-                            
-                            
-                            <div class="photo col s12 m6 l4">
-                                <div class="img-item">
-                                    <a href="./长隆动物园">
-                                        <img src="/medias/loading.svg" data-src="https://bu.dusays.com/2023/09/03/64f3e95e75e33.jpg" class="responsive-img" alt="img"+1 />
-                                        <div class="biaotiss">长隆动物园<br>2022-10</div>
-                                    </a>
-                                </div>
-                            </div>
-                            
-                        
+                        <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e97475b28.jpg" data-caption="">
+                            <img class="mat" src="/medias/rocket.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e97475b28.jpg" alt="img"+0 >
+                        </a>
+                
                     
-                </div>
-            </div>
+                        <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e961f3b35.jpg" data-caption="">
+                            <img class="mat" src="/medias/rocket.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e961f3b35.jpg" alt="img"+1 >
+                        </a>
+                
+                    
+                        <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e95e75e33.jpg" data-caption="">
+                            <img class="mat" src="/medias/rocket.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e95e75e33.jpg" alt="img"+2 >
+                        </a>
+                
+                    
+                        <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e95da2e3c.jpg" data-caption="">
+                            <img class="mat" src="/medias/rocket.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e95da2e3c.jpg" alt="img"+3 >
+                        </a>
+                
+                    
+                        <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e95c06182.jpg" data-caption="">
+                            <img class="mat" src="/medias/rocket.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e95c06182.jpg" alt="img"+4 >
+                        </a>
+                
+                    
+                        <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e95b6d869.jpg" data-caption="">
+                            <img class="mat" src="/medias/rocket.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e95b6d869.jpg" alt="img"+5 >
+                        </a>
+                
+                    
+                        <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e95b1a159.jpg" data-caption="">
+                            <img class="mat" src="/medias/rocket.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e95b1a159.jpg" alt="img"+6 >
+                        </a>
+                
+                    
+                        <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e959d1791.jpg" data-caption="">
+                            <img class="mat" src="/medias/rocket.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e959d1791.jpg" alt="img"+7 >
+                        </a>
+                
+            
+        </div>
         </div>
     </div>
-    <script>
-        start()
-            $(window).on('scroll', function(){
-            start();
-        })
-        function start(){
-              //.not('[data-isLoaded]')选中已加载的图片不需要重新加载
-            $('.container img').not('[data-isLoaded]').each(function(){
-                var $node = $(this)
-                if( isShow($node) ){
-                    loadImg($node);
-                }
-            });
-        }
-        //判断一个元素是不是出现在窗口(视野)
-        function isShow($node){
-            return $node.offset().top <= $(window).height() + $(window).scrollTop();
-        }
-        //加载图片
-        function loadImg($img){
-        //.attr(值)
-        //.attr(属性名称,值)
-            $img.attr('src', $img.attr('data-src')); //把data-src的值 赋值给src
-            $img.attr('data-isLoaded', 1);//已加载的图片做标记
-        }
-    </script>
-</main>
+</section>
+<script>
+    // 加载图片有一定的时间遂弃用瀑布流
+    // $(function () {
+    //     // 获取图片的宽度(200px)
+    //     let imgWidth = $('.mat').outerWidth(); // 200
+    //     waterfallHandler();
+    //     // 瀑布流处理
+    //     function waterfallHandler() {
+    //         // 获取图片的列数
+    //         let column = parseInt($(window).width() / imgWidth);
+    //         // 高度数组
+    //         let heightArr = [];
+    //         for(let i=0; i<column; i++) {
+    //             heightArr[i] = 0;
+    //         }
+    //         // 遍历所有图片进行定位处理
+    //         $.each($('.mat'), function (index, item) {
+    //             // 当前元素的高度
+    //             let itemHeight = $(item).outerHeight();
+    //             // 高度数组最小的高度
+    //             let minHeight = Math.min(...heightArr);
+    //             // 高度数组最小的高度的索引
+    //             let minIndex = heightArr.indexOf(minHeight);
+
+    //             $(item).css({
+    //                 position: 'absolute',
+    //                 top: minHeight + 'px',
+    //                 left: minIndex * imgWidth + 'px'
+    //             });
+    //             heightArr[minIndex] += itemHeight;
+    //         });
+    //     }
+    //     // 窗口大小改变
+    //     $(window).resize(function () {
+    //         waterfallHandler();
+    //     });
+    // });
+</script>
+<script>
+    // console.log('baguetteBox',baguetteBox)
+    baguetteBox.run('.gallery', {
+        // 配置参数
+        buttons:Boolean,//是否显示导航按钮。
+        noScrollbars:true,//是否在显示时隐藏滚动条。
+        titleTag:true,//是否使用图片上的title属性作为图片标题
+        async:false,//是否异步加载文件。
+    });
+
+    start()
+        $(window).on('scroll', function(){
+        start();
+    })
+
+    function start(){
+          //.not('[data-isLoaded]')选中已加载的图片不需要重新加载
+        //   console.log('哈哈哈哈')
+        $('.gallery img').not('[data-isLoaded]').each(function(){
+            var $node = $(this)
+            if( isShow($node) ){
+                loadImg($node);
+            }
+        });
+    }
+
+    //判断一个元素是不是出现在窗口(视野)
+    function isShow($node){
+        return $node.offset().top <= $(window).height() + $(window).scrollTop();
+    }
+    //加载图片
+    function loadImg($img){
+    //.attr(值)
+    //.attr(属性名称,值)
+        $img.attr('src', $img.attr('data-src')); //把data-src的值 赋值给src
+        $img.attr('data-isLoaded', 1);//已加载的图片做标记
+    }
+</script>
 
     <footer class="page-footer bg-color">
     
