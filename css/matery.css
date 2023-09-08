@@ -241,7 +241,9 @@ mark {
 }
 
 .bg-color {
-    background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    /* background-image: linear-gradient(to right, #5b7395 0%, #18283f 100%); */
+    background-color: #18283f;
+
 }
 
 .text-color {
@@ -257,7 +259,7 @@ mark {
     position: fixed;
     bottom: 0;
     z-index: 300;
-    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    background: linear-gradient(to right, #5b7395 0%, #18283f 100%);
     opacity: 0.8;
 }
 
@@ -388,11 +390,11 @@ header .side-nav .social-link {
 }
 
 .cover-btns a:hover {
-    border: 1px solid #f44336;
-    background-color: #f44336;
-    box-shadow: 0 14px 26px -12px rgba(233, 30, 99, 0.42),
+    border: 1px solid #5b7395;
+    background-color: #5b7395;
+    box-shadow: 0 14px 26px -12px rgba(24, 40, 63, 0.42),
     0 4px 23px 0 rgba(0, 0, 0, 0.12),
-    0 8px 10px -5px rgba(233, 30, 99, 0.2);
+    0 8px 10px -5px rgba(24, 40, 63, 0.2);
 }
 
 .cover-btns a i {
@@ -1609,7 +1611,8 @@ thead {
 }
 
 .post-statis .statis .count a {
-    color: #42b983;
+    /* color: #42b983; */
+    color: #5b7395;
 }
 
 .post-statis .statis .name {
@@ -1631,7 +1634,7 @@ thead {
     padding: 0;
     color: #fff;
     border: 1px solid #0f9d58;
-    background: radial-gradient(#4cbf30, #0f9d58);
+    background: radial-gradient(#5b7395, #18283f);
     font-size: 0.9rem;
     border-radius: 50%;
     box-shadow: 0 4px 6px rgba(50, 50, 93, .21), 0 2px 3px rgba(0, 0, 0, .1);
@@ -1888,7 +1891,7 @@ footer .copy-right {
 }
 
 .top-scroll .btn-floating {
-    background: linear-gradient(to bottom right, #FF5E3A 0%, #FF2A68 100%);
+    background: linear-gradient(to bottom , #18283f 0%, #5b7395 100%);
     width: 48px;
     height: 48px;
 }
@@ -2128,7 +2131,7 @@ footer .copy-right {
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     /* -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); */
-    background: #5FB878;
+    background: #5b7395;
   }
 
   ::-webkit-scrollbar-track {
