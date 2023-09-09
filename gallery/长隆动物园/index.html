@@ -401,16 +401,22 @@
         overflow: visible!important;
     }
     .box {
+            /* max-width: 600px; */
             position: relative;
+            width: inherit;
+            height: inherit;
+            /* display: flex;
+            justify-content:space-between;
+            flex-direction: row; */
         }
     .box img {
         width: 256px;
         /* height: 240px; */
-        vertical-align: top;
+        /* vertical-align: top;
         padding: 8px;
         border-radius: 10px;
         transition: all 0.5s;
-        position: relative;
+        position: relative; */
     }
     .box img:hover {
         transform: scale(1.05);
@@ -425,6 +431,14 @@
         /* background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%); */
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 7px 10px 0 rgba(0, 0, 0, 0.12);
         background-color: #18283f;
+
+    }
+
+
+    .image-box{
+         /* width: 220px; */
+          margin: 20px;
+          float: left;
 
     }
     /* .biaotiss {
@@ -458,7 +472,7 @@
     }
 
 </style>
-<!--
+
 <div class="tag-title center-align">
     <div class="miaoshus">
         <div class="title center-align">
@@ -466,103 +480,100 @@
                 长隆动物园
              ”
         </div>
-        光影流年
+        
     </div>
-</div> -->
+</div>
 
 <!-- 相册 -->
 <section class="gallery">
-    <div id="myGallery" class="my-gallery">
-        <div class="row">
-            <div class="box">
+    <div id="my-gallery" class="my-gallery">
+        <div class="box" id="gallery-box">
             
                 
                 
                     
-                        <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e97475b28.jpg" data-caption="">
-                            <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e97475b28.jpg" alt="img"+0 >
-                        </a>
+                        <div class="image-box">
+                            <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e97475b28.jpg" data-caption="" >
+                                <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e97475b28.jpg" alt="img"+0 >
+                            </a>
+                        </div>
+
                 
                     
-                        <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e961f3b35.jpg" data-caption="">
-                            <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e961f3b35.jpg" alt="img"+1 >
-                        </a>
+                        <div class="image-box">
+                            <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e961f3b35.jpg" data-caption="" >
+                                <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e961f3b35.jpg" alt="img"+1 >
+                            </a>
+                        </div>
+
                 
                     
-                        <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e95e75e33.jpg" data-caption="">
-                            <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e95e75e33.jpg" alt="img"+2 >
-                        </a>
+                        <div class="image-box">
+                            <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e95e75e33.jpg" data-caption="" >
+                                <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e95e75e33.jpg" alt="img"+2 >
+                            </a>
+                        </div>
+
                 
                     
-                        <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e95da2e3c.jpg" data-caption="">
-                            <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e95da2e3c.jpg" alt="img"+3 >
-                        </a>
+                        <div class="image-box">
+                            <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e95da2e3c.jpg" data-caption="" >
+                                <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e95da2e3c.jpg" alt="img"+3 >
+                            </a>
+                        </div>
+
                 
                     
-                        <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e95c06182.jpg" data-caption="">
-                            <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e95c06182.jpg" alt="img"+4 >
-                        </a>
+                        <div class="image-box">
+                            <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e95c06182.jpg" data-caption="" >
+                                <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e95c06182.jpg" alt="img"+4 >
+                            </a>
+                        </div>
+
                 
                     
-                        <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e95b6d869.jpg" data-caption="">
-                            <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e95b6d869.jpg" alt="img"+5 >
-                        </a>
+                        <div class="image-box">
+                            <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e95b6d869.jpg" data-caption="" >
+                                <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e95b6d869.jpg" alt="img"+5 >
+                            </a>
+                        </div>
+
                 
                     
-                        <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e95b1a159.jpg" data-caption="">
-                            <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e95b1a159.jpg" alt="img"+6 >
-                        </a>
+                        <div class="image-box">
+                            <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e95b1a159.jpg" data-caption="" >
+                                <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e95b1a159.jpg" alt="img"+6 >
+                            </a>
+                        </div>
+
                 
                     
-                        <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e959d1791.jpg" data-caption="">
-                            <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e959d1791.jpg" alt="img"+7 >
-                        </a>
+                        <div class="image-box">
+                            <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/03/64f3e959d1791.jpg" data-caption="" >
+                                <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/03/64f3e959d1791.jpg" alt="img"+7 >
+                            </a>
+                        </div>
+
                 
             
         </div>
-        </div>
+
     </div>
 </section>
 <script>
-    // 加载图片有一定的时间遂弃用瀑布流
-    // $(function () {
-    //     // 获取图片的宽度(200px)
-    //     let imgWidth = $('.mat').outerWidth(); // 200
-    //     waterfallHandler();
-    //     // 瀑布流处理
-    //     function waterfallHandler() {
-    //         // 获取图片的列数
-    //         let column = parseInt($(window).width() / imgWidth);
-    //         // 高度数组
-    //         let heightArr = [];
-    //         for(let i=0; i<column; i++) {
-    //             heightArr[i] = 0;
-    //         }
-    //         // 遍历所有图片进行定位处理
-    //         $.each($('.mat'), function (index, item) {
-    //             // 当前元素的高度
-    //             let itemHeight = $(item).outerHeight();
-    //             // 高度数组最小的高度
-    //             let minHeight = Math.min(...heightArr);
-    //             // 高度数组最小的高度的索引
-    //             let minIndex = heightArr.indexOf(minHeight);
+window.addEventListener("load", () => {
+    $('.box').masonry({
+        itemSelector: '.image-box',
+    });
+});
+//  $(window).onload(function(){
+//     $('.box').masonry({
+//         itemSelector: '.image-box',
+//     });
+//  })
 
-    //             $(item).css({
-    //                 position: 'absolute',
-    //                 top: minHeight + 'px',
-    //                 left: minIndex * imgWidth + 'px'
-    //             });
-    //             heightArr[minIndex] += itemHeight;
-    //         });
-    //     }
-    //     // 窗口大小改变
-    //     $(window).resize(function () {
-    //         waterfallHandler();
-    //     });
-    // });
 </script>
 <script>
-    // console.log('baguetteBox',baguetteBox)
     baguetteBox.run('.gallery', {
         // 配置参数
         buttons:Boolean,//是否显示导航按钮。
@@ -578,7 +589,7 @@
 
     function start(){
           //.not('[data-isLoaded]')选中已加载的图片不需要重新加载
-        //   console.log('哈哈哈哈')
+
         $('.gallery img').not('[data-isLoaded]').each(function(){
             var $node = $(this)
             if( isShow($node) ){

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="标签: 南澳 摄影 旅行, Sidere">
+    <meta name="keywords" content="零零碎碎, Sidere">
     <meta name="description" content="个人博客、记录">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>标签: 南澳 摄影 旅行 | Sidere</title>
+    <title>零零碎碎 | Sidere</title>
     <link rel="icon" type="image/png" href="/favicon-roam.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -321,7 +321,9 @@
 
 </header>
 
-    <div class="bg-cover pd-header about-cover">
+    
+
+<!-- <div class="bg-cover pd-header about-cover">
     <div class="container">
     <div class="row">
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
@@ -359,112 +361,239 @@
 
 
     </div>
-</div>
+</div> -->
 
-<main class="content">
+<link rel="stylesheet" href="/libs/MyGallery/css/baguetteBox.css">
+<!-- 该主题自带的lightGallery.js在图片多的时候会很卡，所以弃用，使用了一个我在网上找的baguetteBox，很轻量级，就是功能少了点 -->
+<script src="/libs/MyGallery/js/baguetteBox.js"></script>
+<style>
+    .my-gallery .photo img {
+        transition: all 0.6s ease-in-out;
+    }
+    .my-gallery .photo:hover img {
+        opacity: 0.6;
+        transform: scale(1.05);
+    }
+    .my-gallery {
+        margin: 20px auto;
+    }
+    .miaoshus .title {
+        font-family: MV Boli;
+    }
+    .miaoshus {
+        padding: 20px;
+        border: 1px dashed #e6e6e6;
+        color: #969696;
+        position: relative;
+        display: inline-block;
+        width: 75%;
+        background: #fbfbfb50;
+        border-radius: 10px;
+        font-size: 16px;
+        margin: 24px auto 12px;
 
-    
+    }
+    body.dark .miaoshus {
+        background: 0 0;
+        border: 1px dashed #888;
+    }
+    body {
+        overflow: visible!important;
+    }
+    .box {
+            /* max-width: 600px; */
+            position: relative;
+            width: inherit;
+            height: inherit;
+            /* display: flex;
+            justify-content:space-between;
+            flex-direction: row; */
+        }
+    .box img {
+        width: 256px;
+        /* height: 240px; */
+        /* vertical-align: top;
+        padding: 8px;
+        border-radius: 10px;
+        transition: all 0.5s;
+        position: relative; */
+    }
+    .box img:hover {
+        transform: scale(1.05);
+    }
+    .page-footer {
+        display: none
+    }
+    body {
+        overflow-y: visible!important;
+    }
+    header {
+        /* background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%); */
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 7px 10px 0 rgba(0, 0, 0, 0.12);
+        background-color: #18283f;
 
-<div id="tags" class="container chip-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fas fa-tags"></i>&nbsp;&nbsp;文章标签
-            </div>
-            <div class="tag-chips">
-                
-                
-                <a href="/tags/%E6%9D%82%E6%84%9F-%E5%8D%B0%E8%B1%A1%E9%9B%86/" title="杂感 印象集: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="杂感 印象集" style="background-color: #F9EBEA;">杂感 印象集
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%8D%97%E6%BE%B3-%E6%91%84%E5%BD%B1-%E6%97%85%E8%A1%8C/" title="南澳 摄影 旅行: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            data-tagname="南澳 摄影 旅行" style="background-color: #F5EEF8;">南澳 摄影 旅行
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%B0%8F%E8%AF%B4-%E5%8D%A1%E5%B0%94%E7%BB%B4%E8%AF%BA/" title="小说 卡尔维诺: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="小说 卡尔维诺" style="background-color: #D5F5E3;">小说 卡尔维诺
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%8E%A6%E9%97%A8-%E7%99%BD%E5%9F%8E%E6%B2%99%E6%BB%A9-%E6%91%84%E5%BD%B1-%E6%97%85%E8%A1%8C/" title="厦门 白城沙滩 摄影 旅行: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="厦门 白城沙滩 摄影 旅行" style="background-color: #E8F8F5;">厦门 白城沙滩 摄影 旅行
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E6%BC%94%E5%94%B1%E4%BC%9A-%E5%88%98%E8%8B%A5%E8%8B%B1/" title="演唱会 刘若英: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="演唱会 刘若英" style="background-color: #FEF9E7;">演唱会 刘若英
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-            </div>
+    }
+
+
+    .image-box{
+         /* width: 220px; */
+          margin: 20px;
+          float: left;
+
+    }
+    /* .biaotiss {
+            font-family: MV Boli;
+        } */
+    @media only screen and (max-width: 1058px) {
+        .box {
+            margin-left: 145px;
+        }
+    }
+    @media only screen and (max-width: 770px) {
+        .box {
+            margin-left: 15px;
+        }
+    }
+    @media only screen and (max-width: 500px) {
+        #previous-button, #next-button {
+            display: none;
+        }
+    }
+    @media only screen and (max-width: 380px) {
+        .box {
+            margin-left: -5px;
+        }
+    }
+    @media only screen and (max-width: 323px) {
+        .box img {
+            width: 296px;
+            left: 0;
+        }
+    }
+
+</style>
+
+<div class="tag-title center-align">
+    <div class="miaoshus">
+        <div class="title center-align">
+            “ 
+                零零碎碎
+             ”
         </div>
+        
     </div>
 </div>
 
-    
+<!-- 相册 -->
+<section class="gallery">
+    <div id="my-gallery" class="my-gallery">
+        <div class="box" id="gallery-box">
+            
+                
+                
+                    
+                        <div class="image-box">
+                            <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/09/64fbdc57313da.jpg" data-caption="" >
+                                <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/09/64fbdc57313da.jpg" alt="img"+0 >
+                            </a>
+                        </div>
 
-    <article id="articles" class="container articles">
-        <div class="row tags-posts">
-            
-            
-            <div class="article tag-post col s12 m6 l4" data-tags="南澳 摄影 旅行" data-aos="fade-up">
-                <div class="card">
-                    <a href="/2023/08/05/nan-ao-shou-ji/">
-                        <div class="card-image tag-image">
-                            
-                            <img src="https://incheon0922.github.io/2023/08/05/nan-ao-shou-ji/nan-ao-03.jpg" class="responsive-img" alt="南澳手记">
-                            
-                            <span class="card-title">南澳手记</span>
+                
+                    
+                        <div class="image-box">
+                            <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/09/64fbdd40c0282.png" data-caption="" >
+                                <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/09/64fbdd40c0282.png" alt="img"+1 >
+                            </a>
                         </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-05
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E6%97%85%E8%A1%8C-%E6%91%84%E5%BD%B1/" class="post-category">
-                                旅行 摄影
-                                </a>
-                                
-                                
-                            </span>
+
+                
+                    
+                        <div class="image-box">
+                            <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/09/64fbdd0055bf8.png" data-caption="" >
+                                <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/09/64fbdd0055bf8.png" alt="img"+2 >
+                            </a>
                         </div>
-                    </div>
-                </div>
-            </div>
+
+                
+                    
+                        <div class="image-box">
+                            <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/09/64fbdcf66f4fb.jpg" data-caption="" >
+                                <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/09/64fbdcf66f4fb.jpg" alt="img"+3 >
+                            </a>
+                        </div>
+
+                
+                    
+                        <div class="image-box">
+                            <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/09/64fbdcf625978.jpg" data-caption="" >
+                                <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/09/64fbdcf625978.jpg" alt="img"+4 >
+                            </a>
+                        </div>
+
+                
+                    
+                        <div class="image-box">
+                            <a target="_blank" rel="noopener" href="https://bu.dusays.com/2023/09/09/64fbdc56e18b9.jpg" data-caption="" >
+                                <img class="mat" src="/medias/loading.gif" data-src="https://bu.dusays.com/2023/09/09/64fbdc56e18b9.jpg" alt="img"+5 >
+                            </a>
+                        </div>
+
+                
             
         </div>
-    </article>
-</main>
 
+    </div>
+</section>
+<script>
+window.addEventListener("load", () => {
+    $('.box').masonry({
+        itemSelector: '.image-box',
+    });
+});
+//  $(window).onload(function(){
+//     $('.box').masonry({
+//         itemSelector: '.image-box',
+//     });
+//  })
 
+</script>
+<script>
+    baguetteBox.run('.gallery', {
+        // 配置参数
+        buttons:Boolean,//是否显示导航按钮。
+        noScrollbars:true,//是否在显示时隐藏滚动条。
+        titleTag:true,//是否使用图片上的title属性作为图片标题
+        async:false,//是否异步加载文件。
+    });
 
+    start()
+        $(window).on('scroll', function(){
+        start();
+    })
+
+    function start(){
+          //.not('[data-isLoaded]')选中已加载的图片不需要重新加载
+
+        $('.gallery img').not('[data-isLoaded]').each(function(){
+            var $node = $(this)
+            if( isShow($node) ){
+                loadImg($node);
+            }
+        });
+    }
+
+    //判断一个元素是不是出现在窗口(视野)
+    function isShow($node){
+        return $node.offset().top <= $(window).height() + $(window).scrollTop();
+    }
+    //加载图片
+    function loadImg($img){
+    //.attr(值)
+    //.attr(属性名称,值)
+        $img.attr('src', $img.attr('data-src')); //把data-src的值 赋值给src
+        $img.attr('data-isLoaded', 1);//已加载的图片做标记
+    }
+</script>
 
     <footer class="page-footer bg-color">
     
