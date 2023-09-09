@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="分类, Sidere">
+    <meta name="keywords" content="分类: 印象集, Sidere">
     <meta name="description" content="个人博客、记录">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>分类 | Sidere</title>
+    <title>分类: 印象集 | Sidere</title>
     <link rel="icon" type="image/png" href="/favicon-roam.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -386,7 +386,7 @@
                 
                 <a href="/categories/%E5%8D%B0%E8%B1%A1%E9%9B%86/" title="印象集: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
+                             chip-active "
                             style="background-color: #F5EEF8;">印象集
                         <span class="tag-length">1</span>
                     </span>
@@ -418,65 +418,71 @@
 
 
     
-    <style type="text/css">
-    #category-radar {
-        width: 100%;
-        height: 360px;
-    }
-</style>
 
-<div class="container" data-aos="fade-up">
-    <div class="card">
-        <div id="category-radar" class="card-content"></div>
-    </div>
-</div>
-
-<script type="text/javascript" src="/libs/echarts/echarts.min.js"></script>
-<script type="text/javascript">
-    let radarChart = echarts.init(document.getElementById('category-radar'));
-
-    
-
-    let option = {
-        title: {
-            left: 'center',
-            text: '文章分类雷达图',
-            textStyle: {
-                fontWeight: 500,
-                fontSize: 22
-            }
-        },
-        tooltip: {},
-        radar: {
-            name: {
-                textStyle: {
-                    color: '#3C4858'
-                }
-            },
-            indicator: [{"name":"旅行 摄影","max":3},{"name":"印象集","max":3},{"name":"小说","max":3},{"name":"演唱会","max":3}],
-            nameGap: 5,
-            center: ['50%','55%'],
-            radius: '66%'
-        },
-        series: [{
-            type: 'radar',
-            color: ['#3ecf8e'],
-            itemStyle: {normal: {areaStyle: {type: 'default'}}},
-            data : [
-                {
-                    value : [2,1,1,1],
-                    name : '文章分类数量'
-                }
-            ]
-        }]
-    };
-
-    radarChart.setOption(option);
-</script>
+    <article id="articles" class="container articles">
+        <div class="row tags-posts">
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/09/09/yin-xiang-ji/">
+                        <div class="card-image tag-image">
+                            
+                            <img src="/2023/09/09/yin-xiang-ji/cover.jpg" class="responsive-img" alt="零零碎碎">
+                            
+                            <span class="card-title">零零碎碎</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                零零碎碎看过的一些视频,在这存档,分享一下
 
     
 
+借用B站澄夐热评的一句话："留心我们生活的一切吧，建造或拆毁，远观或俯察，艺术或者说姑且称得上艺术的一切，都只是一种话语形式，一种表达途径而已"
+
+
+
+
+    
+
+"盛世有个好脾气
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-09
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%8D%B0%E8%B1%A1%E9%9B%86/" class="post-category">
+                                    印象集
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E6%9D%82%E6%84%9F-%E5%8D%B0%E8%B1%A1%E9%9B%86/">
+                            <span class="chip bg-color">杂感 印象集</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </article>
 </main>
+
+
 
 
     <footer class="page-footer bg-color">
