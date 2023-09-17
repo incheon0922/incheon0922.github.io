@@ -335,7 +335,7 @@
         <div class="brand">
             <div class="title center-align">
                 
-                Welcome to my blog!
+                Per aspera ad astra
                 
             </div>
 
@@ -345,7 +345,7 @@
                 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
                 <script>
                     var typed = new Typed("#subtitle", {
-                        strings: ['欲买桂花同载酒，终不似，少年游','欲买桂花同载酒，终不似，少年游'],
+                        strings: ['循此苦旅，以达繁星','循此苦旅，以达繁星'],
                         startDelay: 300,
                         typeSpeed: 100,
                         loop: false,
@@ -591,7 +591,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"旅行 摄影","value":2},{"name":"印象集","value":1},{"name":"小说","value":1},{"name":"演唱会","value":1}],
+                data: [{"name":"旅行 摄影","value":2},{"name":"小说","value":1},{"name":"印象集","value":1},{"name":"演唱会","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -615,7 +615,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["南澳 摄影 旅行","杂感 印象集","小说 卡尔维诺","厦门 白城沙滩 摄影 旅行","演唱会 刘若英"]
+                data: ["南澳 摄影 旅行","卡尔维诺 书摘","杂感 印象集","厦门 白城沙滩 摄影 旅行","演唱会 刘若英"]
             }
         ],
         yAxis: [
@@ -726,7 +726,7 @@
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
     
-    <div class="container row center-align" style="margin-bottom: 15px !important;">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
@@ -743,50 +743,6 @@
             
             
             <br>
-            
-            <span id="sitetime">载入运行时间...</span>
-            <script>
-                function siteTime() {
-                    var seconds = 1000;
-                    var minutes = seconds * 60;
-                    var hours = minutes * 60;
-                    var days = hours * 24;
-                    var years = days * 365;
-                    var today = new Date();
-                    var startYear = "2023";
-                    var startMonth = "8";
-                    var startDate = "1";
-                    var startHour = "0";
-                    var startMinute = "0";
-                    var startSecond = "0";
-                    var todayYear = today.getFullYear();
-                    var todayMonth = today.getMonth() + 1;
-                    var todayDate = today.getDate();
-                    var todayHour = today.getHours();
-                    var todayMinute = today.getMinutes();
-                    var todaySecond = today.getSeconds();
-                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                    var diff = t2 - t1;
-                    var diffYears = Math.floor(diff / years);
-                    var diffDays = Math.floor((diff / days) - diffYears * 365);
-                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-                        minutes);
-                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
-                        diffMinutes * minutes) / seconds);
-                    if (startYear == todayYear) {
-                        document.getElementById("year").innerHTML = todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
-                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    } else {
-                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
-                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    }
-                }
-                setInterval(siteTime, 1000);
-            </script>
             
             <br>
             

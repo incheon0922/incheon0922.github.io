@@ -375,7 +375,7 @@
         <div class="brand">
             <div class="title center-align">
                 
-                Welcome to my blog!
+                Per aspera ad astra
                 
             </div>
 
@@ -385,7 +385,7 @@
                 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
                 <script>
                     var typed = new Typed("#subtitle", {
-                        strings: ['欲买桂花同载酒，终不似，少年游','欲买桂花同载酒，终不似，少年游'],
+                        strings: ['循此苦旅，以达繁星','循此苦旅，以达繁星'],
                         startDelay: 300,
                         typeSpeed: 100,
                         loop: false,
@@ -529,7 +529,7 @@
     
     <div class="row">
         <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
-            ‘tardius’在拉丁语里意指‘缓慢的、不紧不慢的’，它是我想表达的一种生活方式。也许是愈发觉得时间流逝的厉害，平日里渐长的茫然和虚无感让我意识到自己身处生活这条长河却不知它要把我带向何处。于是便动手搭了这个小站，这样让我在以后能够更缓慢而坚定的往前走。就像博尔赫斯说的那样“生活是苦难的，我又划着我的断桨出发了”，我希望它可以是我的断桨。
+            ‘tardius’在拉丁语里意指‘缓慢的’,它是我想表达的一种生活方式。也许是愈发觉得时间流逝的厉害，平日里渐长的茫然和虚无感让我意识到自己身处生活这条长河却不知它要把我带向何处。于是便动手搭了这个小站，这样让我在以后能够更缓慢而坚定的往前走。就像博尔赫斯说的那样“生活是苦难的，我又划着我的断桨出发了”，我希望它可以是我的断桨。
         </div>
     </div>
 </div>
@@ -631,7 +631,8 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                小说讲述的是主人公柯希莫，生于一个处于新旧交替形势下的贵族家庭。父亲一心考虑家谱继承权以及和新贵们的争斗联合，他希望能够获得公爵的爵位。为此，他用繁琐老旧的礼仪规则约束着包括主人公在内的家人。日子过得像是在进行应邀上访朝廷的大演习，压抑且枯
+                                现实的引力还是没能捕获他的灵魂。出生于物质优渥且拥有爵位家庭的柯希莫，反抗当下的一些
+
                             
                         </div>
                         <div class="publish-info">
@@ -654,8 +655,8 @@
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E5%B0%8F%E8%AF%B4-%E5%8D%A1%E5%B0%94%E7%BB%B4%E8%AF%BA/">
-                            <span class="chip bg-color">小说 卡尔维诺</span>
+                        <a href="/tags/%E5%8D%A1%E5%B0%94%E7%BB%B4%E8%AF%BA-%E4%B9%A6%E6%91%98/">
+                            <span class="chip bg-color">卡尔维诺 书摘</span>
                         </a>
                         
                     </div>
@@ -870,7 +871,7 @@
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
     
-    <div class="container row center-align" style="margin-bottom: 15px !important;">
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
@@ -887,50 +888,6 @@
             
             
             <br>
-            
-            <span id="sitetime">载入运行时间...</span>
-            <script>
-                function siteTime() {
-                    var seconds = 1000;
-                    var minutes = seconds * 60;
-                    var hours = minutes * 60;
-                    var days = hours * 24;
-                    var years = days * 365;
-                    var today = new Date();
-                    var startYear = "2023";
-                    var startMonth = "8";
-                    var startDate = "1";
-                    var startHour = "0";
-                    var startMinute = "0";
-                    var startSecond = "0";
-                    var todayYear = today.getFullYear();
-                    var todayMonth = today.getMonth() + 1;
-                    var todayDate = today.getDate();
-                    var todayHour = today.getHours();
-                    var todayMinute = today.getMinutes();
-                    var todaySecond = today.getSeconds();
-                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
-                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-                    var diff = t2 - t1;
-                    var diffYears = Math.floor(diff / years);
-                    var diffDays = Math.floor((diff / days) - diffYears * 365);
-                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
-                        minutes);
-                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
-                        diffMinutes * minutes) / seconds);
-                    if (startYear == todayYear) {
-                        document.getElementById("year").innerHTML = todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
-                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    } else {
-                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
-                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-                    }
-                }
-                setInterval(siteTime, 1000);
-            </script>
             
             <br>
             
