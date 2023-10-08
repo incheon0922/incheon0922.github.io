@@ -1,91 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>南澳手记</title>
-    <url>/2023/08/05/nan-ao-shou-ji/</url>
-    <content><![CDATA[<p>盛夏的傍晚，越来越多的人出现在青澳湾的沙滩上。有边走边聊的老人，牵手缓缓散步的情侣、专注用细沙堆出各种城堡的小孩，以及独自朝向大海，不理会海浪打湿裤角的年轻人。浅水域围成的天然泳池传来阵阵玩水游泳的欢笑声，不远处是不断出发又重新归来的帆船。</p>
-<!-- 远处，海天相接，夹杂着些许热气的海风吹来，阵阵从远处拍打而来的海浪。 -->
-<p>印象中的夏日是酷暑难耐、是沉闷漫长。但在海边渡过的一天却让我觉得多了一些自由的意味。阵阵海风从远处吹来，将平日里积压的倦怠、苦闷吹往更远处的山林。于是，海浪拍打岸边传来的浪花声，脚下暗涌流动的细沙，一切都变得清晰，明朗起来。</p>
-<p>也许，明天还是和今天一样燥热不堪。但明天是个好天气，不是么？</p>
-<!-- <img src="/2023/08/05/nan-ao-shou-ji/nan-ao-01.jpg" class="" title="这是一张图片"> -->
-<p><img src="https://incheon0922.github.io/2023/08/05/nan-ao-shou-ji/nan-ao-01.jpg"><br><img src="https://incheon0922.github.io/2023/08/05/nan-ao-shou-ji/nan-ao-02.jpg"><br><img src="https://incheon0922.github.io/2023/08/05/nan-ao-shou-ji/nan-ao-03.jpg"><br><img src="https://incheon0922.github.io/2023/08/05/nan-ao-shou-ji/nan-ao-04.jpg"></p>
-<!-- 这种方式不可行 -->
-<!-- ![](南澳手记/nan-ao-04.jpg) -->]]></content>
+    <title>cesium三维热力图</title>
+    <url>/2023/10/06/cesium-san-wei-re-li-tu/</url>
+    <content><![CDATA[<p>使用cesium编写三维热力图效果，并在此基础上整合了水效果代码，当作优化一下可视化效果了hh</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>大致思路就是通过<a href="https://www.patrick-wied.at/static/heatmapjs/">heatmap.js</a>生成热力图，根据数据范围进行格网划分，并构造顶点数据，高度可以根据顶点在canvas上面的坐标读到的数值以及后续的高度系数做设置，从而达到高度拉伸的效果，之后使用构造好的顶点数据以及热力图贴图生成primitive，这里整合了cesium自带的水效果代码</p>
+<div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
+    <iframe src="//player.bilibili.com/player.html?aid=916885342&amp;bvid=BV1mu4y1x7FR&amp;cid=1292777550&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+
+<p>参考链接：<br><a href="https://blog.csdn.net/qq_34447899/article/details/131959111?spm=1001.2101.3001.6650.5&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-5-131959111-blog-127901231.235%5Ev38%5Epc_relevant_sort&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-5-131959111-blog-127901231.235%5Ev38%5Epc_relevant_sort&amp;utm_relevant_index=7">Cesium 使用自定义几何实现立体热力图</a></p>
+]]></content>
       <categories>
-        <category>旅行 摄影</category>
+        <category>cesium</category>
       </categories>
       <tags>
-        <tag>南澳 摄影 旅行</tag>
+        <tag>热力图 cesium</tag>
       </tags>
   </entry>
   <entry>
-    <title>“生活在树上,始终热爱大地”-树上的男爵</title>
-    <url>/2023/08/13/shu-shang-de-nan-jue/</url>
-    <content><![CDATA[<p>现实的引力还是没能捕获他的灵魂。出生于物质优渥且拥有爵位家庭的柯希莫，反抗当下的一些</p>
+    <title>cesium离屏渲染</title>
+    <url>/2023/09/26/cesium-chi-ping-xuan-ran/</url>
+    <content><![CDATA[<p>离屏渲染可以实现类似于小地图、飞行浏览的效果，本文通过帧缓冲以及webgl绘制纹理的方式实现将相机某个视角所看到的场景绘制到另一个canvas上</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两个不同上下文的canvas是不能共用一份纹理资源的，但是可以通过读取帧缓冲中的纹理值，根据纹理值生成一份新的纹理，最后绘制到另一个canvas上面即可实现离屏渲染。<br>在cesium渲染前，绑定创建好的帧缓冲，获取已经绘制好的一帧，之后根据上述方法将纹理结果输出到新创建的canvas上</p>
+<p><img src="https://bu.dusays.com/2023/10/04/651cd7fa49931.png" alt="相机俯视视角绘制"></p>
+<p>参考链接:<br><a href="https://juejin.cn/post/7166264791957897229">Cesium通过离屏渲染实现无人机侦察</a><br><a href="https://blog.csdn.net/weixin_43481439/article/details/125412372">Cesium中的离屏渲染</a></p>
 ]]></content>
       <categories>
-        <category>小说</category>
+        <category>cesium</category>
       </categories>
       <tags>
-        <tag>卡尔维诺 书摘</tag>
+        <tag>帧缓冲 canvas</tag>
       </tags>
   </entry>
   <entry>
-    <title>零零碎碎</title>
-    <url>/2023/09/09/yin-xiang-ji/</url>
-    <content><![CDATA[<p>零零碎碎看过的一些视频,在这存档,分享一下</p>
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?aid=487300854&amp;bvid=BV1NN411C7X3&amp;cid=1164072214&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
-</div>
-借用B站澄夐热评的一句话："留心我们生活的一切吧，建造或拆毁，远观或俯察，艺术或者说姑且称得上艺术的一切，都只是一种话语形式，一种表达途径而已"
-<br>
-<br>
+    <title>书影音摘录</title>
+    <url>/2023/09/24/shu-ying-yin-zhai-lu/</url>
+    <content><![CDATA[<p>看过的书、电影倘若不做些记录，过段时间便会只记得先前看过，却全然记不起内容，想来觉得有些可惜。于是我决定试着摘录一些值得思考、回看的电影台词、书籍字句，借此留存一点印象。</p>
+<h2 id="电影"><a href="#电影" class="headerlink" title="电影"></a>电影</h2><p>1、<a href="https://movie.douban.com/subject/25814705/">小森林-夏秋篇</a></p>
+<p><img src="https://bu.dusays.com/2023/09/24/6510021071088.jpg"><br><img src="https://bu.dusays.com/2023/09/24/65100210597ab.jpg"><br><img src="https://bu.dusays.com/2023/09/24/6510021045260.jpg"></p>
+<h2 id="书籍"><a href="#书籍" class="headerlink" title="书籍"></a>书籍</h2><p>1、<a href="https://book.douban.com/subject/6789605/">树上的男爵</a></p>
+<pre style="background-color:#000;color:#fff;overflow-x:auto"><code style="background-color:#000;color:#fff">
+他双手平托着宝剑，你记得“你是迪·隆多男爵吗？”
 
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?aid=675650713&amp;bvid=BV1WU4y1A72G&amp;cid=415437510&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
-</div>
-"盛世有个好脾气"
-<br>
-<br>
+“记得，父亲大人，我记得我的姓氏。”
 
+“你希望自己配得上你拥有他的姓和爵位吗？”
 
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?aid=340537494&amp;bvid=BV1V94y1d7gB&amp;cid=572601596&amp;p=1&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
-</div>
-"今天几号?
- 16号咯"
+“我将尽一切努力争取符合他的称号，我将具备他的一切品质。”
 
-<br>
-<br>
+“你接过这把剑吧！我的剑。”他站在马镫上向上伸臂，柯希莫站在树枝上往下低头。男爵够着把剑给他系上。
 
-<p>文章封面作者: <a href="https://space.bilibili.com/3858957">FFFanwen</a></p>
-]]></content>
+“谢谢，父亲大人……我向您保证我将好好使用它。”
+
+“再见，我的儿子。”男爵调转马头，放松缰绳，缓缓地离去。
+
+柯希莫呆楞着思考片刻，考虑他是否应当挥剑同他告别。
+后来又想到父亲把剑赠给他是让他防身自卫用的，不是用来炫耀的，他把剑插进鞘套里。
+</code>
+</pre>
+
+<pre style="background-color:#000;color:#fff;overflow-x:auto"><code style="background-color:#000;color:#fff">
+“你为什么让我痛苦？” “因为我爱你。”
+
+这时他火大了：“不，你不爱我！恋爱的人需要幸福，不要痛苦！”
+
+“恋爱的人只要爱情，也用痛苦来换取。”
+
+“那么，你是存心让我受苦。” “对，为了证实你是不是爱我。”
+
+男爵的哲学拒绝走极端：“痛苦是消极的精神状态。”
+
+“爱情包括一切。”
+
+“痛苦总是会被克服的。”
+
+“爱情不排斥任何东西。”
+
+“有些东西我永远不会接受。”
+
+“你接受了，因为你爱我并为此而忍受痛苦。”
+</code>
+</pre>
+
+<pre style="background-color:#000;color:#fff;overflow-x:auto"><code style="background-color:#000;color:#fff">
+“如果不充满力量的地保持自我，就不可能有爱情。”
+</code>
+</pre>]]></content>
       <categories>
-        <category>印象集</category>
+        <category>摘录集</category>
       </categories>
       <tags>
-        <tag>杂感 印象集</tag>
+        <tag>摘录 书影音</tag>
       </tags>
   </entry>
   <entry>
-    <title>厦门行-白城沙滩</title>
-    <url>/2023/08/06/fu-jian-xing/</url>
-    <content><![CDATA[<p>海上的落日我都还记得。</p>
-<p><img src="https://incheon0922.github.io/2023/08/06/fu-jian-xing/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230806110734.jpg"><br><img src="https://incheon0922.github.io/2023/08/06/fu-jian-xing/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_202308061107541.jpg"><br><img src="https://incheon0922.github.io/2023/08/06/fu-jian-xing/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230806110755.jpg"><br><img src="https://incheon0922.github.io/2023/08/06/fu-jian-xing/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230806110756.jpg"><br><img src="https://incheon0922.github.io/2023/08/06/fu-jian-xing/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_202308061107542.jpg"></p>
+    <title>cesium点光源</title>
+    <url>/2023/09/25/cesium-dian-guang-yuan/</url>
+    <content><![CDATA[<p>在cesium中要复刻three里面的点光源效果，大概有两种思路<br>1、customShader编写光照计算<br>2、后处理通过深度获取法线、坐标等计算</p>
+<p>这里采用的customShader的方法计算，且光照计算比较简单，只计算了漫反射模型的结果<br>后处理与之类似，但是计算步骤会多一点</p>
+<h2 id="customShader方式"><a href="#customShader方式" class="headerlink" title="customShader方式"></a>customShader方式</h2><p>customShader的方式可以简化计算过程，可以直接使用已经计算好的顶点法线、视空间坐标以及材质等<br>不过有时候可能模型的法线结果不准确，需要自己计算，计算的方式也有两种。可以通过求偏导，或者cesium内置方法计算</p>
+<div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
+    <iframe src="//player.bilibili.com/player.html?aid=448966395&amp;bvid=BV1Xj41187LK&amp;cid=1279143408&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+
+
+
+<p>参考链接:<br><a href="https://blog.csdn.net/rpgpp55/article/details/124073343?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2-124073343-blog-108745813.pc_relevant_multi_platform_featuressortv2dupreplace&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2-124073343-blog-108745813.pc_relevant_multi_platform_featuressortv2dupreplace&amp;utm_relevant_index=5">Cesium建筑自定义光源效果</a></p>
+<p><a href="https://www.liaomz.top/2023/02/04/cesium-zhong-shi-xian-duo-guang-yuan/">Cesium中实现多光源</a></p>
+<p><a href="https://blog.csdn.net/q1025387665a/article/details/126009223">customShader的解读</a></p>
 ]]></content>
       <categories>
-        <category>旅行 摄影</category>
+        <category>cesium</category>
       </categories>
       <tags>
-        <tag>厦门 白城沙滩 摄影 旅行</tag>
+        <tag>点光源 webgl</tag>
       </tags>
   </entry>
   <entry>
     <title>“飞行日”-刘若英演唱会</title>
     <url>/2023/08/05/fei-xing-ri/</url>
-    <content><![CDATA[<p>由你驰骋，你该飞翔和探索的领域，我用音乐继续做你的陪伴者 - 刘若英</p>
-<!-- # https://incheon0922.github.io/2023/08/05/%E9%A3%9E%E8%A1%8C%E6%97%A5/ -->
-<p><img src="https://incheon0922.github.io/2023/08/05/fei-xing-ri/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230805234318.jpg"><br><img src="https://incheon0922.github.io/2023/08/05/fei-xing-ri/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230806002725.jpg"><br><img src="https://incheon0922.github.io/2023/08/05/fei-xing-ri/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230806002726.jpg"><br><img src="https://incheon0922.github.io/2023/08/05/fei-xing-ri/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_202308060027261.jpg"></p>
+    <content><![CDATA[<p>很早之前便会听刘若英的歌，终于在广州看到了她的演唱会，也算是重温当年了。</p>
+<p><img src="https://bu.dusays.com/2023/09/24/650f234f94969.jpg"><br><img src="https://bu.dusays.com/2023/09/24/650f23445503f.jpg"><br><img src="https://bu.dusays.com/2023/09/24/650f23507b4ff.jpg"><br><img src="https://bu.dusays.com/2023/09/24/650f23500aa79.jpg"></p>
+<div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
+    <iframe src="//player.bilibili.com/player.html?aid=533929518&amp;bvid=BV1tu41137M7&amp;cid=1279273335&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+
 ]]></content>
       <categories>
         <category>演唱会</category>

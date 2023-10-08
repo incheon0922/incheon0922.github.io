@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Tardius">
+    <meta name="keywords" content="tardius">
     <meta name="description" content="个人博客、记录">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,8 +18,8 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Tardius</title>
-    <link rel="icon" type="image/png" href="/favicon-roam.png">
+    <title>tardius</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -33,7 +33,7 @@
 
 <meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -45,7 +45,9 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <span class="logo-span">Tardius</span>
+                    <img src="/logo5.png" class="logo-img" alt="LOGO">
+                    
+                    <!-- <span class="logo-span">tardius</span> -->
                 </a>
             </div>
             
@@ -66,23 +68,35 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/tags" class="waves-effect waves-light">
+    <a href="" class="waves-effect waves-light">
+
       
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>标签</span>
+      <span>文章</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
+    <ul class="sub-nav menus_item_child ">
       
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
       
-      <span>分类</span>
-    </a>
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+    </ul>
     
   </li>
   
@@ -121,12 +135,35 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/friends" class="waves-effect waves-light">
+    <a href="" class="waves-effect waves-light">
+
       
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>友情链接</span>
+      <span>友链留言</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>友情链接</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/#">
+          
+          <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>留言板</span>
+        </a>
+      </li>
+      
+    </ul>
     
   </li>
   
@@ -142,7 +179,9 @@
 
     <div class="mobile-head bg-color">
         
-        <div class="logo-name">Tardius</div>
+        <!-- <img src="/logo5.png" class="logo-img circle responsive-img"> -->
+        
+        <div class="logo-name">tardius</div>
         <div class="logo-desc">
             
             个人博客、记录
@@ -167,23 +206,36 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/tags" class="waves-effect waves-light">
+		<a href="javascript:;">
 			
-			    <i class="fa-fw fas fa-tags"></i>
+				<i class="fa-fw fas fa-list"></i>
 			
-			标签
+			文章
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+            </ul>
           
         </li>
         
@@ -222,12 +274,36 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/friends" class="waves-effect waves-light">
+		<a href="javascript:;">
 			
-			    <i class="fa-fw fas fa-address-book"></i>
+				<i class="fa-fw fas fa-list"></i>
 			
-			友情链接
+			友链留言
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/friends " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-address-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>友情链接</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/# " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-comments" style="position: absolute;left:50px" ></i>
+			      
+		          <span>留言板</span>
+                  </a>
+                </li>
+              
+            </ul>
           
         </li>
         
@@ -366,16 +442,16 @@
 
 
 <div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
-    
+    <!--  -->
 
     <div class="carousel-item red white-text bg-cover about-cover">
         <div class="container">
-            <div class="row">
+            <!-- <div class="row">
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
         <div class="brand">
             <div class="title center-align">
                 
-                Per aspera ad astra
+                per aspera ad astra
                 
             </div>
 
@@ -404,7 +480,7 @@
     $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
 </script>
 
-
+ -->
 
             <div class="cover-btns">
                 <!-- <a href="#articles" class="waves-effect waves-light btn">
@@ -446,7 +522,7 @@
         </div>
     </div>
 
-    
+    <!--  -->
 </div>
 
 <script>
@@ -509,6 +585,554 @@
         });
         
     });
+
+    // 三维烟花效果
+
+
+    let canvas
+
+
+    //  烟花绘制处
+    const vertexShaderSource = `#version 300 es
+        in vec4 apos;
+
+        void main(){
+
+            gl_Position = apos;
+
+    }
+`
+    let fragmentShaderSource = `#version 300 es
+    precision mediump float;
+
+    uniform vec3  iResolution;
+    uniform float iTime;
+    uniform vec3 iMouse;
+
+    //下面一行作为插入位置，它是一段特定的注释，作为识别并替换成 shadertoy片段 代码用。
+    //=#*INSERT_LOCATION*#=
+
+
+    out vec4 color;
+
+    void main(){
+
+        vec4 col = vec4(0.0 , 0.0 , 0.0 , 1.0);
+        mainImage(col , gl_FragCoord.xy);     //改函数是 shadertoy 固定接口，它会输出一个颜色。
+        color = col ;
+
+    }`
+
+    // 烟花
+    let sToyTest = `
+        vec2 hash21(float p)
+        {
+            vec3 p3 = fract(vec3(p) * vec3(.1031, .1030, .0973));
+            p3 += dot(p3, p3.yzx + 33.33);
+            return fract((p3.xx+p3.yz)*p3.zy);
+
+        }
+
+        vec3 hash31(float p) {
+            vec3 p2 = fract(p * vec3(5.3983, 5.4427, 6.9371));
+            p2 += dot(p2.zxy, p2.xyz + vec3(21.5351, 14.3137, 15.3219));
+            return fract(vec3(p2.x * p2.y * 95.4337, p2.y * p2.z * 97.597, p2.z * p2.x * 93.8365));
+        }
+
+        vec2 dir(float id){
+            vec2 h = hash21(id);
+            h.y*=2.*acos(-1.);
+            return h.x*vec2(cos(h.y),sin(h.y));
+        }
+
+        #define PARTICLES_MIN 20.
+        #define PARTICLES_MAX 200.
+
+        float bang(vec2 uv, float t,float id){
+            float o = 0.;
+            if(t<=0.){
+                return .04/dot(uv,uv);
+            }
+            float s = (sqrt(t)+t*exp2(-t/.125)*.8)*10.;
+            float brightness = sqrt(1.-t)*.015*(step(.0001,t)*.9+.1);
+            float blinkI = exp2(-t/.125);
+            float PARTICLES = PARTICLES_MIN+(PARTICLES_MAX-PARTICLES_MIN)*fract(cos(id)*45241.45);
+            for(float i=0.;i<PARTICLES;i++){
+                vec2 d = dir(i+.012*id);
+
+                vec2 p = d*s;
+
+
+                vec2 h = hash21(5.33345*i+.015*id);
+                float blink = mix(cos((t+h.x)*10.*(2.+h.y)+h.x*h.y*10.)*.3+.7,1.,blinkI);
+
+                o+=blink*brightness/dot(uv-p,uv-p);
+            }
+            return o;
+        }
+
+        const float ExT = 1./4.;
+
+        #define duration 2.2
+
+        float firework(vec2 uv,float t,float id){
+            if(id<1.)return 0.;
+            vec2 h = hash21(id*5.645)*2.-1.;
+            vec2 offset = vec2(h.x*.1,0.);
+            h.y=h.y*.95;
+            h.y*=abs(h.y);
+            vec2 di = vec2(h.y,sqrt(1.-h.y*h.y));
+            float thrust = sqrt(min(t,ExT)/ExT)*25.;
+            vec2 p = offset+duration*(di*thrust+vec2(0.,-9.81)*t)*t;
+            return sqrt(1.-t)*bang(uv-p,max(0.,(t-ExT)/(1.-ExT)),id);
+        }
+
+        #define NUM_ROCKETS 3.
+        void mainImage( out vec4 fragColor, in vec2 fragCoord )
+        {
+            vec2 uv = (2.*fragCoord-iResolution.xy*vec2(1.,0.))/iResolution.y;
+            vec3 col = vec3(.01,.011,.015)*0.;
+
+            float time = .75*iTime;
+            float t = time/duration;
+            uv.y-=.65;
+            uv*=35.;
+            float m = 1.;
+            float d =0.;
+            //water
+            if(uv.y<0.){
+                const float h0 = 5.;
+                const float dcam = 1000.5;
+
+                float y = uv.y-h0;//translated y position, to add fake earth curvature (horizon not at infinity)
+
+                float z = dcam*h0/y;//fake depth
+                d=-40.*uv.y/(h0*dcam);
+
+                float x = uv.x*z/dcam; //parallax-aware x coordinate
+
+                uv+=vec2(sin((x*1.5+z*.75)*.0005-t*1.5),cos((z*2.-x*.5)*.0005-t*2.69))
+                *(sin(x*.07+z*.09+sin(x*.2-t)-t*15.)+cos(z*.1-x*(.08+.001*sin(x*.01-t))-t*16.)*.7+cos(z*.01+x*.004-t*10.)*1.7)
+                *.15*dcam/z; //waves
+
+                float ndv = -uv.y/sqrt(dcam*dcam+uv.y*uv.y);
+                m=mix(1.,.98,pow(1.-ndv,5.));//fresnel factor
+
+                uv.y = -uv.y;
+            }
+            //sky
+            col+=(exp2(-abs(uv.y)*vec3(1.,2.,3.)-.5)+exp2(-abs(uv.y)*vec3(1.,.2,.1)-4.))*.5;
+
+            //land
+            if(uv.y*1.5<(uv.x-20.)*.01*(-uv.x+90.)+sin(uv.x)*cos(uv.y*1.1)*.75)
+                col*=0.;
+
+            for(float i = 0.;i<ceil(NUM_ROCKETS);i++){
+                float T = 1.+t+i/NUM_ROCKETS;
+
+                float id = floor(T)-i/NUM_ROCKETS; //should give a unique integer for each rocket
+
+                vec3 color = hash31(id*.75645);
+                color/=max(color.r,max(color.g,color.b));//making colors as bright as possible
+
+                col+=firework(uv,fract(T),id)*color;
+            }
+            //col = vec3(1);
+            fragColor = vec4(m*col,1.0);
+
+            // vec4 noise = texture(iChannel0,(fragCoord)/iChannelResolution[0].xy);
+            vec4 noise = vec4(0.0);
+            noise = noise*255./256.+noise.w/256.;
+            //linear dithering to avoid banding (linear means less overshoot for dark pixels, so better contrast)
+            vec4 lcol = clamp(fragColor,0.,1.); //clamp input
+            vec4 gcol = pow(lcol,vec4(1./2.2)); //convert to output gamma space
+
+            vec4 gcol_f = floor(gcol*255.)/255.; //floor to get the lower bound
+
+            vec4 lcol_f = pow(gcol_f,vec4(2.2)); // convert the lower bound to linear
+            vec4 lcol_c = pow(ceil(gcol*255.)/255.,vec4(2.2)); // ceil to get the upper bound, convereted to linear
+
+            vec4 x = (lcol-lcol_f)/(lcol_c-lcol_f); // get x such as lcol_f + x*(lcol_c-lcol_f) == lcol
+
+            // compare x to the noise to chose what bounding value should be selected (in gamma space)
+            fragColor = gcol_f+step(noise,x)/255.;
+            fragColor.a = d;
+        }
+    `
+
+
+    sToyTest= `
+        #define S smoothstep
+
+        vec4 Line(vec2 uv, float speed, float height, vec3 col) {
+            uv.y += S(1., 0., abs(uv.x)) * sin(iTime * speed + uv.x * height) * .2;
+            return vec4(S(.06 * S(.2, .9, abs(uv.x)), 0., abs(uv.y) - .004) * col, 1.0) * S(1., .3, abs(uv.x));
+        }
+
+        void mainImage(out vec4 O, in vec2 I) {
+            vec2 uv = (I - .5 * iResolution.xy) / iResolution.y;
+            O = vec4 (0.);
+            for (float i = 0.; i <= 5.; i += 1.) {
+                float t = i / 5.;
+                O += Line(uv, 1. + t, 4. + t, vec3(.2 + t * .7, .2 + t * .4, 0.3));
+            }
+        }
+    `
+
+    sToyTest = `
+
+        // afl_ext 2017-2023
+        // Now with 2023 refresh
+        // MIT License
+
+        // Use your mouse to move the camera around! Press the Left Mouse Button on the image to look around!
+
+        #define DRAG_MULT 0.28 // changes how much waves pull on the water
+        #define WATER_DEPTH 1.0 // how deep is the water
+        #define CAMERA_HEIGHT 1.5 // how high the camera should be
+        #define ITERATIONS_RAYMARCH 12 // waves iterations of raymarching
+        #define ITERATIONS_NORMAL 40 // waves iterations when calculating normals
+
+        #define NormalizedMouse (iMouse.xy / iResolution.xy) // normalize mouse coords
+
+        // Calculates wave value and its derivative,
+        // for the wave direction, position in space, wave frequency and time
+        vec2 wavedx(vec2 position, vec2 direction, float frequency, float timeshift) {
+        float x = dot(direction, position) * frequency + timeshift;
+        float wave = exp(sin(x) - 1.0);
+        float dx = wave * cos(x);
+        return vec2(wave, -dx);
+        }
+
+        // Calculates waves by summing octaves of various waves with various parameters
+        float getwaves(vec2 position, int iterations) {
+        float iter = 0.0; // this will help generating well distributed wave directions
+        float frequency = 1.0; // frequency of the wave, this will change every iteration
+        float timeMultiplier = 2.0; // time multiplier for the wave, this will change every iteration
+        float weight = 1.0;// weight in final sum for the wave, this will change every iteration
+        float sumOfValues = 0.0; // will store final sum of values
+        float sumOfWeights = 0.0; // will store final sum of weights
+        for(int i=0; i < iterations; i++) {
+            // generate some wave direction that looks kind of random
+            vec2 p = vec2(sin(iter), cos(iter));
+            // calculate wave data
+            vec2 res = wavedx(position, p, frequency, iTime * timeMultiplier);
+
+            // shift position around according to wave drag and derivative of the wave
+            position += p * res.y * weight * DRAG_MULT;
+
+            // add the results to sums
+            sumOfValues += res.x * weight;
+            sumOfWeights += weight;
+
+            // modify next octave parameters
+            weight *= 0.82;
+            frequency *= 1.18;
+            timeMultiplier *= 1.07;
+
+            // add some kind of random value to make next wave look random too
+            iter += 1232.399963;
+        }
+        // calculate and return
+        return sumOfValues / sumOfWeights;
+        }
+
+        // Raymarches the ray from top water layer boundary to low water layer boundary
+        float raymarchwater(vec3 camera, vec3 start, vec3 end, float depth) {
+        vec3 pos = start;
+        vec3 dir = normalize(end - start);
+        for(int i=0; i < 64; i++) {
+            // the height is from 0 to -depth
+            float height = getwaves(pos.xz, ITERATIONS_RAYMARCH) * depth - depth;
+            // if the waves height almost nearly matches the ray height, assume its a hit and return the hit distance
+            if(height + 0.01 > pos.y) {
+            return distance(pos, camera);
+            }
+            // iterate forwards according to the height mismatch
+            pos += dir * (pos.y - height);
+        }
+        // if hit was not registered, just assume hit the top layer,
+        // this makes the raymarching faster and looks better at higher distances
+        return distance(start, camera);
+        }
+
+        // Calculate normal at point by calculating the height at the pos and 2 additional points very close to pos
+        vec3 normal(vec2 pos, float e, float depth) {
+        vec2 ex = vec2(e, 0);
+        float H = getwaves(pos.xy, ITERATIONS_NORMAL) * depth;
+        vec3 a = vec3(pos.x, H, pos.y);
+        return normalize(
+            cross(
+            a - vec3(pos.x - e, getwaves(pos.xy - ex.xy, ITERATIONS_NORMAL) * depth, pos.y),
+            a - vec3(pos.x, getwaves(pos.xy + ex.yx, ITERATIONS_NORMAL) * depth, pos.y + e)
+            )
+        );
+        }
+
+        // Helper function generating a rotation matrix around the axis by the angle
+        mat3 createRotationMatrixAxisAngle(vec3 axis, float angle) {
+        float s = sin(angle);
+        float c = cos(angle);
+        float oc = 1.0 - c;
+        return mat3(
+            oc * axis.x * axis.x + c, oc * axis.x * axis.y - axis.z * s, oc * axis.z * axis.x + axis.y * s,
+            oc * axis.x * axis.y + axis.z * s, oc * axis.y * axis.y + c, oc * axis.y * axis.z - axis.x * s,
+            oc * axis.z * axis.x - axis.y * s, oc * axis.y * axis.z + axis.x * s, oc * axis.z * axis.z + c
+        );
+        }
+
+        // Helper function that generates camera ray based on UV and mouse
+        vec3 getRay(vec2 fragCoord) {
+        vec2 uv = ((fragCoord.xy / iResolution.xy) * 2.0 - 1.0) * vec2(iResolution.x / iResolution.y, 1.0);
+        // for fisheye, uncomment following line and comment the next one
+        //vec3 proj = normalize(vec3(uv.x, uv.y, 1.0) + vec3(uv.x, uv.y, -1.0) * pow(length(uv), 2.0) * 0.05);
+        vec3 proj = normalize(vec3(uv.x, uv.y, 1.5));
+        if(iResolution.x < 600.0) {
+            return proj;
+        }
+        return createRotationMatrixAxisAngle(vec3(0.0, -1.0, 0.0), 3.0 * ((NormalizedMouse.x + 0.5) * 2.0 - 1.0))
+            * createRotationMatrixAxisAngle(vec3(1.0, 0.0, 0.0), 0.5 + 1.5 * ((NormalizedMouse.y * 1.5) * 2.0 - 1.0))
+            * proj;
+        }
+
+        // Ray-Plane intersection checker
+        float intersectPlane(vec3 origin, vec3 direction, vec3 point, vec3 normal) {
+        return clamp(dot(point - origin, normal) / dot(direction, normal), -1.0, 9991999.0);
+        }
+
+        // Some very barebones but fast atmosphere approximation
+        vec3 extra_cheap_atmosphere(vec3 raydir, vec3 sundir) {
+        sundir.y = max(sundir.y, -0.07);
+        float special_trick = 1.0 / (raydir.y * 1.0 + 0.1);
+        float special_trick2 = 1.0 / (sundir.y * 11.0 + 1.0);
+        float raysundt = pow(abs(dot(sundir, raydir)), 2.0);
+        float sundt = pow(max(0.0, dot(sundir, raydir)), 8.0);
+        float mymie = sundt * special_trick * 0.2;
+        vec3 suncolor = mix(vec3(1.0), max(vec3(0.0), vec3(1.0) - vec3(5.5, 13.0, 22.4) / 22.4), special_trick2);
+        vec3 bluesky= vec3(5.5, 13.0, 22.4) / 22.4 * suncolor;
+        vec3 bluesky2 = max(vec3(0.0), bluesky - vec3(5.5, 13.0, 22.4) * 0.002 * (special_trick + -6.0 * sundir.y * sundir.y));
+        bluesky2 *= special_trick * (0.24 + raysundt * 0.24);
+        return bluesky2 * (1.0 + 1.0 * pow(1.0 - raydir.y, 3.0)) + mymie * suncolor;
+        }
+
+        // Calculate where the sun should be, it will be moving around the sky
+        vec3 getSunDirection() {
+        return normalize(vec3(sin(iTime * 0.1), 1.0, cos(iTime * 0.1)));
+        }
+
+        // Get atmosphere color for given direction
+        vec3 getAtmosphere(vec3 dir) {
+        return extra_cheap_atmosphere(dir, getSunDirection()) * 0.5;
+        }
+
+        // Get sun color for given direction
+        float getSun(vec3 dir) {
+        return pow(max(0.0, dot(dir, getSunDirection())), 720.0) * 210.0;
+        }
+
+        // Great tonemapping function from my other shader: https://www.shadertoy.com/view/XsGfWV
+        vec3 aces_tonemap(vec3 color) {
+        mat3 m1 = mat3(
+            0.59719, 0.07600, 0.02840,
+            0.35458, 0.90834, 0.13383,
+            0.04823, 0.01566, 0.83777
+        );
+        mat3 m2 = mat3(
+            1.60475, -0.10208, -0.00327,
+            -0.53108,  1.10813, -0.07276,
+            -0.07367, -0.00605,  1.07602
+        );
+        vec3 v = m1 * color;
+        vec3 a = v * (v + 0.0245786) - 0.000090537;
+        vec3 b = v * (0.983729 * v + 0.4329510) + 0.238081;
+        return pow(clamp(m2 * (a / b), 0.0, 1.0), vec3(1.0 / 2.2));
+        }
+
+        // Main
+        void mainImage(out vec4 fragColor, in vec2 fragCoord) {
+        // get the ray
+        vec3 ray = getRay(fragCoord);
+        if(ray.y >= 0.0) {
+            // if ray.y is positive, render the sky
+            vec3 C = getAtmosphere(ray) + getSun(ray);
+            fragColor = vec4(aces_tonemap(C * 2.0),1.0);
+            return;
+        }
+
+        // now ray.y must be negative, water must be hit
+        // define water planes
+        vec3 waterPlaneHigh = vec3(0.0, 0.0, 0.0);
+        vec3 waterPlaneLow = vec3(0.0, -WATER_DEPTH, 0.0);
+
+        // define ray origin, moving around
+        vec3 origin = vec3(iTime, CAMERA_HEIGHT, iTime);
+
+        // calculate intersections and reconstruct positions
+        float highPlaneHit = intersectPlane(origin, ray, waterPlaneHigh, vec3(0.0, 1.0, 0.0));
+        float lowPlaneHit = intersectPlane(origin, ray, waterPlaneLow, vec3(0.0, 1.0, 0.0));
+        vec3 highHitPos = origin + ray * highPlaneHit;
+        vec3 lowHitPos = origin + ray * lowPlaneHit;
+
+        // raymatch water and reconstruct the hit pos
+        float dist = raymarchwater(origin, highHitPos, lowHitPos, WATER_DEPTH);
+        vec3 waterHitPos = origin + ray * dist;
+
+        // calculate normal at the hit position
+        vec3 N = normal(waterHitPos.xz, 0.01, WATER_DEPTH);
+
+        // smooth the normal with distance to avoid disturbing high frequency noise
+        N = mix(N, vec3(0.0, 1.0, 0.0), 0.8 * min(1.0, sqrt(dist*0.01) * 1.1));
+
+        // calculate fresnel coefficient
+        float fresnel = (0.04 + (1.0-0.04)*(pow(1.0 - max(0.0, dot(-N, ray)), 5.0)));
+
+        // reflect the ray and make sure it bounces up
+        vec3 R = normalize(reflect(ray, N));
+        R.y = abs(R.y);
+
+        // calculate the reflection and approximate subsurface scattering
+        vec3 reflection = getAtmosphere(R) + getSun(R);
+        vec3 scattering = vec3(0.0293, 0.0698, 0.1717) * (0.2 + (waterHitPos.y + WATER_DEPTH) / WATER_DEPTH);
+
+        // return the combined result
+        vec3 C = fresnel * reflection + (1.0 - fresnel) * scattering;
+        fragColor = vec4(aces_tonemap(C * 2.0), 1.0);
+        }
+    `
+
+    let webgl
+    let time = Date.now()
+    let totalTimeSec = 0
+    let render
+    function initBuffer() {
+
+        const vertexData = new Float32Array([
+            -1, -1, 0.0, 0, 0,
+            -1, 1, 0.0, 0, 1,
+            1, 1, 0.0, 1, 1,
+
+            1, 1, 0.0, 1, 1,
+            1, -1, 0.0, 1, 0,
+            -1, -1, 0.0, 0, 0
+        ])
+
+        const aposLocation = webgl.getAttribLocation(webgl.program, 'apos')
+
+        const posBuffer = webgl.createBuffer()
+        webgl.bindBuffer(webgl.ARRAY_BUFFER, posBuffer)
+        webgl.bufferData(webgl.ARRAY_BUFFER, vertexData, webgl.STATIC_DRAW)
+
+        webgl.vertexAttribPointer(aposLocation, 3, webgl.FLOAT, false, 5 * 4, 0)
+        webgl.enableVertexAttribArray(aposLocation)
+
+        // 获取 uniform  字段名为  "iResolution  " 的地址
+        const iResolutionAddr = webgl.getUniformLocation(webgl.program, 'iResolution')
+        // 给iResolutionAddr 字段设置数据 ，是canvas的像素宽高
+        webgl.uniform3f(iResolutionAddr, webgl.canvas.width, webgl.canvas.height, 1)
+        // 获取 uniform  字段名为  "iTime" 的地址
+        const iTimeAddr = webgl.getUniformLocation(webgl.program, 'iTime')
+        // 给iTimeAddr字段设置数据，是开始运行到当前的计时
+        webgl.uniform1f(iTimeAddr, totalTimeSec)
+
+        const iMouseAddr = webgl.getUniformLocation(webgl.program, 'iMouse')
+        // 给iResolutionAddr 字段设置数据 ，是canvas的像素宽高
+        webgl.uniform3f(iMouseAddr, 300,100, 0)
+
+    }
+
+    const renderLoop = () => {
+        const nowTime = Date.now()
+        const dt = (nowTime - time) * 0.001
+        totalTimeSec += dt
+        time = nowTime
+
+        const iResolutionAddr = webgl.getUniformLocation(webgl.program, 'iResolution')
+        // 给iResolutionAddr 字段设置数据 ，是canvas的像素宽高
+        webgl.uniform3f(iResolutionAddr, webgl.canvas.width, webgl.canvas.height, 1)
+        // 获取 uniform  字段名为  "iTime" 的地址
+        const iTimeAddr = webgl.getUniformLocation(webgl.program, 'iTime')
+        // 给iTimeAddr字段设置数据，是开始运行到当前的计时
+        webgl.uniform1f(iTimeAddr, totalTimeSec)
+
+        // 请求GPU 安当前状态进行绘制
+        webgl.drawArrays(webgl.TRIANGLES, 0, 6)
+        // 接下一次循环刷新，让loop 函数反复执行
+        render = requestAnimationFrame(renderLoop) // 注意:这里遇到一个坑，如果用setTimeout 作为循环泵，会有严重的卡顿情况
+    }
+
+    function destroy() {
+        render && cancelAnimationFrame(render)
+    }
+
+    function initShader(id, vertexShaderSource, fragmentShaderSource) {
+        if (!id || !vertexShaderSource || !fragmentShaderSource) {
+            return
+        }
+        let webgl
+        const canvas = document.getElementById(id)
+
+        if (vertexShaderSource.includes('#version 300 es') || fragmentShaderSource.includes('#version 300 es')) {
+            webgl = canvas.getContext('webgl2')
+        } else {
+            webgl = canvas.getContext('webgl')
+        }
+
+        // 创建顶点以及片元着色器
+        const vertexShader = webgl.createShader(webgl.VERTEX_SHADER)
+        const fragmentShader = webgl.createShader(webgl.FRAGMENT_SHADER)
+
+        // 引入顶点以及片元着色器代码
+        webgl.shaderSource(vertexShader, vertexShaderSource)
+        webgl.shaderSource(fragmentShader, fragmentShaderSource)
+        // 编译顶点以及片元着色器代码
+        webgl.compileShader(vertexShader)
+        webgl.compileShader(fragmentShader)
+        if (!webgl.getShaderParameter(vertexShader, webgl.COMPILE_STATUS)) {
+            const err = webgl.getShaderInfoLog(vertexShader)
+            console.log(err)
+            return
+        }
+        if (!webgl.getShaderParameter(fragmentShader, webgl.COMPILE_STATUS)) {
+            const err = webgl.getShaderInfoLog(fragmentShader)
+            console.log(err)
+            return
+        }
+        // 创建程序对象
+        const program = webgl.createProgram()
+
+        // 附着顶点和片元着色器
+        webgl.attachShader(program, vertexShader)
+        webgl.attachShader(program, fragmentShader)
+
+        webgl.linkProgram(program)
+        webgl.useProgram(program)
+        webgl.program = program
+        return webgl
+    }
+    function init() {
+
+        // 移除类名
+        $('.carousel-item').removeClass('red');
+
+        canvas = document.createElement('canvas')
+
+        canvas.height = document.querySelector('.carousel').clientHeight
+        canvas.width = document.querySelector('.carousel').clientWidth
+
+        canvas.id = 'canvas'
+        canvas.style.background = 'rgba(0,0,0,1.0)'
+        document.querySelector('.carousel').appendChild(canvas)
+        fragmentShaderSource = fragmentShaderSource.replace('//=#*INSERT_LOCATION*#=', sToyTest)
+        webgl = initShader('canvas', vertexShaderSource, fragmentShaderSource)
+        initBuffer()
+
+        renderLoop()
+    }
+
+    init()
+
+    // 烟花绘制处
+
 </script>
 
 
@@ -529,7 +1153,7 @@
     
     <div class="row">
         <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
-            ‘tardius’在拉丁语里意指‘缓慢的’,它是我想表达的一种生活方式。也许是愈发觉得时间流逝的厉害，平日里渐长的茫然和虚无感让我意识到自己身处生活这条长河却不知它要把我带向何处。于是便动手搭了这个小站，这样让我在以后能够更缓慢而坚定的往前走。就像博尔赫斯说的那样“生活是苦难的，我又划着我的断桨出发了”，我希望它可以是我的断桨。
+            ‘tardius’在拉丁语里意指‘缓慢的’,它是我想表达的一种生活方式。也许是愈发觉得时间流逝的厉害，平日里渐长的茫然感让我意识到自己身处生活这条长河,却不知它要把我带向何处。于是便动手搭了这个小站，这样我在生活之中也算有个记录。就像博尔赫斯说的那样“生活是苦难的，我又划着我的断桨出发了”，我希望它可以是我的断桨。
         </div>
     </div>
 </div>
@@ -562,42 +1186,32 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/09/09/yin-xiang-ji/">
+                    <a href="/2023/10/06/cesium-san-wei-re-li-tu/">
                         <div class="card-image">
                             
-                            <img src="/2023/09/09/yin-xiang-ji/cover.jpg" class="responsive-img" alt="零零碎碎">
+                            <img src="http://i1.hdslb.com/bfs/archive/63dd3855ebb4a796822b3f43ed5c55acfb4af616.jpg" class="responsive-img" alt="cesium三维热力图">
                             
-                            <span class="card-title">零零碎碎</span>
+                            <span class="card-title">cesium三维热力图</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                零零碎碎看过的一些视频,在这存档,分享一下
-
-    
-
-借用B站澄夐热评的一句话："留心我们生活的一切吧，建造或拆毁，远观或俯察，艺术或者说姑且称得上艺术的一切，都只是一种话语形式，一种表达途径而已"
-
-
-
-
-    
-
-"盛世有个好脾气
+                                使用cesium编写三维热力图效果，并在此基础上整合了水效果代码，当作优化一下可视化效果了hh
+思路大致思路就是通过heatmap.js生成热力图，根据数据范围进行格网划分，并构造顶点数据，高度可以根据顶点在canvas上面的坐标读到的数值
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-06
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%8D%B0%E8%B1%A1%E9%9B%86/" class="post-category">
-                                    印象集
+                                <a href="/categories/cesium/" class="post-category">
+                                    cesium
                                 </a>
                                 
                                 
@@ -608,8 +1222,8 @@
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E6%9D%82%E6%84%9F-%E5%8D%B0%E8%B1%A1%E9%9B%86/">
-                            <span class="chip bg-color">杂感 印象集</span>
+                        <a href="/tags/%E7%83%AD%E5%8A%9B%E5%9B%BE-cesium/">
+                            <span class="chip bg-color">热力图 cesium</span>
                         </a>
                         
                     </div>
@@ -619,32 +1233,32 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/08/13/shu-shang-de-nan-jue/">
+                    <a href="/2023/09/26/cesium-chi-ping-xuan-ran/">
                         <div class="card-image">
                             
-                            <img src="https://img9.doubanio.com/view/subject/l/public/s8968135.jpg" class="responsive-img" alt="“生活在树上,始终热爱大地”-树上的男爵">
+                            <img src="https://bu.dusays.com/2023/10/04/651cd7fa49931.png" class="responsive-img" alt="cesium离屏渲染">
                             
-                            <span class="card-title">“生活在树上,始终热爱大地”-树上的男爵</span>
+                            <span class="card-title">cesium离屏渲染</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                现实的引力还是没能捕获他的灵魂。出生于物质优渥且拥有爵位家庭的柯希莫，反抗当下的一些
-
+                                离屏渲染可以实现类似于小地图、飞行浏览的效果，本文通过帧缓冲以及webgl绘制纹理的方式实现将相机某个视角所看到的场景绘制到另一个canvas上
+思路两个不同上下文的canvas是不能共用一份纹理资源的，但是可以通过读取帧缓冲中的纹理值，根
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-26
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%B0%8F%E8%AF%B4/" class="post-category">
-                                    小说
+                                <a href="/categories/cesium/" class="post-category">
+                                    cesium
                                 </a>
                                 
                                 
@@ -655,8 +1269,8 @@
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E5%8D%A1%E5%B0%94%E7%BB%B4%E8%AF%BA-%E4%B9%A6%E6%91%98/">
-                            <span class="chip bg-color">卡尔维诺 书摘</span>
+                        <a href="/tags/%E5%B8%A7%E7%BC%93%E5%86%B2-canvas/">
+                            <span class="chip bg-color">帧缓冲 canvas</span>
                         </a>
                         
                     </div>
@@ -666,33 +1280,32 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/08/06/fu-jian-xing/">
+                    <a href="/2023/09/25/cesium-dian-guang-yuan/">
                         <div class="card-image">
                             
-                            <img src="https://incheon0922.github.io/2023/08/06/fu-jian-xing/微信图片_20230806110734.jpg" class="responsive-img" alt="厦门行-白城沙滩">
+                            <img src="https://i1.hdslb.com/bfs/archive/fddc26098431342cda77f95fcd682b056918bbd8.jpg" class="responsive-img" alt="cesium点光源">
                             
-                            <span class="card-title">厦门行-白城沙滩</span>
+                            <span class="card-title">cesium点光源</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                海上的落日我都还记得。
-
-
+                                在cesium中要复刻three里面的点光源效果，大概有两种思路1、customShader编写光照计算2、后处理通过深度获取法线、坐标等计算
+这里采用的customShader的方法计算，且光照计算比较简单，只计算了漫反射模型的结果后处理
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-25
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E6%97%85%E8%A1%8C-%E6%91%84%E5%BD%B1/" class="post-category">
-                                    旅行 摄影
+                                <a href="/categories/cesium/" class="post-category">
+                                    cesium
                                 </a>
                                 
                                 
@@ -703,8 +1316,59 @@
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E5%8E%A6%E9%97%A8-%E7%99%BD%E5%9F%8E%E6%B2%99%E6%BB%A9-%E6%91%84%E5%BD%B1-%E6%97%85%E8%A1%8C/">
-                            <span class="chip bg-color">厦门 白城沙滩 摄影 旅行</span>
+                        <a href="/tags/%E7%82%B9%E5%85%89%E6%BA%90-webgl/">
+                            <span class="chip bg-color">点光源 webgl</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/09/24/shu-ying-yin-zhai-lu/">
+                        <div class="card-image">
+                            
+                            <img src="https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2564498893.jpg" class="responsive-img" alt="书影音摘录">
+                            
+                            <span class="card-title">书影音摘录</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                看过的书、电影倘若不做些记录，过段时间便会只记得先前看过，却全然记不起内容，想来觉得有些可惜。于是我决定试着摘录一些值得思考、回看的电影台词、书籍字句，借此留存一点印象。
+电影1、小森林-夏秋篇
+
+书籍1、树上的男爵
+
+他双手平托着宝剑，你
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-24
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E6%91%98%E5%BD%95%E9%9B%86/" class="post-category">
+                                    摘录集
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E6%91%98%E5%BD%95-%E4%B9%A6%E5%BD%B1%E9%9F%B3/">
+                            <span class="chip bg-color">摘录 书影音</span>
                         </a>
                         
                     </div>
@@ -717,7 +1381,7 @@
                     <a href="/2023/08/05/fei-xing-ri/">
                         <div class="card-image">
                             
-                            <img src="https://incheon0922.github.io/2023/08/05/fei-xing-ri/微信图片_20230805234318.jpg" class="responsive-img" alt="“飞行日”-刘若英演唱会">
+                            <img src="https://bu.dusays.com/2023/09/24/650f23445503f.jpg" class="responsive-img" alt="“飞行日”-刘若英演唱会">
                             
                             <span class="card-title">“飞行日”-刘若英演唱会</span>
                         </div>
@@ -726,7 +1390,10 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                由你驰骋，你该飞翔和探索的领域，我用音乐继续做你的陪伴者 - 刘若英
+                                很早之前便会听刘若英的歌，终于在广州看到了她的演唱会，也算是重温当年了。
+
+
+    
 
 
 
@@ -754,52 +1421,6 @@
                         
                         <a href="/tags/%E6%BC%94%E5%94%B1%E4%BC%9A-%E5%88%98%E8%8B%A5%E8%8B%B1/">
                             <span class="chip bg-color">演唱会 刘若英</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/08/05/nan-ao-shou-ji/">
-                        <div class="card-image">
-                            
-                            <img src="https://incheon0922.github.io/2023/08/05/nan-ao-shou-ji/nan-ao-03.jpg" class="responsive-img" alt="南澳手记">
-                            
-                            <span class="card-title">南澳手记</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                盛夏的傍晚，越来越多的人出现在青澳湾的沙滩上。有边走边聊的老人，牵手缓缓散步的情侣、专注用细沙堆出各种城堡的小孩，以及独自朝向大海，不理会海浪打湿裤角的年轻人。浅水域围成的天然泳池传来阵阵玩水游泳的欢笑声，不远处是不断出发又重新归来的帆船。
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-05
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E6%97%85%E8%A1%8C-%E6%91%84%E5%BD%B1/" class="post-category">
-                                    旅行 摄影
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%8D%97%E6%BE%B3-%E6%91%84%E5%BD%B1-%E6%97%85%E8%A1%8C/">
-                            <span class="chip bg-color">南澳 摄影 旅行</span>
                         </a>
                         
                     </div>
@@ -878,7 +1499,7 @@
                 <span id="year">2023</span>
             
             <span id="year">2023</span>
-            <a href="/about" target="_blank">incheon chung</a>
+            <a href="/about" target="_blank">incheon Chung</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
@@ -890,6 +1511,10 @@
             <br>
             
             <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn" target="_blank">赣ICP备2023009404号</a>
+            </span>
             
         </div>
         <div class="col s12 m4 l4 social-link ">

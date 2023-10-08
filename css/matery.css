@@ -243,6 +243,8 @@ mark {
 .bg-color {
     /* background-image: linear-gradient(to right, #5b7395 0%, #18283f 100%); */
     background-color: #18283f;
+    /* background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%); */
+
 
 }
 
@@ -292,9 +294,11 @@ header nav .brand-span {
 }
 
 header .brand-logo .logo-img {
-    height: 45px;
+    /* height: 45px; */
     vertical-align: middle;
     padding-bottom: 6px;
+    width: 100px;
+    height: 30px;
 }
 
 header .brand-logo .logo-span {
@@ -2030,6 +2034,11 @@ footer .copy-right {
     height: 35px;
     line-height: 35px;
     position: relative;
+    color: #fff;
+}
+.nav-menu li .sub-nav li:hover{
+    background-color: #5b7395;
+    color: #fff;
 }
 
 .nav-menu li .sub-nav li a {
@@ -2039,7 +2048,8 @@ footer .copy-right {
     padding: 0;
     display: inline-block;
     border-radius: 5px;
-    color: #000;
+    /* color: #000; */
+    color: #fff;
 }
 
 .nav-show i[aria-hidden=true] {
@@ -2055,7 +2065,8 @@ footer .copy-right {
 }
 
 .menus_item_child {
-    background-color: rgba(255, 255, 255, .8);
+    /* background-color: rgba(255, 255, 255, .8); */
+    background-color: #5b7395;
     width: fit-content;
     border-radius: 10px;
     -webkit-box-shadow: 0 5px 20px -4px rgba(0, 0, 0, .5);
@@ -2129,7 +2140,7 @@ footer .copy-right {
 
 /* 滚动条 */
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
+    border-radius: 5%;
     /* -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); */
     background: #5b7395;
   }
@@ -2140,8 +2151,8 @@ footer .copy-right {
     background: #eeeeee;
   }
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 15px;
+    width: 3px;
+    height: 8px;
 }
 
 

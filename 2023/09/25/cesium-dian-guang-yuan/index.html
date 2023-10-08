@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="“飞行日”-刘若英演唱会, tardius">
+    <meta name="keywords" content="cesium点光源, tardius">
     <meta name="description" content="个人博客、记录">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>“飞行日”-刘若英演唱会 | tardius</title>
+    <title>cesium点光源 | tardius</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -401,12 +401,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://bu.dusays.com/2023/09/24/650f23445503f.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://i1.hdslb.com/bfs/archive/fddc26098431342cda77f95fcd682b056918bbd8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">“飞行日”-刘若英演唱会</h1>
+                    <h1 class="description center-align post-title">cesium点光源</h1>
                 </div>
             </div>
         </div>
@@ -522,8 +522,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%BC%94%E5%94%B1%E4%BC%9A-%E5%88%98%E8%8B%A5%E8%8B%B1/">
-                                <span class="chip bg-color">演唱会 刘若英</span>
+                            <a href="/tags/%E7%82%B9%E5%85%89%E6%BA%90-webgl/">
+                                <span class="chip bg-color">点光源 webgl</span>
                             </a>
                         
                     </div>
@@ -534,8 +534,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%BC%94%E5%94%B1%E4%BC%9A/" class="post-category">
-                                演唱会
+                            <a href="/categories/cesium/" class="post-category">
+                                cesium
                             </a>
                         
                     </div>
@@ -547,7 +547,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-08-05
+                    2023-09-25
                 </div>
                 
 
@@ -571,12 +571,18 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>很早之前便会听刘若英的歌，终于在广州看到了她的演唱会，也算是重温当年了。</p>
-<p><img src="https://bu.dusays.com/2023/09/24/650f234f94969.jpg"><br><img src="https://bu.dusays.com/2023/09/24/650f23445503f.jpg"><br><img src="https://bu.dusays.com/2023/09/24/650f23507b4ff.jpg"><br><img src="https://bu.dusays.com/2023/09/24/650f23500aa79.jpg"></p>
+                <p>在cesium中要复刻three里面的点光源效果，大概有两种思路<br>1、customShader编写光照计算<br>2、后处理通过深度获取法线、坐标等计算</p>
+<p>这里采用的customShader的方法计算，且光照计算比较简单，只计算了漫反射模型的结果<br>后处理与之类似，但是计算步骤会多一点</p>
+<h2 id="customShader方式"><a href="#customShader方式" class="headerlink" title="customShader方式"></a>customShader方式</h2><p>customShader的方式可以简化计算过程，可以直接使用已经计算好的顶点法线、视空间坐标以及材质等<br>不过有时候可能模型的法线结果不准确，需要自己计算，计算的方式也有两种。可以通过求偏导，或者cesium内置方法计算</p>
 <div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?aid=533929518&amp;bvid=BV1tu41137M7&amp;cid=1279273335&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+    <iframe src="//player.bilibili.com/player.html?aid=448966395&amp;bvid=BV1Xj41187LK&amp;cid=1279143408&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
 </div>
 
+
+
+<p>参考链接:<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/rpgpp55/article/details/124073343?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2-124073343-blog-108745813.pc_relevant_multi_platform_featuressortv2dupreplace&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2-124073343-blog-108745813.pc_relevant_multi_platform_featuressortv2dupreplace&amp;utm_relevant_index=5">Cesium建筑自定义光源效果</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.liaomz.top/2023/02/04/cesium-zhong-shi-xian-duo-guang-yuan/">Cesium中实现多光源</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/q1025387665a/article/details/126009223">customShader的解读</a></p>
 
                 
             </div>
@@ -603,7 +609,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://tardius.life/2023/08/05/fei-xing-ri/">https://tardius.life/2023/08/05/fei-xing-ri/</a>
+                    <a href="https://tardius.life/2023/09/25/cesium-dian-guang-yuan/">https://tardius.life/2023/09/25/cesium-dian-guang-yuan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -641,8 +647,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%BC%94%E5%94%B1%E4%BC%9A-%E5%88%98%E8%8B%A5%E8%8B%B1/">
-                                    <span class="chip bg-color">演唱会 刘若英</span>
+                                <a href="/tags/%E7%82%B9%E5%85%89%E6%BA%90-webgl/">
+                                    <span class="chip bg-color">点光源 webgl</span>
                                 </a>
                             
                         </div>
@@ -953,6 +959,54 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2023/09/26/cesium-chi-ping-xuan-ran/">
+                    <div class="card-image">
+                        
+                        <img src="https://bu.dusays.com/2023/10/04/651cd7fa49931.png" class="responsive-img" alt="cesium离屏渲染">
+                        
+                        <span class="card-title">cesium离屏渲染</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-26
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/cesium/" class="post-category">
+                                    cesium
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%B8%A7%E7%BC%93%E5%86%B2-canvas/">
+                        <span class="chip bg-color">帧缓冲 canvas</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2023/09/24/shu-ying-yin-zhai-lu/">
                     <div class="card-image">
                         
@@ -968,9 +1022,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -988,55 +1042,6 @@
                     
                     <a href="/tags/%E6%91%98%E5%BD%95-%E4%B9%A6%E5%BD%B1%E9%9F%B3/">
                         <span class="chip bg-color">摘录 书影音</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/08/05/fei-xing-ri/">
-                    <div class="card-image">
-                        
-                        <img src="https://bu.dusays.com/2023/09/24/650f23445503f.jpg" class="responsive-img" alt="“飞行日”-刘若英演唱会">
-                        
-                        <span class="card-title">“飞行日”-刘若英演唱会</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-05
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%BC%94%E5%94%B1%E4%BC%9A/" class="post-category">
-                                    演唱会
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%BC%94%E5%94%B1%E4%BC%9A-%E5%88%98%E8%8B%A5%E8%8B%B1/">
-                        <span class="chip bg-color">演唱会 刘若英</span>
                     </a>
                     
                 </div>

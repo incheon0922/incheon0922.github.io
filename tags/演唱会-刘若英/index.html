@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="标签: 演唱会 刘若英, Tardius">
+    <meta name="keywords" content="标签: 演唱会 刘若英, tardius">
     <meta name="description" content="个人博客、记录">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,8 +18,8 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>标签: 演唱会 刘若英 | Tardius</title>
-    <link rel="icon" type="image/png" href="/favicon-roam.png">
+    <title>标签: 演唱会 刘若英 | tardius</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -33,7 +33,7 @@
 
 <meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -45,7 +45,9 @@
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
-                    <span class="logo-span">Tardius</span>
+                    <img src="/logo5.png" class="logo-img" alt="LOGO">
+                    
+                    <!-- <span class="logo-span">tardius</span> -->
                 </a>
             </div>
             
@@ -66,23 +68,35 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/tags" class="waves-effect waves-light">
+    <a href="" class="waves-effect waves-light">
+
       
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>标签</span>
+      <span>文章</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
+    <ul class="sub-nav menus_item_child ">
       
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
       
-      <span>分类</span>
-    </a>
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+    </ul>
     
   </li>
   
@@ -121,12 +135,35 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/friends" class="waves-effect waves-light">
+    <a href="" class="waves-effect waves-light">
+
       
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>友情链接</span>
+      <span>友链留言</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/friends">
+          
+          <i class="fas fa-address-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>友情链接</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/#">
+          
+          <i class="fas fa-comments" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>留言板</span>
+        </a>
+      </li>
+      
+    </ul>
     
   </li>
   
@@ -142,7 +179,9 @@
 
     <div class="mobile-head bg-color">
         
-        <div class="logo-name">Tardius</div>
+        <!-- <img src="/logo5.png" class="logo-img circle responsive-img"> -->
+        
+        <div class="logo-name">tardius</div>
         <div class="logo-desc">
             
             个人博客、记录
@@ -167,23 +206,36 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/tags" class="waves-effect waves-light">
+		<a href="javascript:;">
 			
-			    <i class="fa-fw fas fa-tags"></i>
+				<i class="fa-fw fas fa-list"></i>
 			
-			标签
+			文章
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+            </ul>
           
         </li>
         
@@ -222,12 +274,36 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/friends" class="waves-effect waves-light">
+		<a href="javascript:;">
 			
-			    <i class="fa-fw fas fa-address-book"></i>
+				<i class="fa-fw fas fa-list"></i>
 			
-			友情链接
+			友链留言
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/friends " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-address-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>友情链接</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/# " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-comments" style="position: absolute;left:50px" ></i>
+			      
+		          <span>留言板</span>
+                  </a>
+                </li>
+              
+            </ul>
           
         </li>
         
@@ -328,7 +404,7 @@
         <div class="brand">
             <div class="title center-align">
                 
-                Per aspera ad astra
+                per aspera ad astra
                 
             </div>
 
@@ -374,37 +450,37 @@
             <div class="tag-chips">
                 
                 
-                <a href="/tags/%E5%8D%97%E6%BE%B3-%E6%91%84%E5%BD%B1-%E6%97%85%E8%A1%8C/" title="南澳 摄影 旅行: 1">
+                <a href="/tags/%E7%83%AD%E5%8A%9B%E5%9B%BE-cesium/" title="热力图 cesium: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="南澳 摄影 旅行" style="background-color: #F9EBEA;">南澳 摄影 旅行
+                            data-tagname="热力图 cesium" style="background-color: #F9EBEA;">热力图 cesium
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/%E5%8D%A1%E5%B0%94%E7%BB%B4%E8%AF%BA-%E4%B9%A6%E6%91%98/" title="卡尔维诺 书摘: 1">
+                <a href="/tags/%E5%B8%A7%E7%BC%93%E5%86%B2-canvas/" title="帧缓冲 canvas: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="卡尔维诺 书摘" style="background-color: #F5EEF8;">卡尔维诺 书摘
+                            data-tagname="帧缓冲 canvas" style="background-color: #F5EEF8;">帧缓冲 canvas
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/%E6%9D%82%E6%84%9F-%E5%8D%B0%E8%B1%A1%E9%9B%86/" title="杂感 印象集: 1">
+                <a href="/tags/%E6%91%98%E5%BD%95-%E4%B9%A6%E5%BD%B1%E9%9F%B3/" title="摘录 书影音: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="杂感 印象集" style="background-color: #D5F5E3;">杂感 印象集
+                            data-tagname="摘录 书影音" style="background-color: #D5F5E3;">摘录 书影音
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/%E5%8E%A6%E9%97%A8-%E7%99%BD%E5%9F%8E%E6%B2%99%E6%BB%A9-%E6%91%84%E5%BD%B1-%E6%97%85%E8%A1%8C/" title="厦门 白城沙滩 摄影 旅行: 1">
+                <a href="/tags/%E7%82%B9%E5%85%89%E6%BA%90-webgl/" title="点光源 webgl: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="厦门 白城沙滩 摄影 旅行" style="background-color: #E8F8F5;">厦门 白城沙滩 摄影 旅行
+                            data-tagname="点光源 webgl" style="background-color: #E8F8F5;">点光源 webgl
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -434,7 +510,7 @@
                     <a href="/2023/08/05/fei-xing-ri/">
                         <div class="card-image tag-image">
                             
-                            <img src="https://incheon0922.github.io/2023/08/05/fei-xing-ri/微信图片_20230805234318.jpg" class="responsive-img" alt="“飞行日”-刘若英演唱会">
+                            <img src="https://bu.dusays.com/2023/09/24/650f23445503f.jpg" class="responsive-img" alt="“飞行日”-刘若英演唱会">
                             
                             <span class="card-title">“飞行日”-刘若英演唱会</span>
                         </div>
@@ -529,7 +605,7 @@
                 <span id="year">2023</span>
             
             <span id="year">2023</span>
-            <a href="/about" target="_blank">incheon chung</a>
+            <a href="/about" target="_blank">incheon Chung</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
@@ -541,6 +617,10 @@
             <br>
             
             <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn" target="_blank">赣ICP备2023009404号</a>
+            </span>
             
         </div>
         <div class="col s12 m4 l4 social-link ">
