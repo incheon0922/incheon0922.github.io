@@ -88,20 +88,18 @@
       </tags>
   </entry>
   <entry>
-    <title>模型不规则区域压平</title>
-    <url>/2023/12/16/mo-xing-bu-gui-ze-qu-yu-ya-ping/</url>
-    <content><![CDATA[<p>初版模型压平只实现了规则区域的压平效果，本文在此基础上优化，实现了不规则区域的压平，压平思路没有太大变化，主要是改进了范围判断的方法，使用射线法来判断模型坐标点是否在压平范围内，思路如下</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、将多边形的点数据依次传入到customShader当中<br>2、编写射线法判断范围函数，在顶点着色器中将模型的坐标和范围坐标做判断<br>进而实现压平，射线法的具体实现可以看下方的参考链接</p>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>压平效果如图所示：</p>
-<p><img src="https://bu.dusays.com/2023/12/16/657d9f9c2f24e.png"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/Form_/article/details/77841534">[射线法]判断一个点是否在多边形内部</a></p>
-<p><a href="https://www.liaomz.top/2022/03/08/shader-zhong-yong-she-xian-fa-pan-duan-dian-zai-ping-mian-nei/">Shader中用射线法判断点在平面内</a></p>
+    <title>气象数据体渲染</title>
+    <url>/2023/12/17/qi-xiang-shu-ju-ti-xuan-ran/</url>
+    <content><![CDATA[<p>气象数据的体渲染思路和上一篇<a href="https://tardius.life/2023/12/16/fu-ke-bo-lin-zao-sheng/">复刻柏林噪声</a>类似，都是采用三维纹理方式实现采样渲染的，但这里需要注意的是大范围的BoxGeometry在自定以的dc里面传入dimension，进行采样的时候会报错，可能是数据维度太大的问题，需要变换模型矩阵，编写自定义顶点数据或者使用BoxGeomtry构造顶点数据传入，着色器部份仍然可以参考<a href="https://threejs.org/examples/?q=perlin#webgl2_volume_perlin">Three.js</a>，数据来源于火星的<a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a>示例</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2023/12/17/657e8a2348d3a.png"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2022/10/26/cesium-zhong-dui-3d-shu-ju-ji-jin-xing-ti-xuan-ran-zhan-shi/">Cesium中对3D数据集进行体渲染展示</a></p>
+<p><a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a></p>
 ]]></content>
       <categories>
         <category>cesium</category>
       </categories>
       <tags>
-        <tag>3dtiles 不规则区域 压平</tag>
+        <tag>气象数据 体渲染</tag>
       </tags>
   </entry>
   <entry>
@@ -121,18 +119,20 @@
       </tags>
   </entry>
   <entry>
-    <title>气象数据体渲染</title>
-    <url>/2023/12/17/qi-xiang-shu-ju-ti-xuan-ran/</url>
-    <content><![CDATA[<p>气象数据的体渲染思路和上一篇<a href="https://tardius.life/2023/12/16/fu-ke-bo-lin-zao-sheng/">复刻柏林噪声</a>类似，都是采用三维纹理方式实现采样渲染的，但这里需要注意的是大范围的BoxGeometry在自定以的dc里面传入dimension，进行采样的时候会报错，可能是数据维度太大的问题，需要变换模型矩阵，编写自定义顶点数据或者使用BoxGeomtry构造顶点数据传入，着色器部份仍然可以参考<a href="https://threejs.org/examples/?q=perlin#webgl2_volume_perlin">Three.js</a>，数据来源于火星的<a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a>示例</p>
-<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2023/12/17/657e8a2348d3a.png"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2022/10/26/cesium-zhong-dui-3d-shu-ju-ji-jin-xing-ti-xuan-ran-zhan-shi/">Cesium中对3D数据集进行体渲染展示</a></p>
-<p><a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a></p>
+    <title>模型不规则区域压平</title>
+    <url>/2023/12/16/mo-xing-bu-gui-ze-qu-yu-ya-ping/</url>
+    <content><![CDATA[<p>初版模型压平只实现了规则区域的压平效果，本文在此基础上优化，实现了不规则区域的压平，压平思路没有太大变化，主要是改进了范围判断的方法，使用射线法来判断模型坐标点是否在压平范围内，思路如下</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、将多边形的点数据依次传入到customShader当中<br>2、编写射线法判断范围函数，在顶点着色器中将模型的坐标和范围坐标做判断<br>进而实现压平，射线法的具体实现可以看下方的参考链接</p>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>压平效果如图所示：</p>
+<p><img src="https://bu.dusays.com/2023/12/16/657d9f9c2f24e.png"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/Form_/article/details/77841534">[射线法]判断一个点是否在多边形内部</a></p>
+<p><a href="https://www.liaomz.top/2022/03/08/shader-zhong-yong-she-xian-fa-pan-duan-dian-zai-ping-mian-nei/">Shader中用射线法判断点在平面内</a></p>
 ]]></content>
       <categories>
         <category>cesium</category>
       </categories>
       <tags>
-        <tag>气象数据 体渲染</tag>
+        <tag>3dtiles 不规则区域 压平</tag>
       </tags>
   </entry>
   <entry>
