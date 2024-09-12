@@ -31,9 +31,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -429,11 +429,11 @@
                 
                 
                 
-                <a href="/categories/cesium/" title="cesium: 10">
+                <a href="/categories/cesium/" title="cesium: 11">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
                             style="background-color: #F9EBEA;">cesium
-                        <span class="tag-length">10</span>
+                        <span class="tag-length">11</span>
                     </span>
                 </a>
                 
@@ -457,6 +457,52 @@
 
     <article id="articles" class="container articles">
         <div class="row tags-posts">
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2024/09/12/liu-ti-ke-shi-hua/">
+                        <div class="card-image tag-image">
+                            
+                            <img src="/medias/fluid.png" class="responsive-img" alt="流体可视化">
+                            
+                            <span class="card-title">流体可视化</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                基于cesium实现的流体渲染效果,shaderToy上面有很多关于流体渲染相关的例子，将这些效果移植到cesium上面可以在一定程度上增强水体淹没等三维可视化展示效果。本文结合网上各位大佬的例子，基于高度图采样实现流体渲染，大致思路如下
+
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-09-12
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/cesium/" class="post-category">
+                                    cesium
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E4%BD%93%E6%B8%B2%E6%9F%93-%E6%B5%81%E4%BD%93%E5%8F%AF%E8%A7%86%E5%8C%96-%E5%B8%A7%E7%BC%93%E5%86%B2/">
+                            <span class="chip bg-color">体渲染 流体可视化 帧缓冲</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
@@ -876,55 +922,33 @@
                 </div>
             </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/09/25/cesium-dian-guang-yuan/">
-                        <div class="card-image tag-image">
-                            
-                            <img src="https://i1.hdslb.com/bfs/archive/fddc26098431342cda77f95fcd682b056918bbd8.jpg" class="responsive-img" alt="点光源">
-                            
-                            <span class="card-title">点光源</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                在cesium中要复刻three里面的点光源效果，大概有两种思路1、customShader编写光照计算2、后处理通过深度获取法线、坐标等计算
-这里采用的customShader的方法计算，且光照计算比较简单，只计算了漫反射模型的结果后处理
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-25
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/cesium/" class="post-category">
-                                    cesium
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E7%82%B9%E5%85%89%E6%BA%90-webgl/">
-                            <span class="chip bg-color">点光源 webgl</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 </main>
+
+
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a class="left btn-floating btn-large disabled">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">1 / 2</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a href="/categories/cesium/page/2/"
+               class="right btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
 
 
 
