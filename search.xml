@@ -35,6 +35,21 @@
       </tags>
   </entry>
   <entry>
+    <title>后处理实现积雪效果</title>
+    <url>/2024/02/01/hou-chu-li-shi-xian-ji-xue-xiao-guo/</url>
+    <content><![CDATA[<p>cesium有两种思路实现积雪效果，一种渲染在模型等上面，另外一种则是通过后处理的方式。两种方式原理基本相同，但是效果范围以及修改方式有差别，各有取舍吧，本文采用的是后处理方式实现积雪效果</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、根据纹理坐标还原世界坐标，将其单位化当作片元的上方向向量<br>2、计算每个像元在世界坐标下的法线<br>3、传入积雪影响因子，与得到的上方向向量和法线点乘值相乘来调节积雪程度</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2024/02/01/65bb9824c0370.png"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2022/09/16/cesium-zhong-shi-xian-xia-xue-fu-gai-xiao-guo/">Cesium中实现下雪覆盖效果</a><br><a href="https://www.guozk.top/posts/%E7%A7%AF%E9%9B%AA%E8%A6%86%E7%9B%96%E6%95%88%E6%9E%9C/">Cesium积雪效果</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>后处理 积雪</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>点光源</title>
     <url>/2023/09/25/cesium-dian-guang-yuan/</url>
     <content><![CDATA[<p>在cesium中要复刻three里面的点光源效果，大概有两种思路<br>1、customShader编写光照计算<br>2、后处理通过深度获取法线、坐标等计算</p>
@@ -55,21 +70,6 @@
       </categories>
       <tags>
         <tag>点光源 webgl</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>后处理实现积雪效果</title>
-    <url>/2024/02/01/hou-chu-li-shi-xian-ji-xue-xiao-guo/</url>
-    <content><![CDATA[<p>cesium有两种思路实现积雪效果，一种渲染在模型等上面，另外一种则是通过后处理的方式。两种方式原理基本相同，但是效果范围以及修改方式有差别，各有取舍吧，本文采用的是后处理方式实现积雪效果</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、根据纹理坐标还原世界坐标，将其单位化当作片元的上方向向量<br>2、计算每个像元在世界坐标下的法线<br>3、传入积雪影响因子，与得到的上方向向量和法线点乘值相乘来调节积雪程度</p>
-<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2024/02/01/65bb9824c0370.png"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2022/09/16/cesium-zhong-shi-xian-xia-xue-fu-gai-xiao-guo/">Cesium中实现下雪覆盖效果</a><br><a href="https://www.guozk.top/posts/%E7%A7%AF%E9%9B%AA%E8%A6%86%E7%9B%96%E6%95%88%E6%9E%9C/">Cesium积雪效果</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>后处理 积雪</tag>
       </tags>
   </entry>
   <entry>
@@ -156,21 +156,21 @@
       </tags>
   </entry>
   <entry>
-    <title>高度雾及流动效果实现</title>
-    <url>/2024/02/02/gao-du-wu-ji-liu-dong-xiao-guo-shi-xian/</url>
-    <content><![CDATA[<p>基于高度实现的雾效果，可以在一定程度上优化场景展示，本文基于cesium实现了一版线性高度雾并在此基础上添加了流动效果，大致思路如下</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、纹理坐标还原成世界坐标<br>2、计算世界坐标相对于地面的高程值，以及相机坐标与片元之间的距离，并根据高程值以及距离计算雾气浓度<br>3、根据雾气浓度混合场景及雾颜色<br>4、流动效果则是添加了一张雾的噪声图，纹理采样噪声值作为雾气浓度的扰动系数，从而实现流动</p>
+    <title>阴影率分析</title>
+    <url>/2024/01/04/yin-ying-lu-fen-xi/</url>
+    <content><![CDATA[<p>cesium阴影率分析的思路大概有两种，一是开启光照并生成格网点，时钟每tick一次记录太阳的位置，构造格网点到太阳位置的射线，通过射线求交的方法计算累计光照量，但这种方法比较耗时间且复杂，二是通过shadowMap来计算，本文采用的是第二种方式，这种方式可以极大的提升计算效率。大致思路如下</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>通过shadowMap带有的深度图，时钟每tick一次，计算格网点在太阳视角下的深度，同时采样深度图进行深度比较，判断格网点是否在阴影中，将判断结果输出成纹理，之后根据纹理统计格网点的全部光照量，最后进行分类着色展示</p>
 <h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?aid=1850170815&amp;bvid=BV1Ap421f7rF&amp;cid=1427337377&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+    <iframe src="//player.bilibili.com/player.html?aid=283358391&amp;bvid=BV1qc41187GG&amp;cid=1393714452&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
 </div>
 
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2023/10/20/cesium-zhong-shi-xian-gao-du-wu-xiao-guo/">Cesium中实现高度雾效果</a><br><a href="https://blog.csdn.net/linjf520/article/details/105558069">Unity Shader PostProcessing - 11 - Depth Fog/Height Fog - 雾效/深度雾效/高度雾/深度+高度雾</a></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2023/04/18/cesium-zhong-shi-xian-yin-ying-lu-fen-xi/">Cesium中实现阴影率分析</a><br><a href="https://blog.csdn.net/yue1241630499/article/details/132199878?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-132199878-blog-130215072.235%5Ev40%5Epc_relevant_anti_t3&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-132199878-blog-130215072.235%5Ev40%5Epc_relevant_anti_t3&amp;utm_relevant_index=3">Cesium中通过射线计算日照</a></p>
 ]]></content>
       <categories>
         <category>cesium</category>
       </categories>
       <tags>
-        <tag>后处理 高度雾</tag>
+        <tag>阴影 纹理 帧缓冲</tag>
       </tags>
   </entry>
   <entry>
@@ -193,21 +193,21 @@
       </tags>
   </entry>
   <entry>
-    <title>阴影率分析</title>
-    <url>/2024/01/04/yin-ying-lu-fen-xi/</url>
-    <content><![CDATA[<p>cesium阴影率分析的思路大概有两种，一是开启光照并生成格网点，时钟每tick一次记录太阳的位置，构造格网点到太阳位置的射线，通过射线求交的方法计算累计光照量，但这种方法比较耗时间且复杂，二是通过shadowMap来计算，本文采用的是第二种方式，这种方式可以极大的提升计算效率。大致思路如下</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>通过shadowMap带有的深度图，时钟每tick一次，计算格网点在太阳视角下的深度，同时采样深度图进行深度比较，判断格网点是否在阴影中，将判断结果输出成纹理，之后根据纹理统计格网点的全部光照量，最后进行分类着色展示</p>
+    <title>高度雾及流动效果实现</title>
+    <url>/2024/02/02/gao-du-wu-ji-liu-dong-xiao-guo-shi-xian/</url>
+    <content><![CDATA[<p>基于高度实现的雾效果，可以在一定程度上优化场景展示，本文基于cesium实现了一版线性高度雾并在此基础上添加了流动效果，大致思路如下</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、纹理坐标还原成世界坐标<br>2、计算世界坐标相对于地面的高程值，以及相机坐标与片元之间的距离，并根据高程值以及距离计算雾气浓度<br>3、根据雾气浓度混合场景及雾颜色<br>4、流动效果则是添加了一张雾的噪声图，纹理采样噪声值作为雾气浓度的扰动系数，从而实现流动</p>
 <h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?aid=283358391&amp;bvid=BV1qc41187GG&amp;cid=1393714452&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+    <iframe src="//player.bilibili.com/player.html?aid=1850170815&amp;bvid=BV1Ap421f7rF&amp;cid=1427337377&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
 </div>
 
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2023/04/18/cesium-zhong-shi-xian-yin-ying-lu-fen-xi/">Cesium中实现阴影率分析</a><br><a href="https://blog.csdn.net/yue1241630499/article/details/132199878?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-132199878-blog-130215072.235%5Ev40%5Epc_relevant_anti_t3&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-132199878-blog-130215072.235%5Ev40%5Epc_relevant_anti_t3&amp;utm_relevant_index=3">Cesium中通过射线计算日照</a></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2023/10/20/cesium-zhong-shi-xian-gao-du-wu-xiao-guo/">Cesium中实现高度雾效果</a><br><a href="https://blog.csdn.net/linjf520/article/details/105558069">Unity Shader PostProcessing - 11 - Depth Fog/Height Fog - 雾效/深度雾效/高度雾/深度+高度雾</a></p>
 ]]></content>
       <categories>
         <category>cesium</category>
       </categories>
       <tags>
-        <tag>阴影 纹理 帧缓冲</tag>
+        <tag>后处理 高度雾</tag>
       </tags>
   </entry>
 </search>
