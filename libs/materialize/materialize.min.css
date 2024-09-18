@@ -2470,7 +2470,12 @@ th {
 .center,
 .center-align {
   text-align: center;
+  /* display: none; */
 }
+
+/* .center-align{
+ display: none;
+} */
 .left {
   float: left !important;
 }
