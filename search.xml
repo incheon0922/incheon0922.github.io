@@ -19,6 +19,22 @@
       </tags>
   </entry>
   <entry>
+    <title>模型压平</title>
+    <url>/2023/10/26/cesium-mo-xing-ya-ping/</url>
+    <content><![CDATA[<p>模型压平用的是cesium的customShader来编写的，目前只是实现了规则矩形区域压平，以及后续的闪面优化，</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、将矩形坐标范围通过customShader传入到着色器中<br>2、矩形坐标转为模型坐标，并将其与模型坐标比较，将范围内模型进行压平<br>压平后可能会出现闪面的情况，原因可能是深度导致的，我这里是选择差异化压平参数</p>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>压平效果如图所示：</p>
+<p><img src="https://bu.dusays.com/2023/10/26/653a349fea9db.png"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/xtfge0915/article/details/130622016">Cesium从入门到放弃：模型压平</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>3dtiles 规则区域 压平</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>点光源</title>
     <url>/2023/09/25/cesium-dian-guang-yuan/</url>
     <content><![CDATA[<p>在cesium中要复刻three里面的点光源效果，大概有两种思路<br>1、customShader编写光照计算<br>2、后处理通过深度获取法线、坐标等计算</p>
@@ -42,22 +58,6 @@
       </tags>
   </entry>
   <entry>
-    <title>模型压平</title>
-    <url>/2023/10/26/cesium-mo-xing-ya-ping/</url>
-    <content><![CDATA[<p>模型压平用的是cesium的customShader来编写的，目前只是实现了规则矩形区域压平，以及后续的闪面优化，</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、将矩形坐标范围通过customShader传入到着色器中<br>2、矩形坐标转为模型坐标，并将其与模型坐标比较，将范围内模型进行压平<br>压平后可能会出现闪面的情况，原因可能是深度导致的，我这里是选择差异化压平参数</p>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>压平效果如图所示：</p>
-<p><img src="https://bu.dusays.com/2023/10/26/653a349fea9db.png"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/xtfge0915/article/details/130622016">Cesium从入门到放弃：模型压平</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>3dtiles 规则区域 压平</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>后处理实现积雪效果</title>
     <url>/2024/02/01/hou-chu-li-shi-xian-ji-xue-xiao-guo/</url>
     <content><![CDATA[<p>cesium有两种思路实现积雪效果，一种渲染在模型等上面，另外一种则是通过后处理的方式。两种方式原理基本相同，但是效果范围以及修改方式有差别，各有取舍吧，本文采用的是后处理方式实现积雪效果</p>
@@ -70,6 +70,21 @@
       </categories>
       <tags>
         <tag>后处理 积雪</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>离屏渲染</title>
+    <url>/2023/09/26/cesium-chi-ping-xuan-ran/</url>
+    <content><![CDATA[<p>离屏渲染可以实现类似于小地图、飞行浏览的效果，本文通过帧缓冲以及webgl绘制纹理的方式实现将相机某个视角所看到的场景绘制到另一个canvas上</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两个不同上下文的canvas是不能共用一份纹理资源的，但是可以通过读取帧缓冲中的纹理值，根据纹理值生成一份新的纹理，最后绘制到另一个canvas上面即可实现离屏渲染。<br>在cesium渲染前，绑定创建好的帧缓冲，获取已经绘制好的一帧，之后根据上述方法将纹理结果输出到新创建的canvas上</p>
+<p><img src="https://bu.dusays.com/2023/10/04/651cd7fa49931.png" alt="相机俯视视角绘制"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://juejin.cn/post/7166264791957897229">Cesium通过离屏渲染实现无人机侦察</a><br><a href="https://blog.csdn.net/weixin_43481439/article/details/125412372">Cesium中的离屏渲染</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>帧缓冲 canvas</tag>
       </tags>
   </entry>
   <entry>
@@ -86,21 +101,6 @@
       </categories>
       <tags>
         <tag>柏林噪声 体渲染</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>离屏渲染</title>
-    <url>/2023/09/26/cesium-chi-ping-xuan-ran/</url>
-    <content><![CDATA[<p>离屏渲染可以实现类似于小地图、飞行浏览的效果，本文通过帧缓冲以及webgl绘制纹理的方式实现将相机某个视角所看到的场景绘制到另一个canvas上</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两个不同上下文的canvas是不能共用一份纹理资源的，但是可以通过读取帧缓冲中的纹理值，根据纹理值生成一份新的纹理，最后绘制到另一个canvas上面即可实现离屏渲染。<br>在cesium渲染前，绑定创建好的帧缓冲，获取已经绘制好的一帧，之后根据上述方法将纹理结果输出到新创建的canvas上</p>
-<p><img src="https://bu.dusays.com/2023/10/04/651cd7fa49931.png" alt="相机俯视视角绘制"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://juejin.cn/post/7166264791957897229">Cesium通过离屏渲染实现无人机侦察</a><br><a href="https://blog.csdn.net/weixin_43481439/article/details/125412372">Cesium中的离屏渲染</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>帧缓冲 canvas</tag>
       </tags>
   </entry>
   <entry>
@@ -121,21 +121,6 @@
       </tags>
   </entry>
   <entry>
-    <title>气象数据体渲染</title>
-    <url>/2023/12/17/qi-xiang-shu-ju-ti-xuan-ran/</url>
-    <content><![CDATA[<p>气象数据的体渲染思路和上一篇<a href="https://tardius.life/2023/12/16/fu-ke-bo-lin-zao-sheng/">复刻柏林噪声</a>类似，都是采用三维纹理方式实现采样渲染的，但这里需要注意的是大范围的BoxGeometry在自定以的dc里面传入dimension，进行采样的时候会报错，可能是数据维度太大的问题，需要变换模型矩阵，编写自定义顶点数据或者使用BoxGeomtry构造顶点数据传入，着色器部份仍然可以参考<a href="https://threejs.org/examples/?q=perlin#webgl2_volume_perlin">Three.js</a>，数据来源于火星的<a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a>示例</p>
-<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2023/12/17/657e8a2348d3a.png"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2022/10/26/cesium-zhong-dui-3d-shu-ju-ji-jin-xing-ti-xuan-ran-zhan-shi/">Cesium中对3D数据集进行体渲染展示</a></p>
-<p><a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>气象数据 体渲染</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>流体可视化</title>
     <url>/2024/09/12/liu-ti-ke-shi-hua/</url>
     <content><![CDATA[<p>基于cesium实现的流体渲染效果,shaderToy上面有很多关于流体渲染相关的例子，将这些效果移植到cesium上面可以在一定程度上增强水体淹没等三维可视化展示效果。本文结合网上各位大佬的例子，基于高度图采样实现流体渲染，大致思路如下</p>
@@ -146,7 +131,7 @@
 
 
 
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.shadertoy.com/view/Xd3GWn">Cesium中实现流体模拟</a><br><a href="https://www.bilibili.com/video/BV1hevUeqEpN/?spm_id_from=333.999.0.0&amp;vd_source=48e433b69838c457028e08f37a108cba">CesiumJS 流体仿真 WebGL流体仿真 Fluid 水淹分析 山洪模拟</a><br><a href="https://www.bilibili.com/video/BV1o1421y7o6/?spm_id_from=333.337.search-card.all.click&amp;vd_source=48e433b69838c457028e08f37a108cba">Web3D | Cesium开源特效 | ShaderToy流体特效迁移代码</a></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2024/01/26/cesium-zhong-shi-xian-liu-ti-mo-ni/">Cesium中实现流体模拟</a><br><a href="https://www.bilibili.com/video/BV1hevUeqEpN/?spm_id_from=333.999.0.0&amp;vd_source=48e433b69838c457028e08f37a108cba">CesiumJS 流体仿真 WebGL流体仿真 Fluid 水淹分析 山洪模拟</a><br><a href="https://www.bilibili.com/video/BV1o1421y7o6/?spm_id_from=333.337.search-card.all.click&amp;vd_source=48e433b69838c457028e08f37a108cba">Web3D | Cesium开源特效 | ShaderToy流体特效迁移代码</a></p>
 ]]></content>
       <categories>
         <category>cesium</category>
@@ -208,6 +193,21 @@
       </categories>
       <tags>
         <tag>后处理 高度雾</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>气象数据体渲染</title>
+    <url>/2023/12/17/qi-xiang-shu-ju-ti-xuan-ran/</url>
+    <content><![CDATA[<p>气象数据的体渲染思路和上一篇<a href="https://tardius.life/2023/12/16/fu-ke-bo-lin-zao-sheng/">复刻柏林噪声</a>类似，都是采用三维纹理方式实现采样渲染的，但这里需要注意的是大范围的BoxGeometry在自定以的dc里面传入dimension，进行采样的时候会报错，可能是数据维度太大的问题，需要变换模型矩阵，编写自定义顶点数据或者使用BoxGeomtry构造顶点数据传入，着色器部份仍然可以参考<a href="https://threejs.org/examples/?q=perlin#webgl2_volume_perlin">Three.js</a>，数据来源于火星的<a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a>示例</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2023/12/17/657e8a2348d3a.png"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2022/10/26/cesium-zhong-dui-3d-shu-ju-ji-jin-xing-ti-xuan-ran-zhan-shi/">Cesium中对3D数据集进行体渲染展示</a></p>
+<p><a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>气象数据 体渲染</tag>
       </tags>
   </entry>
 </search>
