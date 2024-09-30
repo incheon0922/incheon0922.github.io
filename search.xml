@@ -19,6 +19,22 @@
       </tags>
   </entry>
   <entry>
+    <title>模型压平</title>
+    <url>/2023/10/26/cesium-mo-xing-ya-ping/</url>
+    <content><![CDATA[<p>模型压平用的是cesium的customShader来编写的，目前只是实现了规则矩形区域压平，以及后续的闪面优化，</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、将矩形坐标范围通过customShader传入到着色器中<br>2、矩形坐标转为模型坐标，并将其与模型坐标比较，将范围内模型进行压平<br>压平后可能会出现闪面的情况，原因可能是深度导致的，我这里是选择差异化压平参数</p>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>压平效果如图所示：</p>
+<p><img src="https://bu.dusays.com/2023/10/26/653a349fea9db.png"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/xtfge0915/article/details/130622016">Cesium从入门到放弃：模型压平</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>3dtiles 规则区域 压平</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>点光源</title>
     <url>/2023/09/25/cesium-dian-guang-yuan/</url>
     <content><![CDATA[<p>在cesium中要复刻three里面的点光源效果，大概有两种思路<br>1、customShader编写光照计算<br>2、后处理通过深度获取法线、坐标等计算</p>
@@ -42,37 +58,6 @@
       </tags>
   </entry>
   <entry>
-    <title>离屏渲染</title>
-    <url>/2023/09/26/cesium-chi-ping-xuan-ran/</url>
-    <content><![CDATA[<p>离屏渲染可以实现类似于小地图、飞行浏览的效果，本文通过帧缓冲以及webgl绘制纹理的方式实现将相机某个视角所看到的场景绘制到另一个canvas上</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两个不同上下文的canvas是不能共用一份纹理资源的，但是可以通过读取帧缓冲中的纹理值，根据纹理值生成一份新的纹理，最后绘制到另一个canvas上面即可实现离屏渲染。<br>在cesium渲染前，绑定创建好的帧缓冲，获取已经绘制好的一帧，之后根据上述方法将纹理结果输出到新创建的canvas上</p>
-<p><img src="https://bu.dusays.com/2023/10/04/651cd7fa49931.png" alt="相机俯视视角绘制"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://juejin.cn/post/7166264791957897229">Cesium通过离屏渲染实现无人机侦察</a><br><a href="https://blog.csdn.net/weixin_43481439/article/details/125412372">Cesium中的离屏渲染</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>帧缓冲 canvas</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>模型压平</title>
-    <url>/2023/10/26/cesium-mo-xing-ya-ping/</url>
-    <content><![CDATA[<p>模型压平用的是cesium的customShader来编写的，目前只是实现了规则矩形区域压平，以及后续的闪面优化，</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、将矩形坐标范围通过customShader传入到着色器中<br>2、矩形坐标转为模型坐标，并将其与模型坐标比较，将范围内模型进行压平<br>压平后可能会出现闪面的情况，原因可能是深度导致的，我这里是选择差异化压平参数</p>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>压平效果如图所示：</p>
-<p><img src="https://bu.dusays.com/2023/10/26/653a349fea9db.png"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/xtfge0915/article/details/130622016">Cesium从入门到放弃：模型压平</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>3dtiles 规则区域 压平</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>后处理实现积雪效果</title>
     <url>/2024/02/01/hou-chu-li-shi-xian-ji-xue-xiao-guo/</url>
     <content><![CDATA[<p>cesium有两种思路实现积雪效果，一种渲染在模型等上面，另外一种则是通过后处理的方式。两种方式原理基本相同，但是效果范围以及修改方式有差别，各有取舍吧，本文采用的是后处理方式实现积雪效果</p>
@@ -85,6 +70,21 @@
       </categories>
       <tags>
         <tag>后处理 积雪</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>离屏渲染</title>
+    <url>/2023/09/26/cesium-chi-ping-xuan-ran/</url>
+    <content><![CDATA[<p>离屏渲染可以实现类似于小地图、飞行浏览的效果，本文通过帧缓冲以及webgl绘制纹理的方式实现将相机某个视角所看到的场景绘制到另一个canvas上</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>两个不同上下文的canvas是不能共用一份纹理资源的，但是可以通过读取帧缓冲中的纹理值，根据纹理值生成一份新的纹理，最后绘制到另一个canvas上面即可实现离屏渲染。<br>在cesium渲染前，绑定创建好的帧缓冲，获取已经绘制好的一帧，之后根据上述方法将纹理结果输出到新创建的canvas上</p>
+<p><img src="https://bu.dusays.com/2023/10/04/651cd7fa49931.png" alt="相机俯视视角绘制"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://juejin.cn/post/7166264791957897229">Cesium通过离屏渲染实现无人机侦察</a><br><a href="https://blog.csdn.net/weixin_43481439/article/details/125412372">Cesium中的离屏渲染</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>帧缓冲 canvas</tag>
       </tags>
   </entry>
   <entry>
@@ -175,24 +175,6 @@
       </tags>
   </entry>
   <entry>
-    <title>高度雾及流动效果实现</title>
-    <url>/2024/02/02/gao-du-wu-ji-liu-dong-xiao-guo-shi-xian/</url>
-    <content><![CDATA[<p>基于高度实现的雾效果，可以在一定程度上优化场景展示，本文基于cesium实现了一版线性高度雾并在此基础上添加了流动效果，大致思路如下</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、纹理坐标还原成世界坐标<br>2、计算世界坐标相对于地面的高程值，以及相机坐标与片元之间的距离，并根据高程值以及距离计算雾气浓度<br>3、根据雾气浓度混合场景及雾颜色<br>4、流动效果则是添加了一张雾的噪声图，纹理采样噪声值作为雾气浓度的扰动系数，从而实现流动</p>
-<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?aid=1850170815&amp;bvid=BV1Ap421f7rF&amp;cid=1427337377&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
-</div>
-
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2023/10/20/cesium-zhong-shi-xian-gao-du-wu-xiao-guo/">Cesium中实现高度雾效果</a><br><a href="https://blog.csdn.net/linjf520/article/details/105558069">Unity Shader PostProcessing - 11 - Depth Fog/Height Fog - 雾效/深度雾效/高度雾/深度+高度雾</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>后处理 高度雾</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>阴影率分析</title>
     <url>/2024/01/04/yin-ying-lu-fen-xi/</url>
     <content><![CDATA[<p>cesium阴影率分析的思路大概有两种，一是开启光照并生成格网点，时钟每tick一次记录太阳的位置，构造格网点到太阳位置的射线，通过射线求交的方法计算累计光照量，但这种方法比较耗时间且复杂，二是通过shadowMap来计算，本文采用的是第二种方式，这种方式可以极大的提升计算效率。大致思路如下</p>
@@ -208,6 +190,24 @@
       </categories>
       <tags>
         <tag>阴影 纹理 帧缓冲</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>高度雾及流动效果实现</title>
+    <url>/2024/02/02/gao-du-wu-ji-liu-dong-xiao-guo-shi-xian/</url>
+    <content><![CDATA[<p>基于高度实现的雾效果，可以在一定程度上优化场景展示，本文基于cesium实现了一版线性高度雾并在此基础上添加了流动效果，大致思路如下</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、纹理坐标还原成世界坐标<br>2、计算世界坐标相对于地面的高程值，以及相机坐标与片元之间的距离，并根据高程值以及距离计算雾气浓度<br>3、根据雾气浓度混合场景及雾颜色<br>4、流动效果则是添加了一张雾的噪声图，纹理采样噪声值作为雾气浓度的扰动系数，从而实现流动</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
+    <iframe src="//player.bilibili.com/player.html?aid=1850170815&amp;bvid=BV1Ap421f7rF&amp;cid=1427337377&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2023/10/20/cesium-zhong-shi-xian-gao-du-wu-xiao-guo/">Cesium中实现高度雾效果</a><br><a href="https://blog.csdn.net/linjf520/article/details/105558069">Unity Shader PostProcessing - 11 - Depth Fog/Height Fog - 雾效/深度雾效/高度雾/深度+高度雾</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>后处理 高度雾</tag>
       </tags>
   </entry>
 </search>
