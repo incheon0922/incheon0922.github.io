@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>模型压平</title>
+    <url>/2023/10/26/cesium-mo-xing-ya-ping/</url>
+    <content><![CDATA[<p>模型压平用的是cesium的customShader来编写的，目前只是实现了规则矩形区域压平，以及后续的闪面优化，</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、将矩形坐标范围通过customShader传入到着色器中<br>2、矩形坐标转为模型坐标，并将其与模型坐标比较，将范围内模型进行压平<br>压平后可能会出现闪面的情况，原因可能是深度导致的，我这里是选择差异化压平参数</p>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>压平效果如图所示：</p>
+<p><img src="https://bu.dusays.com/2023/10/26/653a349fea9db.png"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/xtfge0915/article/details/130622016">Cesium从入门到放弃：模型压平</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>3dtiles 规则区域 压平</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>三维热力图</title>
     <url>/2023/10/06/cesium-san-wei-re-li-tu/</url>
     <content><![CDATA[<p>使用cesium编写三维热力图效果，并在此基础上整合了水效果代码，当作优化一下可视化效果了hh</p>
@@ -16,22 +32,6 @@
       </categories>
       <tags>
         <tag>热力图 三维</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>模型压平</title>
-    <url>/2023/10/26/cesium-mo-xing-ya-ping/</url>
-    <content><![CDATA[<p>模型压平用的是cesium的customShader来编写的，目前只是实现了规则矩形区域压平，以及后续的闪面优化，</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、将矩形坐标范围通过customShader传入到着色器中<br>2、矩形坐标转为模型坐标，并将其与模型坐标比较，将范围内模型进行压平<br>压平后可能会出现闪面的情况，原因可能是深度导致的，我这里是选择差异化压平参数</p>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>压平效果如图所示：</p>
-<p><img src="https://bu.dusays.com/2023/10/26/653a349fea9db.png"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/xtfge0915/article/details/130622016">Cesium从入门到放弃：模型压平</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>3dtiles 规则区域 压平</tag>
       </tags>
   </entry>
   <entry>
@@ -62,29 +62,6 @@
       </categories>
       <tags>
         <tag>后处理 积雪</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>点光源</title>
-    <url>/2023/09/25/cesium-dian-guang-yuan/</url>
-    <content><![CDATA[<p>在cesium中要复刻three里面的点光源效果，大概有两种思路<br>1、customShader编写光照计算<br>2、后处理通过深度获取法线、坐标等计算</p>
-<p>这里采用的customShader的方法计算，且光照计算比较简单，只计算了漫反射模型的结果<br>后处理与之类似，但是计算步骤会多一点</p>
-<h2 id="customShader方式"><a href="#customShader方式" class="headerlink" title="customShader方式"></a>customShader方式</h2><p>customShader的方式可以简化计算过程，可以直接使用已经计算好的顶点法线、视空间坐标以及材质等<br>不过有时候可能模型的法线结果不准确，需要自己计算，计算的方式也有两种。可以通过求偏导，或者cesium内置方法计算</p>
-<div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?aid=448966395&amp;bvid=BV1Xj41187LK&amp;cid=1279143408&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
-</div>
-
-
-
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/rpgpp55/article/details/124073343?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2-124073343-blog-108745813.pc_relevant_multi_platform_featuressortv2dupreplace&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2-124073343-blog-108745813.pc_relevant_multi_platform_featuressortv2dupreplace&amp;utm_relevant_index=5">Cesium建筑自定义光源效果</a></p>
-<p><a href="https://www.liaomz.top/2023/02/04/cesium-zhong-shi-xian-duo-guang-yuan/">Cesium中实现多光源</a></p>
-<p><a href="https://blog.csdn.net/q1025387665a/article/details/126009223">customShader的解读</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>点光源 webgl</tag>
       </tags>
   </entry>
   <entry>
@@ -121,9 +98,51 @@
       </tags>
   </entry>
   <entry>
+    <title>点光源</title>
+    <url>/2023/09/25/cesium-dian-guang-yuan/</url>
+    <content><![CDATA[<p>在cesium中要复刻three里面的点光源效果，大概有两种思路<br>1、customShader编写光照计算<br>2、后处理通过深度获取法线、坐标等计算</p>
+<p>这里采用的customShader的方法计算，且光照计算比较简单，只计算了漫反射模型的结果<br>后处理与之类似，但是计算步骤会多一点</p>
+<h2 id="customShader方式"><a href="#customShader方式" class="headerlink" title="customShader方式"></a>customShader方式</h2><p>customShader的方式可以简化计算过程，可以直接使用已经计算好的顶点法线、视空间坐标以及材质等<br>不过有时候可能模型的法线结果不准确，需要自己计算，计算的方式也有两种。可以通过求偏导，或者cesium内置方法计算</p>
+<div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
+    <iframe src="//player.bilibili.com/player.html?aid=448966395&amp;bvid=BV1Xj41187LK&amp;cid=1279143408&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+
+
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/rpgpp55/article/details/124073343?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2-124073343-blog-108745813.pc_relevant_multi_platform_featuressortv2dupreplace&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2-124073343-blog-108745813.pc_relevant_multi_platform_featuressortv2dupreplace&amp;utm_relevant_index=5">Cesium建筑自定义光源效果</a></p>
+<p><a href="https://www.liaomz.top/2023/02/04/cesium-zhong-shi-xian-duo-guang-yuan/">Cesium中实现多光源</a></p>
+<p><a href="https://blog.csdn.net/q1025387665a/article/details/126009223">customShader的解读</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>点光源 webgl</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>爆炸效果实现</title>
+    <url>/2024/05/30/bao-zha-xiao-guo-shi-xian/</url>
+    <content><![CDATA[<p>基于cesium实现的体渲染爆炸效果</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>实现思路和之前的<a href="https://coderrc.cn/2023/12/16/fu-ke-bo-lin-zao-sheng/">复刻柏林噪声</a>类似都是体渲染，shader参考的是shaderToy上面的爆炸效果，可以查看下方参考链接</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
+    <iframe src="//player.bilibili.com/player.html?aid=1855045783&amp;bvid=BV11s42137gF&amp;cid=1565250580&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.bilibili.com/video/BV1Ew41167xW/?share_source=copy_web&amp;vd_source=3bf67a436e0388ad32e47ece87d0be45">Cesium 体积爆炸效果 体积火 体积烟雾 爆炸特效 WebGL爆炸Shader</a><br><a href="https://www.shadertoy.com/view/Xd3GWn">Explosion effect</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>体渲染 爆炸效果</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>气象数据体渲染</title>
     <url>/2023/12/17/qi-xiang-shu-ju-ti-xuan-ran/</url>
-    <content><![CDATA[<p>气象数据的体渲染思路和上一篇<a href="https://tardius.life/2023/12/16/fu-ke-bo-lin-zao-sheng/">复刻柏林噪声</a>类似，都是采用三维纹理方式实现采样渲染的，但这里需要注意的是大范围的BoxGeometry在自定以的dc里面传入dimension，进行采样的时候会报错，可能是数据维度太大的问题，需要变换模型矩阵，编写自定义顶点数据或者使用BoxGeomtry构造顶点数据传入，着色器部份仍然可以参考<a href="https://threejs.org/examples/?q=perlin#webgl2_volume_perlin">Three.js</a>，数据来源于火星的<a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a>示例</p>
+    <content><![CDATA[<p>气象数据的体渲染思路和上一篇<a href="https://coderrc.cn/2023/12/16/fu-ke-bo-lin-zao-sheng/">复刻柏林噪声</a>类似，都是采用三维纹理方式实现采样渲染的，但这里需要注意的是大范围的BoxGeometry在自定以的dc里面传入dimension，进行采样的时候会报错，可能是数据维度太大的问题，需要变换模型矩阵，编写自定义顶点数据或者使用BoxGeomtry构造顶点数据传入，着色器部份仍然可以参考<a href="https://threejs.org/examples/?q=perlin#webgl2_volume_perlin">Three.js</a>，数据来源于火星的<a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a>示例</p>
 <h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2023/12/17/657e8a2348d3a.png"></p>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2022/10/26/cesium-zhong-dui-3d-shu-ju-ji-jin-xing-ti-xuan-ran-zhan-shi/">Cesium中对3D数据集进行体渲染展示</a></p>
 <p><a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a></p>
@@ -156,22 +175,21 @@
       </tags>
   </entry>
   <entry>
-    <title>爆炸效果实现</title>
-    <url>/2024/05/30/bao-zha-xiao-guo-shi-xian/</url>
-    <content><![CDATA[<p>基于cesium实现的体渲染爆炸效果</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>实现思路和之前的<a href="https://tardius.life/2023/12/16/fu-ke-bo-lin-zao-sheng/">复刻柏林噪声</a>类似都是体渲染，shader参考的是shaderToy上面的爆炸效果，可以查看下方参考链接</p>
+    <title>高度雾及流动效果实现</title>
+    <url>/2024/02/02/gao-du-wu-ji-liu-dong-xiao-guo-shi-xian/</url>
+    <content><![CDATA[<p>基于高度实现的雾效果，可以在一定程度上优化场景展示，本文基于cesium实现了一版线性高度雾并在此基础上添加了流动效果，大致思路如下</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、纹理坐标还原成世界坐标<br>2、计算世界坐标相对于地面的高程值，以及相机坐标与片元之间的距离，并根据高程值以及距离计算雾气浓度<br>3、根据雾气浓度混合场景及雾颜色<br>4、流动效果则是添加了一张雾的噪声图，纹理采样噪声值作为雾气浓度的扰动系数，从而实现流动</p>
 <h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?aid=1855045783&amp;bvid=BV11s42137gF&amp;cid=1565250580&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+    <iframe src="//player.bilibili.com/player.html?aid=1850170815&amp;bvid=BV1Ap421f7rF&amp;cid=1427337377&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
 </div>
 
-
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.bilibili.com/video/BV1Ew41167xW/?share_source=copy_web&amp;vd_source=3bf67a436e0388ad32e47ece87d0be45">Cesium 体积爆炸效果 体积火 体积烟雾 爆炸特效 WebGL爆炸Shader</a><br><a href="https://www.shadertoy.com/view/Xd3GWn">Explosion effect</a></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2023/10/20/cesium-zhong-shi-xian-gao-du-wu-xiao-guo/">Cesium中实现高度雾效果</a><br><a href="https://blog.csdn.net/linjf520/article/details/105558069">Unity Shader PostProcessing - 11 - Depth Fog/Height Fog - 雾效/深度雾效/高度雾/深度+高度雾</a></p>
 ]]></content>
       <categories>
         <category>cesium</category>
       </categories>
       <tags>
-        <tag>体渲染 爆炸效果</tag>
+        <tag>后处理 高度雾</tag>
       </tags>
   </entry>
   <entry>
@@ -190,24 +208,6 @@
       </categories>
       <tags>
         <tag>阴影 纹理 帧缓冲</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>高度雾及流动效果实现</title>
-    <url>/2024/02/02/gao-du-wu-ji-liu-dong-xiao-guo-shi-xian/</url>
-    <content><![CDATA[<p>基于高度实现的雾效果，可以在一定程度上优化场景展示，本文基于cesium实现了一版线性高度雾并在此基础上添加了流动效果，大致思路如下</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、纹理坐标还原成世界坐标<br>2、计算世界坐标相对于地面的高程值，以及相机坐标与片元之间的距离，并根据高程值以及距离计算雾气浓度<br>3、根据雾气浓度混合场景及雾颜色<br>4、流动效果则是添加了一张雾的噪声图，纹理采样噪声值作为雾气浓度的扰动系数，从而实现流动</p>
-<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?aid=1850170815&amp;bvid=BV1Ap421f7rF&amp;cid=1427337377&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
-</div>
-
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2023/10/20/cesium-zhong-shi-xian-gao-du-wu-xiao-guo/">Cesium中实现高度雾效果</a><br><a href="https://blog.csdn.net/linjf520/article/details/105558069">Unity Shader PostProcessing - 11 - Depth Fog/Height Fog - 雾效/深度雾效/高度雾/深度+高度雾</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>后处理 高度雾</tag>
       </tags>
   </entry>
 </search>
