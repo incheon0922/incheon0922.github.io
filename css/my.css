@@ -1,13 +1,1 @@
-/* Here is your custom css styles. */
-@font-face{
-    font-family: 'myFont';
-    src: url('../font/YeZiGongChangChuanQiuShaXingKai-2.ttf');	/*这里改为你准备好的字体文件*/
-}
-
-body{
-    font-family: 'myFont';
-}
-
-.nav-item a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
+@font-face{font-family:myFont;src:url(../font/YeZiGongChangChuanQiuShaXingKai-2.ttf)}body{font-family:myFont}.nav-item a:hover{background-color:rgba(255,255,255,.2)}

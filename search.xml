@@ -124,21 +124,6 @@
       </tags>
   </entry>
   <entry>
-    <title>气象数据体渲染</title>
-    <url>/2023/12/17/qi-xiang-shu-ju-ti-xuan-ran/</url>
-    <content><![CDATA[<p>气象数据的体渲染思路和上一篇<a href="https://tardius.life/2023/12/16/fu-ke-bo-lin-zao-sheng/">复刻柏林噪声</a>类似，都是采用三维纹理方式实现采样渲染的，但这里需要注意的是大范围的BoxGeometry在自定以的dc里面传入dimension，进行采样的时候会报错，可能是数据维度太大的问题，需要变换模型矩阵，编写自定义顶点数据或者使用BoxGeomtry构造顶点数据传入，着色器部份仍然可以参考<a href="https://threejs.org/examples/?q=perlin#webgl2_volume_perlin">Three.js</a>，数据来源于火星的<a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a>示例</p>
-<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2023/12/17/657e8a2348d3a.png"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2022/10/26/cesium-zhong-dui-3d-shu-ju-ji-jin-xing-ti-xuan-ran-zhan-shi/">Cesium中对3D数据集进行体渲染展示</a></p>
-<p><a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>气象数据 体渲染</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>模型不规则区域压平</title>
     <url>/2023/12/16/mo-xing-bu-gui-ze-qu-yu-ya-ping/</url>
     <content><![CDATA[<p>初版模型压平只实现了规则区域的压平效果，本文在此基础上优化，实现了不规则区域的压平，压平思路没有太大变化，主要是改进了范围判断的方法，使用射线法来判断模型坐标点是否在压平范围内，思路如下</p>
@@ -172,6 +157,21 @@
       </categories>
       <tags>
         <tag>体渲染 爆炸效果</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>气象数据体渲染</title>
+    <url>/2023/12/17/qi-xiang-shu-ju-ti-xuan-ran/</url>
+    <content><![CDATA[<p>气象数据的体渲染思路和上一篇<a href="https://tardius.life/2023/12/16/fu-ke-bo-lin-zao-sheng/">复刻柏林噪声</a>类似，都是采用三维纹理方式实现采样渲染的，但这里需要注意的是大范围的BoxGeometry在自定以的dc里面传入dimension，进行采样的时候会报错，可能是数据维度太大的问题，需要变换模型矩阵，编写自定义顶点数据或者使用BoxGeomtry构造顶点数据传入，着色器部份仍然可以参考<a href="https://threejs.org/examples/?q=perlin#webgl2_volume_perlin">Three.js</a>，数据来源于火星的<a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a>示例</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2023/12/17/657e8a2348d3a.png"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2022/10/26/cesium-zhong-dui-3d-shu-ju-ji-jin-xing-ti-xuan-ran-zhan-shi/">Cesium中对3D数据集进行体渲染展示</a></p>
+<p><a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>气象数据 体渲染</tag>
       </tags>
   </entry>
   <entry>
