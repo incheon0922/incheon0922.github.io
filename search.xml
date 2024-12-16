@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Drawcommand的批量实例化</title>
-    <url>/2024/12/16/drawcommand-de-pi-liang-shi-li-hua/</url>
-    <content><![CDATA[<p>最近遇到一个需求，后端在给定范围里面生成了几万个格子，我需要根据这些数据绘制三层同样的格子并在前端展示出来，三层近十万个格子如果用geometryInstances绘制的话会出现页面阻塞的情况，导致页面浏览效果不是很好，需要优化一下加载速度。考虑到这些格子出了颜色有区别，形状以及其他属性类似，因此可以使用更为底层的drawcommand绘制，以此提高加载效率</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、请求的数据里面有每个格子的范围，通过范围求出每个格子的中心点，根据中心点建立局部坐标系，之后对中心进行平移以及根据格子大小进行平移缩放<br>从而得到每个格子的局部坐标矩阵，如下图代码块展示<br> </p><pre class="language-markdown"><br>    <code class="language-bash"><br>    const positions = Cesium.Cartesian3.fromDegreesArray(geo.coordinates.flat(3));<br>    const center = Cesium.BoundingSphere.fromPoints(positions).center;<br>    const enuMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(center);<br>    Cesium.Matrix4.multiplyByTranslation(<br>        enuMatrix,<br>        new Cesium.Cartesian3(0, 0, config.bottomHeight + config.height * (i + 0.5)),<br>        enuMatrix<br>    );<br>    const scaleMat = Cesium.Matrix4.multiplyByScale(<br>        enuMatrix,<br>        new Cesium.Cartesian3(length, width, config.height),<br>        new Cesium.Matrix4()<br>    );<br>    </code><br> </pre><br>2、遍历每个格子并添加相关属性，将模型矩阵传入后续编写的CustomPrimitive中，CustomPrimitive的编写可以参考下文的参考链接<p></p>
-<p>3、在CustomPrimitive中创建vao，并计算所有数据的包围盒，不然可能会在拾取的时候出现拾取报错的问题，<br>最后添加至场景中渲染</p>
-<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2024/12/16/675f859d1d17f.png"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://github.com/MikesWei/wechat-blog/blob/master/Cesium/renderer/04.md">Cesium 高性能扩展之 DrawCommand（四）：阴影和实例化</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>drawcommand 实例化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>模型压平</title>
     <url>/2023/10/26/cesium-mo-xing-ya-ping/</url>
     <content><![CDATA[<p>模型压平用的是cesium的customShader来编写的，目前只是实现了规则矩形区域压平，以及后续的闪面优化，</p>
@@ -30,6 +14,40 @@
       </categories>
       <tags>
         <tag>3dtiles 规则区域 压平</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>三维热力图</title>
+    <url>/2023/10/06/cesium-san-wei-re-li-tu/</url>
+    <content><![CDATA[<p>使用cesium编写三维热力图效果，并在此基础上整合了水效果代码，当作优化一下可视化效果了hh</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>大致思路就是通过<a href="https://www.patrick-wied.at/static/heatmapjs/">heatmap.js</a>生成热力图，根据数据范围进行格网划分，并构造顶点数据，高度可以根据顶点在canvas上面的坐标读到的数值以及后续的高度系数做设置，从而达到高度拉伸的效果，之后使用构造好的顶点数据以及热力图贴图生成primitive，这里整合了cesium自带的水效果代码</p>
+<div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
+    <iframe src="//player.bilibili.com/player.html?aid=916885342&amp;bvid=BV1mu4y1x7FR&amp;cid=1292777550&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/qq_34447899/article/details/131959111?spm=1001.2101.3001.6650.5&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-5-131959111-blog-127901231.235%5Ev38%5Epc_relevant_sort&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-5-131959111-blog-127901231.235%5Ev38%5Epc_relevant_sort&amp;utm_relevant_index=7">Cesium 使用自定义几何实现立体热力图</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>热力图 三维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Drawcommand的批量实例化</title>
+    <url>/2024/12/16/drawcommand-de-pi-liang-shi-li-hua/</url>
+    <content><![CDATA[<p>最近遇到一个需求，后端在给定范围里面生成了几万个格子，我需要根据这些数据绘制三层同样的格子并在前端展示出来，三层近十万个格子如果用geometryInstances绘制的话会出现页面阻塞的情况，导致页面浏览效果不是很好，需要优化一下加载速度。考虑到这些格子出了颜色有区别，形状以及其他属性类似，因此可以使用更为底层的drawcommand绘制，以此提高加载效率</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、请求的数据里面有每个格子的范围，通过范围求出每个格子的中心点，根据中心点建立局部坐标系，之后对中心进行平移以及根据格子大小进行平移缩放<br>从而得到每个格子的局部坐标矩阵，如下图代码块展示<br> </p><pre class="language-markdown"><br>    <code class="language-bash"><br>    const positions = Cesium.Cartesian3.fromDegreesArray(geo.coordinates.flat(3));<br>    const center = Cesium.BoundingSphere.fromPoints(positions).center;<br>    const enuMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(center);<br>    Cesium.Matrix4.multiplyByTranslation(<br>        enuMatrix,<br>        new Cesium.Cartesian3(0, 0, config.bottomHeight + config.height * (i + 0.5)),<br>        enuMatrix<br>    );<br>    const scaleMat = Cesium.Matrix4.multiplyByScale(<br>        enuMatrix,<br>        new Cesium.Cartesian3(length, width, config.height),<br>        new Cesium.Matrix4()<br>    );<br>    </code><br> </pre><br>2、遍历每个格子并添加相关属性，将模型矩阵传入后续编写的CustomPrimitive中，CustomPrimitive的编写可以参考下文的参考链接<p></p>
+<p>3、在CustomPrimitive中创建vao，并计算所有数据的包围盒，不然可能会在拾取的时候出现拾取报错的问题，<br>最后添加至场景中渲染</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2024/12/16/675f859d1d17f.png"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://github.com/MikesWei/wechat-blog/blob/master/Cesium/renderer/04.md">Cesium 高性能扩展之 DrawCommand（四）：阴影和实例化</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>drawcommand 实例化</tag>
       </tags>
   </entry>
   <entry>
@@ -53,24 +71,6 @@
       </categories>
       <tags>
         <tag>点光源 webgl</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>三维热力图</title>
-    <url>/2023/10/06/cesium-san-wei-re-li-tu/</url>
-    <content><![CDATA[<p>使用cesium编写三维热力图效果，并在此基础上整合了水效果代码，当作优化一下可视化效果了hh</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>大致思路就是通过<a href="https://www.patrick-wied.at/static/heatmapjs/">heatmap.js</a>生成热力图，根据数据范围进行格网划分，并构造顶点数据，高度可以根据顶点在canvas上面的坐标读到的数值以及后续的高度系数做设置，从而达到高度拉伸的效果，之后使用构造好的顶点数据以及热力图贴图生成primitive，这里整合了cesium自带的水效果代码</p>
-<div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?aid=916885342&amp;bvid=BV1mu4y1x7FR&amp;cid=1292777550&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
-</div>
-
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/qq_34447899/article/details/131959111?spm=1001.2101.3001.6650.5&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-5-131959111-blog-127901231.235%5Ev38%5Epc_relevant_sort&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-5-131959111-blog-127901231.235%5Ev38%5Epc_relevant_sort&amp;utm_relevant_index=7">Cesium 使用自定义几何实现立体热力图</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>热力图 三维</tag>
       </tags>
   </entry>
   <entry>
@@ -191,24 +191,6 @@
       </tags>
   </entry>
   <entry>
-    <title>高度雾及流动效果实现</title>
-    <url>/2024/02/02/gao-du-wu-ji-liu-dong-xiao-guo-shi-xian/</url>
-    <content><![CDATA[<p>基于高度实现的雾效果，可以在一定程度上优化场景展示，本文基于cesium实现了一版线性高度雾并在此基础上添加了流动效果，大致思路如下</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、纹理坐标还原成世界坐标<br>2、计算世界坐标相对于地面的高程值，以及相机坐标与片元之间的距离，并根据高程值以及距离计算雾气浓度<br>3、根据雾气浓度混合场景及雾颜色<br>4、流动效果则是添加了一张雾的噪声图，纹理采样噪声值作为雾气浓度的扰动系数，从而实现流动</p>
-<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?aid=1850170815&amp;bvid=BV1Ap421f7rF&amp;cid=1427337377&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
-</div>
-
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2023/10/20/cesium-zhong-shi-xian-gao-du-wu-xiao-guo/">Cesium中实现高度雾效果</a><br><a href="https://blog.csdn.net/linjf520/article/details/105558069">Unity Shader PostProcessing - 11 - Depth Fog/Height Fog - 雾效/深度雾效/高度雾/深度+高度雾</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>后处理 高度雾</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>阴影率分析</title>
     <url>/2024/01/04/yin-ying-lu-fen-xi/</url>
     <content><![CDATA[<p>cesium阴影率分析的思路大概有两种，一是开启光照并生成格网点，时钟每tick一次记录太阳的位置，构造格网点到太阳位置的射线，通过射线求交的方法计算累计光照量，但这种方法比较耗时间且复杂，二是通过shadowMap来计算，本文采用的是第二种方式，这种方式可以极大的提升计算效率。大致思路如下</p>
@@ -224,6 +206,24 @@
       </categories>
       <tags>
         <tag>阴影 纹理 帧缓冲</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>高度雾及流动效果实现</title>
+    <url>/2024/02/02/gao-du-wu-ji-liu-dong-xiao-guo-shi-xian/</url>
+    <content><![CDATA[<p>基于高度实现的雾效果，可以在一定程度上优化场景展示，本文基于cesium实现了一版线性高度雾并在此基础上添加了流动效果，大致思路如下</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、纹理坐标还原成世界坐标<br>2、计算世界坐标相对于地面的高程值，以及相机坐标与片元之间的距离，并根据高程值以及距离计算雾气浓度<br>3、根据雾气浓度混合场景及雾颜色<br>4、流动效果则是添加了一张雾的噪声图，纹理采样噪声值作为雾气浓度的扰动系数，从而实现流动</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
+    <iframe src="//player.bilibili.com/player.html?aid=1850170815&amp;bvid=BV1Ap421f7rF&amp;cid=1427337377&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2023/10/20/cesium-zhong-shi-xian-gao-du-wu-xiao-guo/">Cesium中实现高度雾效果</a><br><a href="https://blog.csdn.net/linjf520/article/details/105558069">Unity Shader PostProcessing - 11 - Depth Fog/Height Fog - 雾效/深度雾效/高度雾/深度+高度雾</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>后处理 高度雾</tag>
       </tags>
   </entry>
 </search>
