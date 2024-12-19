@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>模型压平</title>
-    <url>/2023/10/26/cesium-mo-xing-ya-ping/</url>
-    <content><![CDATA[<p>模型压平用的是cesium的customShader来编写的，目前只是实现了规则矩形区域压平，以及后续的闪面优化，</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、将矩形坐标范围通过customShader传入到着色器中<br>2、矩形坐标转为模型坐标，并将其与模型坐标比较，将范围内模型进行压平<br>压平后可能会出现闪面的情况，原因可能是深度导致的，我这里是选择差异化压平参数</p>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>压平效果如图所示：</p>
-<p><img src="https://bu.dusays.com/2023/10/26/653a349fea9db.png"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/xtfge0915/article/details/130622016">Cesium从入门到放弃：模型压平</a></p>
+    <title>Drawcommand的批量实例化</title>
+    <url>/2024/12/16/drawcommand-de-pi-liang-shi-li-hua/</url>
+    <content><![CDATA[<p>最近遇到一个需求，后端在给定范围里面生成了几万个格子，我需要根据这些数据绘制三层同样的格子并在前端展示出来，三层近十万个格子如果用geometryInstances绘制的话会出现页面阻塞的情况，导致页面浏览效果不是很好，需要优化一下加载速度。考虑到这些格子出了颜色有区别，形状以及其他属性类似，因此可以使用更为底层的drawcommand绘制，以此提高加载效率</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、请求的数据里面有每个格子的范围，通过范围求出每个格子的中心点，根据中心点建立局部坐标系，之后对中心进行平移以及根据格子大小进行平移缩放<br>从而得到每个格子的局部坐标矩阵，如下图代码块展示<br> </p><pre class="language-markdown"><br>    <code class="language-bash"><br>    const positions = Cesium.Cartesian3.fromDegreesArray(geo.coordinates.flat(3));<br>    const center = Cesium.BoundingSphere.fromPoints(positions).center;<br>    const enuMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(center);<br>    Cesium.Matrix4.multiplyByTranslation(<br>        enuMatrix,<br>        new Cesium.Cartesian3(0, 0, config.bottomHeight + config.height * (i + 0.5)),<br>        enuMatrix<br>    );<br>    const scaleMat = Cesium.Matrix4.multiplyByScale(<br>        enuMatrix,<br>        new Cesium.Cartesian3(length, width, config.height),<br>        new Cesium.Matrix4()<br>    );<br>    </code><br> </pre><br>2、遍历每个格子并添加相关属性，将模型矩阵传入后续编写的CustomPrimitive中，CustomPrimitive的编写可以参考下文的参考链接<p></p>
+<p>3、在CustomPrimitive中创建vao，并计算所有数据的包围盒，不然可能会在拾取的时候出现拾取报错的问题，<br>最后添加至场景中渲染</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2024/12/16/675f859d1d17f.png"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://github.com/MikesWei/wechat-blog/blob/master/Cesium/renderer/04.md">Cesium 高性能扩展之 DrawCommand（四）：阴影和实例化</a></p>
 ]]></content>
       <categories>
         <category>cesium</category>
       </categories>
       <tags>
-        <tag>3dtiles 规则区域 压平</tag>
+        <tag>drawcommand 实例化</tag>
       </tags>
   </entry>
   <entry>
@@ -32,22 +32,6 @@
       </categories>
       <tags>
         <tag>热力图 三维</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Drawcommand的批量实例化</title>
-    <url>/2024/12/16/drawcommand-de-pi-liang-shi-li-hua/</url>
-    <content><![CDATA[<p>最近遇到一个需求，后端在给定范围里面生成了几万个格子，我需要根据这些数据绘制三层同样的格子并在前端展示出来，三层近十万个格子如果用geometryInstances绘制的话会出现页面阻塞的情况，导致页面浏览效果不是很好，需要优化一下加载速度。考虑到这些格子出了颜色有区别，形状以及其他属性类似，因此可以使用更为底层的drawcommand绘制，以此提高加载效率</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、请求的数据里面有每个格子的范围，通过范围求出每个格子的中心点，根据中心点建立局部坐标系，之后对中心进行平移以及根据格子大小进行平移缩放<br>从而得到每个格子的局部坐标矩阵，如下图代码块展示<br> </p><pre class="language-markdown"><br>    <code class="language-bash"><br>    const positions = Cesium.Cartesian3.fromDegreesArray(geo.coordinates.flat(3));<br>    const center = Cesium.BoundingSphere.fromPoints(positions).center;<br>    const enuMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(center);<br>    Cesium.Matrix4.multiplyByTranslation(<br>        enuMatrix,<br>        new Cesium.Cartesian3(0, 0, config.bottomHeight + config.height * (i + 0.5)),<br>        enuMatrix<br>    );<br>    const scaleMat = Cesium.Matrix4.multiplyByScale(<br>        enuMatrix,<br>        new Cesium.Cartesian3(length, width, config.height),<br>        new Cesium.Matrix4()<br>    );<br>    </code><br> </pre><br>2、遍历每个格子并添加相关属性，将模型矩阵传入后续编写的CustomPrimitive中，CustomPrimitive的编写可以参考下文的参考链接<p></p>
-<p>3、在CustomPrimitive中创建vao，并计算所有数据的包围盒，不然可能会在拾取的时候出现拾取报错的问题，<br>最后添加至场景中渲染</p>
-<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2024/12/16/675f859d1d17f.png"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://github.com/MikesWei/wechat-blog/blob/master/Cesium/renderer/04.md">Cesium 高性能扩展之 DrawCommand（四）：阴影和实例化</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>drawcommand 实例化</tag>
       </tags>
   </entry>
   <entry>
@@ -71,6 +55,22 @@
       </categories>
       <tags>
         <tag>点光源 webgl</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>模型压平</title>
+    <url>/2023/10/26/cesium-mo-xing-ya-ping/</url>
+    <content><![CDATA[<p>模型压平用的是cesium的customShader来编写的，目前只是实现了规则矩形区域压平，以及后续的闪面优化，</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、将矩形坐标范围通过customShader传入到着色器中<br>2、矩形坐标转为模型坐标，并将其与模型坐标比较，将范围内模型进行压平<br>压平后可能会出现闪面的情况，原因可能是深度导致的，我这里是选择差异化压平参数</p>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>压平效果如图所示：</p>
+<p><img src="https://bu.dusays.com/2023/10/26/653a349fea9db.png"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/xtfge0915/article/details/130622016">Cesium从入门到放弃：模型压平</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>3dtiles 规则区域 压平</tag>
       </tags>
   </entry>
   <entry>
@@ -120,6 +120,21 @@
       </tags>
   </entry>
   <entry>
+    <title>气象数据体渲染</title>
+    <url>/2023/12/17/qi-xiang-shu-ju-ti-xuan-ran/</url>
+    <content><![CDATA[<p>气象数据的体渲染思路和上一篇<a href="https://coderrc.cn/2023/12/16/fu-ke-bo-lin-zao-sheng/">复刻柏林噪声</a>类似，都是采用三维纹理方式实现采样渲染的，但这里需要注意的是大范围的BoxGeometry在自定以的dc里面传入dimension，进行采样的时候会报错，可能是数据维度太大的问题，需要变换模型矩阵，编写自定义顶点数据或者使用BoxGeomtry构造顶点数据传入，着色器部份仍然可以参考<a href="https://threejs.org/examples/?q=perlin#webgl2_volume_perlin">Three.js</a>，数据来源于火星的<a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a>示例</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2023/12/17/657e8a2348d3a.png"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2022/10/26/cesium-zhong-dui-3d-shu-ju-ji-jin-xing-ti-xuan-ran-zhan-shi/">Cesium中对3D数据集进行体渲染展示</a></p>
+<p><a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>气象数据 体渲染</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>模型不规则区域压平</title>
     <url>/2023/12/16/mo-xing-bu-gui-ze-qu-yu-ya-ping/</url>
     <content><![CDATA[<p>初版模型压平只实现了规则区域的压平效果，本文在此基础上优化，实现了不规则区域的压平，压平思路没有太大变化，主要是改进了范围判断的方法，使用射线法来判断模型坐标点是否在压平范围内，思路如下</p>
@@ -134,21 +149,6 @@
       </categories>
       <tags>
         <tag>3dtiles 不规则区域 压平</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>气象数据体渲染</title>
-    <url>/2023/12/17/qi-xiang-shu-ju-ti-xuan-ran/</url>
-    <content><![CDATA[<p>气象数据的体渲染思路和上一篇<a href="https://coderrc.cn/2023/12/16/fu-ke-bo-lin-zao-sheng/">复刻柏林噪声</a>类似，都是采用三维纹理方式实现采样渲染的，但这里需要注意的是大范围的BoxGeometry在自定以的dc里面传入dimension，进行采样的时候会报错，可能是数据维度太大的问题，需要变换模型矩阵，编写自定义顶点数据或者使用BoxGeomtry构造顶点数据传入，着色器部份仍然可以参考<a href="https://threejs.org/examples/?q=perlin#webgl2_volume_perlin">Three.js</a>，数据来源于火星的<a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a>示例</p>
-<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2023/12/17/657e8a2348d3a.png"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2022/10/26/cesium-zhong-dui-3d-shu-ju-ji-jin-xing-ti-xuan-ran-zhan-shi/">Cesium中对3D数据集进行体渲染展示</a></p>
-<p><a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>气象数据 体渲染</tag>
       </tags>
   </entry>
   <entry>
