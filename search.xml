@@ -17,6 +17,22 @@
       </tags>
   </entry>
   <entry>
+    <title>模型压平</title>
+    <url>/2023/10/26/cesium-mo-xing-ya-ping/</url>
+    <content><![CDATA[<p>模型压平用的是cesium的customShader来编写的，目前只是实现了规则矩形区域压平，以及后续的闪面优化，</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、将矩形坐标范围通过customShader传入到着色器中<br>2、矩形坐标转为模型坐标，并将其与模型坐标比较，将范围内模型进行压平<br>压平后可能会出现闪面的情况，原因可能是深度导致的，我这里是选择差异化压平参数</p>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>压平效果如图所示：</p>
+<p><img src="https://bu.dusays.com/2023/10/26/653a349fea9db.png"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/xtfge0915/article/details/130622016">Cesium从入门到放弃：模型压平</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>3dtiles 规则区域 压平</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>三维热力图</title>
     <url>/2023/10/06/cesium-san-wei-re-li-tu/</url>
     <content><![CDATA[<p>使用cesium编写三维热力图效果，并在此基础上整合了水效果代码，当作优化一下可视化效果了hh</p>
@@ -58,22 +74,6 @@
       </tags>
   </entry>
   <entry>
-    <title>模型压平</title>
-    <url>/2023/10/26/cesium-mo-xing-ya-ping/</url>
-    <content><![CDATA[<p>模型压平用的是cesium的customShader来编写的，目前只是实现了规则矩形区域压平，以及后续的闪面优化，</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、将矩形坐标范围通过customShader传入到着色器中<br>2、矩形坐标转为模型坐标，并将其与模型坐标比较，将范围内模型进行压平<br>压平后可能会出现闪面的情况，原因可能是深度导致的，我这里是选择差异化压平参数</p>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>压平效果如图所示：</p>
-<p><img src="https://bu.dusays.com/2023/10/26/653a349fea9db.png"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/xtfge0915/article/details/130622016">Cesium从入门到放弃：模型压平</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>3dtiles 规则区域 压平</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>离屏渲染</title>
     <url>/2023/09/26/cesium-chi-ping-xuan-ran/</url>
     <content><![CDATA[<p>离屏渲染可以实现类似于小地图、飞行浏览的效果，本文通过帧缓冲以及webgl绘制纹理的方式实现将相机某个视角所看到的场景绘制到另一个canvas上</p>
@@ -86,6 +86,26 @@
       </categories>
       <tags>
         <tag>帧缓冲 canvas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>三维风场实现</title>
+    <url>/2025/01/03/san-wei-feng-chang-shi-xian/</url>
+    <content><![CDATA[<p>当前风场数据在cesium中展示有比较多的实现方法，例如可以使用<a href="https://github.com/RaymanNg/3D-Wind-Field">3D-Wind-Field</a>使用自定义DrawCommand绘制，也可以使用<a href="https://github.com/onaci/leaflet-velocity">leaflet-velocity</a>，基于canvas绘制来实现可视化效果，本文基于前者代码并做了一些改动的情况下，实现风场数据的三维展示，大致思路如下</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、获取并解析nc格式的风场数据，本文数据来源网站是<a href="https://nomads.ncep.noaa.gov/">NCEP</a>，数据格式为间隔0.5度<br>2、解析nc风场数据，可以使用<a href="https://github.com/danwild/wind-js-server">wind-js-server</a>进行解析，具体解析方式可以参考下方链接<br>2、采样当前区域的高程并生成高度纹理图，传入绘制的drawcommand中<br>3、根据当前的位置采样高度纹理图获取高度值，并根据高度值不同分层设色绘制风场流动线</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
+    <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=113123667282867&amp;bvid=BV1yh4ne4EG9&amp;cid=25835733082&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+
+
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/KK_bluebule/article/details/128702207">Cesium实战记录（八）三维风场+风速热力图（水平+垂直）</a><br><a href="https://www.bilibili.com/video/BV1614y1T7y3/?spm_id_from=333.337.search-card.all.click&amp;vd_source=48e433b69838c457028e08f37a108cba">风场地图数据获取、处理、可视化</a><br><a href="http://git.jiayuepowertech.com:9022/zy/wind-js-server/src/master/%E8%AF%B4%E6%98%8E/%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.MD">wind-js-server的windows配置</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>风场 三维 nc数据</tag>
       </tags>
   </entry>
   <entry>
