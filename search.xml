@@ -94,7 +94,7 @@
     <content><![CDATA[<p>当前风场数据在cesium中展示有比较多的实现方法，例如可以使用<a href="https://github.com/RaymanNg/3D-Wind-Field">3D-Wind-Field</a>使用自定义DrawCommand绘制，也可以使用<a href="https://github.com/onaci/leaflet-velocity">leaflet-velocity</a>，基于canvas绘制来实现可视化效果，本文基于前者代码并做了一些改动的情况下，实现风场数据的三维展示，大致思路如下</p>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、获取并解析nc格式的风场数据，本文数据来源网站是<a href="https://nomads.ncep.noaa.gov/">NCEP</a>，数据格式为间隔0.5度<br>2、解析nc风场数据，可以使用<a href="https://github.com/danwild/wind-js-server">wind-js-server</a>进行解析，具体解析方式可以参考下方链接<br>2、采样当前区域的高程并生成高度纹理图，传入绘制的drawcommand中<br>3、根据当前的位置采样高度纹理图获取高度值，并根据高度值不同分层设色绘制风场流动线</p>
 <h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=113123667282867&amp;bvid=BV1yh4ne4EG9&amp;cid=25835733082&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+    <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=113763634250263&amp;bvid=BV1V162YcEqM&amp;cid=27678606144&amp;p=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
 </div>
 
 
@@ -106,6 +106,21 @@
       </categories>
       <tags>
         <tag>风场 三维 nc数据</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>后处理实现积雪效果</title>
+    <url>/2024/02/01/hou-chu-li-shi-xian-ji-xue-xiao-guo/</url>
+    <content><![CDATA[<p>cesium有两种思路实现积雪效果，一种渲染在模型等上面，另外一种则是通过后处理的方式。两种方式原理基本相同，但是效果范围以及修改方式有差别，各有取舍吧，本文采用的是后处理方式实现积雪效果</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、根据纹理坐标还原世界坐标，将其单位化当作片元的上方向向量<br>2、计算每个像元在世界坐标下的法线<br>3、传入积雪影响因子，与得到的上方向向量和法线点乘值相乘来调节积雪程度</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2024/02/01/65bb9824c0370.png"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2022/09/16/cesium-zhong-shi-xian-xia-xue-fu-gai-xiao-guo/">Cesium中实现下雪覆盖效果</a><br><a href="https://www.guozk.top/posts/%E7%A7%AF%E9%9B%AA%E8%A6%86%E7%9B%96%E6%95%88%E6%9E%9C/">Cesium积雪效果</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>后处理 积雪</tag>
       </tags>
   </entry>
   <entry>
@@ -122,21 +137,6 @@
       </categories>
       <tags>
         <tag>柏林噪声 体渲染</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>后处理实现积雪效果</title>
-    <url>/2024/02/01/hou-chu-li-shi-xian-ji-xue-xiao-guo/</url>
-    <content><![CDATA[<p>cesium有两种思路实现积雪效果，一种渲染在模型等上面，另外一种则是通过后处理的方式。两种方式原理基本相同，但是效果范围以及修改方式有差别，各有取舍吧，本文采用的是后处理方式实现积雪效果</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、根据纹理坐标还原世界坐标，将其单位化当作片元的上方向向量<br>2、计算每个像元在世界坐标下的法线<br>3、传入积雪影响因子，与得到的上方向向量和法线点乘值相乘来调节积雪程度</p>
-<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2024/02/01/65bb9824c0370.png"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2022/09/16/cesium-zhong-shi-xian-xia-xue-fu-gai-xiao-guo/">Cesium中实现下雪覆盖效果</a><br><a href="https://www.guozk.top/posts/%E7%A7%AF%E9%9B%AA%E8%A6%86%E7%9B%96%E6%95%88%E6%9E%9C/">Cesium积雪效果</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>后处理 积雪</tag>
       </tags>
   </entry>
   <entry>
@@ -169,26 +169,6 @@
       </categories>
       <tags>
         <tag>气象数据 体渲染</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>流体可视化</title>
-    <url>/2024/09/12/liu-ti-ke-shi-hua/</url>
-    <content><![CDATA[<p>基于cesium实现的流体渲染效果,shaderToy上面有很多关于流体渲染相关的例子，将这些效果移植到cesium上面可以在一定程度上增强水体淹没等三维可视化展示效果。本文结合网上各位大佬的例子，基于高度图采样实现流体渲染，大致思路如下</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、采样生成所选区域的高度图，并将高度图传入到一张渲染高度的帧缓冲中，其中高度可以通过Cesium自带的高程采样api来获取，也可以通过离屏渲染方式获得<br>2、创建2张计算高度纹理缓冲区和2张计算水流量的缓冲区<br>3、选择其中一张高度纹理，采样地形高度和水位高度进行渲染</p>
-<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=113123667282867&amp;bvid=BV1yh4ne4EG9&amp;cid=25835733082&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
-</div>
-
-
-
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2024/01/26/cesium-zhong-shi-xian-liu-ti-mo-ni">Cesium中实现流体模拟</a><br><a href="https://www.bilibili.com/video/BV1hevUeqEpN/?spm_id_from=333.999.0.0&amp;vd_source=48e433b69838c457028e08f37a108cba">CesiumJS 流体仿真 WebGL流体仿真 Fluid 水淹分析 山洪模拟</a><br><a href="https://www.bilibili.com/video/BV1o1421y7o6/?spm_id_from=333.337.search-card.all.click&amp;vd_source=48e433b69838c457028e08f37a108cba">Web3D | Cesium开源特效 | ShaderToy流体特效迁移代码</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>体渲染 流体可视化 帧缓冲</tag>
       </tags>
   </entry>
   <entry>
@@ -226,6 +206,26 @@
       </categories>
       <tags>
         <tag>阴影 纹理 帧缓冲</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>流体可视化</title>
+    <url>/2024/09/12/liu-ti-ke-shi-hua/</url>
+    <content><![CDATA[<p>基于cesium实现的流体渲染效果,shaderToy上面有很多关于流体渲染相关的例子，将这些效果移植到cesium上面可以在一定程度上增强水体淹没等三维可视化展示效果。本文结合网上各位大佬的例子，基于高度图采样实现流体渲染，大致思路如下</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、采样生成所选区域的高度图，并将高度图传入到一张渲染高度的帧缓冲中，其中高度可以通过Cesium自带的高程采样api来获取，也可以通过离屏渲染方式获得<br>2、创建2张计算高度纹理缓冲区和2张计算水流量的缓冲区<br>3、选择其中一张高度纹理，采样地形高度和水位高度进行渲染</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
+    <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=113123667282867&amp;bvid=BV1yh4ne4EG9&amp;cid=25835733082&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+
+
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2024/01/26/cesium-zhong-shi-xian-liu-ti-mo-ni">Cesium中实现流体模拟</a><br><a href="https://www.bilibili.com/video/BV1hevUeqEpN/?spm_id_from=333.999.0.0&amp;vd_source=48e433b69838c457028e08f37a108cba">CesiumJS 流体仿真 WebGL流体仿真 Fluid 水淹分析 山洪模拟</a><br><a href="https://www.bilibili.com/video/BV1o1421y7o6/?spm_id_from=333.337.search-card.all.click&amp;vd_source=48e433b69838c457028e08f37a108cba">Web3D | Cesium开源特效 | ShaderToy流体特效迁移代码</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>体渲染 流体可视化 帧缓冲</tag>
       </tags>
   </entry>
   <entry>
