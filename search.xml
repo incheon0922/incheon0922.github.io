@@ -17,22 +17,6 @@
       </tags>
   </entry>
   <entry>
-    <title>模型压平</title>
-    <url>/2023/10/26/cesium-mo-xing-ya-ping/</url>
-    <content><![CDATA[<p>模型压平用的是cesium的customShader来编写的，目前只是实现了规则矩形区域压平，以及后续的闪面优化，</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、将矩形坐标范围通过customShader传入到着色器中<br>2、矩形坐标转为模型坐标，并将其与模型坐标比较，将范围内模型进行压平<br>压平后可能会出现闪面的情况，原因可能是深度导致的，我这里是选择差异化压平参数</p>
-<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>压平效果如图所示：</p>
-<p><img src="https://bu.dusays.com/2023/10/26/653a349fea9db.png"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/xtfge0915/article/details/130622016">Cesium从入门到放弃：模型压平</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>3dtiles 规则区域 压平</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>三维热力图</title>
     <url>/2023/10/06/cesium-san-wei-re-li-tu/</url>
     <content><![CDATA[<p>使用cesium编写三维热力图效果，并在此基础上整合了水效果代码，当作优化一下可视化效果了hh</p>
@@ -48,6 +32,22 @@
       </categories>
       <tags>
         <tag>热力图 三维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>模型压平</title>
+    <url>/2023/10/26/cesium-mo-xing-ya-ping/</url>
+    <content><![CDATA[<p>模型压平用的是cesium的customShader来编写的，目前只是实现了规则矩形区域压平，以及后续的闪面优化，</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、将矩形坐标范围通过customShader传入到着色器中<br>2、矩形坐标转为模型坐标，并将其与模型坐标比较，将范围内模型进行压平<br>压平后可能会出现闪面的情况，原因可能是深度导致的，我这里是选择差异化压平参数</p>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>压平效果如图所示：</p>
+<p><img src="https://bu.dusays.com/2023/10/26/653a349fea9db.png"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/xtfge0915/article/details/130622016">Cesium从入门到放弃：模型压平</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>3dtiles 规则区域 压平</tag>
       </tags>
   </entry>
   <entry>
@@ -71,6 +71,20 @@
       </categories>
       <tags>
         <tag>点光源 webgl</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>three获取地形深度图</title>
+    <url>/2025/06/19/three-huo-qu-di-xing-shen-du-tu/</url>
+    <content><![CDATA[<p>相较于 cesium 将深度纹理数据绘制到 pickFramebuffer 里面，使用 context.readPixels()获取深度数据， three.js 没有相对应的操作直接读取 renderTarget 的深度纹理，需要将深度纹理转为颜色通道渲染再获取。本文即是通过该种方式渲染地形数据，获取到深度纹理并渲染出来。大致思路如下</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、生成场景地形数据并渲染<br>2、创建 renderTarget，并设置深度纹理相关参数<br>3、创建深度渲染场景，将深度纹理作为材质渲染到 mesh 上<br>4、依次渲染主场景以及深度纹理场景</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2025/06/19/6853c2ac986f8.png"></p>
+]]></content>
+      <categories>
+        <category>three</category>
+      </categories>
+      <tags>
+        <tag>three terrain 深度图</tag>
       </tags>
   </entry>
   <entry>
@@ -172,6 +186,26 @@
       </tags>
   </entry>
   <entry>
+    <title>流体可视化</title>
+    <url>/2024/09/12/liu-ti-ke-shi-hua/</url>
+    <content><![CDATA[<p>基于cesium实现的流体渲染效果,shaderToy上面有很多关于流体渲染相关的例子，将这些效果移植到cesium上面可以在一定程度上增强水体淹没等三维可视化展示效果。本文结合网上各位大佬的例子，基于高度图采样实现流体渲染，大致思路如下</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、采样生成所选区域的高度图，并将高度图传入到一张渲染高度的帧缓冲中，其中高度可以通过Cesium自带的高程采样api来获取，也可以通过离屏渲染方式获得<br>2、创建2张计算高度纹理缓冲区和2张计算水流量的缓冲区<br>3、选择其中一张高度纹理，采样地形高度和水位高度进行渲染</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
+    <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=113123667282867&amp;bvid=BV1yh4ne4EG9&amp;cid=25835733082&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+
+
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2024/01/26/cesium-zhong-shi-xian-liu-ti-mo-ni">Cesium中实现流体模拟</a><br><a href="https://www.bilibili.com/video/BV1hevUeqEpN/?spm_id_from=333.999.0.0&amp;vd_source=48e433b69838c457028e08f37a108cba">CesiumJS 流体仿真 WebGL流体仿真 Fluid 水淹分析 山洪模拟</a><br><a href="https://www.bilibili.com/video/BV1o1421y7o6/?spm_id_from=333.337.search-card.all.click&amp;vd_source=48e433b69838c457028e08f37a108cba">Web3D | Cesium开源特效 | ShaderToy流体特效迁移代码</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>体渲染 流体可视化 帧缓冲</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>爆炸效果实现</title>
     <url>/2024/05/30/bao-zha-xiao-guo-shi-xian/</url>
     <content><![CDATA[<p>基于cesium实现的体渲染爆炸效果</p>
@@ -206,26 +240,6 @@
       </categories>
       <tags>
         <tag>阴影 纹理 帧缓冲</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>流体可视化</title>
-    <url>/2024/09/12/liu-ti-ke-shi-hua/</url>
-    <content><![CDATA[<p>基于cesium实现的流体渲染效果,shaderToy上面有很多关于流体渲染相关的例子，将这些效果移植到cesium上面可以在一定程度上增强水体淹没等三维可视化展示效果。本文结合网上各位大佬的例子，基于高度图采样实现流体渲染，大致思路如下</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、采样生成所选区域的高度图，并将高度图传入到一张渲染高度的帧缓冲中，其中高度可以通过Cesium自带的高程采样api来获取，也可以通过离屏渲染方式获得<br>2、创建2张计算高度纹理缓冲区和2张计算水流量的缓冲区<br>3、选择其中一张高度纹理，采样地形高度和水位高度进行渲染</p>
-<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=113123667282867&amp;bvid=BV1yh4ne4EG9&amp;cid=25835733082&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
-</div>
-
-
-
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2024/01/26/cesium-zhong-shi-xian-liu-ti-mo-ni">Cesium中实现流体模拟</a><br><a href="https://www.bilibili.com/video/BV1hevUeqEpN/?spm_id_from=333.999.0.0&amp;vd_source=48e433b69838c457028e08f37a108cba">CesiumJS 流体仿真 WebGL流体仿真 Fluid 水淹分析 山洪模拟</a><br><a href="https://www.bilibili.com/video/BV1o1421y7o6/?spm_id_from=333.337.search-card.all.click&amp;vd_source=48e433b69838c457028e08f37a108cba">Web3D | Cesium开源特效 | ShaderToy流体特效迁移代码</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>体渲染 流体可视化 帧缓冲</tag>
       </tags>
   </entry>
   <entry>
