@@ -17,24 +17,6 @@
       </tags>
   </entry>
   <entry>
-    <title>三维热力图</title>
-    <url>/2023/10/06/cesium-san-wei-re-li-tu/</url>
-    <content><![CDATA[<p>使用cesium编写三维热力图效果，并在此基础上整合了水效果代码，当作优化一下可视化效果了hh</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>大致思路就是通过<a href="https://www.patrick-wied.at/static/heatmapjs/">heatmap.js</a>生成热力图，根据数据范围进行格网划分，并构造顶点数据，高度可以根据顶点在canvas上面的坐标读到的数值以及后续的高度系数做设置，从而达到高度拉伸的效果，之后使用构造好的顶点数据以及热力图贴图生成primitive，这里整合了cesium自带的水效果代码</p>
-<div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?aid=916885342&amp;bvid=BV1mu4y1x7FR&amp;cid=1292777550&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
-</div>
-
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/qq_34447899/article/details/131959111?spm=1001.2101.3001.6650.5&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-5-131959111-blog-127901231.235%5Ev38%5Epc_relevant_sort&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-5-131959111-blog-127901231.235%5Ev38%5Epc_relevant_sort&amp;utm_relevant_index=7">Cesium 使用自定义几何实现立体热力图</a></p>
-]]></content>
-      <categories>
-        <category>cesium</category>
-      </categories>
-      <tags>
-        <tag>热力图 三维</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>模型压平</title>
     <url>/2023/10/26/cesium-mo-xing-ya-ping/</url>
     <content><![CDATA[<p>模型压平用的是cesium的customShader来编写的，目前只是实现了规则矩形区域压平，以及后续的闪面优化，</p>
@@ -74,6 +56,38 @@
       </tags>
   </entry>
   <entry>
+    <title>三维热力图</title>
+    <url>/2023/10/06/cesium-san-wei-re-li-tu/</url>
+    <content><![CDATA[<p>使用cesium编写三维热力图效果，并在此基础上整合了水效果代码，当作优化一下可视化效果了hh</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>大致思路就是通过<a href="https://www.patrick-wied.at/static/heatmapjs/">heatmap.js</a>生成热力图，根据数据范围进行格网划分，并构造顶点数据，高度可以根据顶点在canvas上面的坐标读到的数值以及后续的高度系数做设置，从而达到高度拉伸的效果，之后使用构造好的顶点数据以及热力图贴图生成primitive，这里整合了cesium自带的水效果代码</p>
+<div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
+    <iframe src="//player.bilibili.com/player.html?aid=916885342&amp;bvid=BV1mu4y1x7FR&amp;cid=1292777550&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.csdn.net/qq_34447899/article/details/131959111?spm=1001.2101.3001.6650.5&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-5-131959111-blog-127901231.235%5Ev38%5Epc_relevant_sort&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-5-131959111-blog-127901231.235%5Ev38%5Epc_relevant_sort&amp;utm_relevant_index=7">Cesium 使用自定义几何实现立体热力图</a></p>
+]]></content>
+      <categories>
+        <category>cesium</category>
+      </categories>
+      <tags>
+        <tag>热力图 三维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>three可视化地形深度图</title>
+    <url>/2025/06/25/three-ke-shi-hua-di-xing-shen-du-tu/</url>
+    <content><![CDATA[<p>深度图在可视化应用中有很多方面，比如地形、阴影等。本文结合获取的地形深度图以及体渲染相关的知识，<br>将获取到的地形深度值还原为地形图并展示出来，借此为后续的流体渲染提供一定的参考。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、创建覆盖渲染范围的正射相机，获取深度图。这里注意相机近/远裁剪面，<br>设置值会影响深度值精度，因此要选择合适的值。<br>2、创建帧缓冲 renderTarget，并设置深度纹理相关参数，渲染写入深度数值<br>3、采样深度纹理图，调整合适的步长和阈值，渲染地形</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2025/06/25/685ba64aaedf1.png"></p>
+]]></content>
+      <categories>
+        <category>three</category>
+      </categories>
+      <tags>
+        <tag>three terrain 深度图</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>离屏渲染</title>
     <url>/2023/09/26/cesium-chi-ping-xuan-ran/</url>
     <content><![CDATA[<p>离屏渲染可以实现类似于小地图、飞行浏览的效果，本文通过帧缓冲以及webgl绘制纹理的方式实现将相机某个视角所看到的场景绘制到另一个canvas上</p>
@@ -86,6 +100,20 @@
       </categories>
       <tags>
         <tag>帧缓冲 canvas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>three流体</title>
+    <url>/2025/07/21/three-liu-ti/</url>
+    <content><![CDATA[<p>  之前参考各位大佬的例子，在cesium上面完成了流体的迁移。但总觉得如果在three里面还没完成，会觉得少了点什么。<br>  于是在经过长时间的研究之后，终于折腾出来一个版本。实现原理与cesium的不尽相同。<br>  之前体渲染没有考虑深度的原因，在某些视角会产生流体遮挡实景的情况。显然，渲染顺序是有问题的。<br>  因此，这版换了另一种方式，非体渲染。至于使用体渲染结合场景深度，我暂时还没找到比较合适的方式，就留给后续研究研究吧。<br>  实现思路大致如下：</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、场景生成高度地形，创建正射相机，获取当前场景地形的深度图（左下角展示图）<br>2、创建四张帧缓冲，分别计算水流、水深高度，这里帧缓冲实现和cesium迁移的基本相同，同时选择一张水深高度展示，<br>验证当前的流体结果<br>3、创建一个plane，选择其中一张高度纹理，采样高度值，并在顶点着色器里面根据采样的值做高度偏移，，<br>4、片元着色器里面根据高度值不同，设置颜色</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.bilibili.com/video/BV1gxskeWEFx/?spm_id_from=333.337.search-card.all.click&amp;vd_source=48e433b69838c457028e08f37a108cba">ThreeJS 流体模拟 WebGL Fluid ThreeJS水体开源预告</a></p>
+]]></content>
+      <categories>
+        <category>three</category>
+      </categories>
+      <tags>
+        <tag>three 多缓冲 流体 webgl</tag>
       </tags>
   </entry>
   <entry>
@@ -140,20 +168,6 @@
       </tags>
   </entry>
   <entry>
-    <title>three可视化地形深度图</title>
-    <url>/2025/06/25/three-ke-shi-hua-di-xing-shen-du-tu/</url>
-    <content><![CDATA[<p>深度图在可视化应用中有很多方面，比如地形、阴影等。本文结合获取的地形深度图以及体渲染相关的知识，<br>将获取到的地形深度值还原为地形图并展示出来，借此为后续的流体渲染提供一定的参考。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、创建覆盖渲染范围的正射相机，获取深度图。这里注意相机近/远裁剪面，<br>设置值会影响深度值精度，因此要选择合适的值。<br>2、创建帧缓冲 renderTarget，并设置深度纹理相关参数，渲染写入深度数值<br>3、采样深度纹理图，调整合适的步长和阈值，渲染地形</p>
-<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2025/06/25/685ba64aaedf1.png"></p>
-]]></content>
-      <categories>
-        <category>three</category>
-      </categories>
-      <tags>
-        <tag>three terrain 深度图</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>模型不规则区域压平</title>
     <url>/2023/12/16/mo-xing-bu-gui-ze-qu-yu-ya-ping/</url>
     <content><![CDATA[<p>初版模型压平只实现了规则区域的压平效果，本文在此基础上优化，实现了不规则区域的压平，压平思路没有太大变化，主要是改进了范围判断的方法，使用射线法来判断模型坐标点是否在压平范围内，思路如下</p>
@@ -171,18 +185,23 @@
       </tags>
   </entry>
   <entry>
-    <title>气象数据体渲染</title>
-    <url>/2023/12/17/qi-xiang-shu-ju-ti-xuan-ran/</url>
-    <content><![CDATA[<p>气象数据的体渲染思路和上一篇<a href="https://coderrc.cn/2023/12/16/fu-ke-bo-lin-zao-sheng/">复刻柏林噪声</a>类似，都是采用三维纹理方式实现采样渲染的，但这里需要注意的是大范围的BoxGeometry在自定以的dc里面传入dimension，进行采样的时候会报错，可能是数据维度太大的问题，需要变换模型矩阵，编写自定义顶点数据或者使用BoxGeomtry构造顶点数据传入，着色器部份仍然可以参考<a href="https://threejs.org/examples/?q=perlin#webgl2_volume_perlin">Three.js</a>，数据来源于火星的<a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a>示例</p>
-<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2023/12/17/657e8a2348d3a.png"></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2022/10/26/cesium-zhong-dui-3d-shu-ju-ji-jin-xing-ti-xuan-ran-zhan-shi/">Cesium中对3D数据集进行体渲染展示</a></p>
-<p><a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a></p>
+    <title>流体可视化</title>
+    <url>/2024/09/12/liu-ti-ke-shi-hua/</url>
+    <content><![CDATA[<p>基于cesium实现的流体渲染效果,shaderToy上面有很多关于流体渲染相关的例子，将这些效果移植到cesium上面可以在一定程度上增强水体淹没等三维可视化展示效果。本文结合网上各位大佬的例子，基于高度图采样实现流体渲染，大致思路如下</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、采样生成所选区域的高度图，并将高度图传入到一张渲染高度的帧缓冲中，其中高度可以通过Cesium自带的高程采样api来获取，也可以通过离屏渲染方式获得<br>2、创建2张计算高度纹理缓冲区和2张计算水流量的缓冲区<br>3、选择其中一张高度纹理，采样地形高度和水位高度进行渲染</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
+    <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=113123667282867&amp;bvid=BV1yh4ne4EG9&amp;cid=25835733082&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
+
+
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2024/01/26/cesium-zhong-shi-xian-liu-ti-mo-ni">Cesium中实现流体模拟</a><br><a href="https://www.bilibili.com/video/BV1hevUeqEpN/?spm_id_from=333.999.0.0&amp;vd_source=48e433b69838c457028e08f37a108cba">CesiumJS 流体仿真 WebGL流体仿真 Fluid 水淹分析 山洪模拟</a><br><a href="https://www.bilibili.com/video/BV1o1421y7o6/?spm_id_from=333.337.search-card.all.click&amp;vd_source=48e433b69838c457028e08f37a108cba">Web3D | Cesium开源特效 | ShaderToy流体特效迁移代码</a></p>
 ]]></content>
       <categories>
         <category>cesium</category>
       </categories>
       <tags>
-        <tag>气象数据 体渲染</tag>
+        <tag>体渲染 流体可视化 帧缓冲</tag>
       </tags>
   </entry>
   <entry>
@@ -241,23 +260,18 @@
       </tags>
   </entry>
   <entry>
-    <title>流体可视化</title>
-    <url>/2024/09/12/liu-ti-ke-shi-hua/</url>
-    <content><![CDATA[<p>基于cesium实现的流体渲染效果,shaderToy上面有很多关于流体渲染相关的例子，将这些效果移植到cesium上面可以在一定程度上增强水体淹没等三维可视化展示效果。本文结合网上各位大佬的例子，基于高度图采样实现流体渲染，大致思路如下</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1、采样生成所选区域的高度图，并将高度图传入到一张渲染高度的帧缓冲中，其中高度可以通过Cesium自带的高程采样api来获取，也可以通过离屏渲染方式获得<br>2、创建2张计算高度纹理缓冲区和2张计算水流量的缓冲区<br>3、选择其中一张高度纹理，采样地形高度和水位高度进行渲染</p>
-<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><div style="position: relative; width: 100%; height: 0;padding-bottom: 75%;">
-    <iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=113123667282867&amp;bvid=BV1yh4ne4EG9&amp;cid=25835733082&amp;p=1&amp;autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
-</div>
-
-
-
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2024/01/26/cesium-zhong-shi-xian-liu-ti-mo-ni">Cesium中实现流体模拟</a><br><a href="https://www.bilibili.com/video/BV1hevUeqEpN/?spm_id_from=333.999.0.0&amp;vd_source=48e433b69838c457028e08f37a108cba">CesiumJS 流体仿真 WebGL流体仿真 Fluid 水淹分析 山洪模拟</a><br><a href="https://www.bilibili.com/video/BV1o1421y7o6/?spm_id_from=333.337.search-card.all.click&amp;vd_source=48e433b69838c457028e08f37a108cba">Web3D | Cesium开源特效 | ShaderToy流体特效迁移代码</a></p>
+    <title>气象数据体渲染</title>
+    <url>/2023/12/17/qi-xiang-shu-ju-ti-xuan-ran/</url>
+    <content><![CDATA[<p>气象数据的体渲染思路和上一篇<a href="https://coderrc.cn/2023/12/16/fu-ke-bo-lin-zao-sheng/">复刻柏林噪声</a>类似，都是采用三维纹理方式实现采样渲染的，但这里需要注意的是大范围的BoxGeometry在自定以的dc里面传入dimension，进行采样的时候会报错，可能是数据维度太大的问题，需要变换模型矩阵，编写自定义顶点数据或者使用BoxGeomtry构造顶点数据传入，着色器部份仍然可以参考<a href="https://threejs.org/examples/?q=perlin#webgl2_volume_perlin">Three.js</a>，数据来源于火星的<a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a>示例</p>
+<h2 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h2><p><img src="https://bu.dusays.com/2023/12/17/657e8a2348d3a.png"></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.liaomz.top/2022/10/26/cesium-zhong-dui-3d-shu-ju-ji-jin-xing-ti-xuan-ran-zhan-shi/">Cesium中对3D数据集进行体渲染展示</a></p>
+<p><a href="http://mars3d.cn/editor-vue.html?id=graphic/custom/volumeCloud">气象云三维体</a></p>
 ]]></content>
       <categories>
         <category>cesium</category>
       </categories>
       <tags>
-        <tag>体渲染 流体可视化 帧缓冲</tag>
+        <tag>气象数据 体渲染</tag>
       </tags>
   </entry>
 </search>
